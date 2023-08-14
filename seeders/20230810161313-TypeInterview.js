@@ -2,17 +2,17 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    const typeInterviewSeedData = [
+    const typeInterviewData = [
       {
-        name_type_test: 'Entrevista Técnica',
-        description_type_test: 'Tipo de entrevista para evaluar habilidades técnicas.',
+        name_type_test: 'Entrevista Inicial',
+        description_type_test: 'Primera entrevista con los candidatos.',
         status_Type_interview: true,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        name_type_test: 'Entrevista de Competencias',
-        description_type_test: 'Tipo de entrevista para evaluar habilidades blandas y competencias.',
+        name_type_test: 'Entrevista Técnica',
+        description_type_test: 'Entrevista técnica para evaluar habilidades.',
         status_Type_interview: true,
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -20,7 +20,7 @@ module.exports = {
       // Agrega más datos de prueba aquí
     ];
 
-    await queryInterface.bulkInsert('TypeInterviews', typeInterviewSeedData, {});
+    await queryInterface.bulkInsert('TypeInterviews', typeInterviewData, {});
   },
 
   down: async (queryInterface, Sequelize) => {

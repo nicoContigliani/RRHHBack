@@ -2,33 +2,21 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('TestInterviews', {
+    await queryInterface.createTable('Roles', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      CandidateId: {
-        type: Sequelize.BIGINT
-      },
-      TestId: {
-        type: Sequelize.BIGINT
-      },
-      interviewDateTime: {
-        type: Sequelize.DATE
-      },
-      results: {
+      name_role: {
         type: Sequelize.STRING
       },
-      comments: {
-        type: Sequelize.STRING
-      },
-      InterviewId: {
-        type: Sequelize.BIGINT
-      },
-      status_test_inteview: {
+      status_role: {
         type: Sequelize.BOOLEAN
+      },
+      description_role: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -41,6 +29,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('TestInterviews');
+    await queryInterface.dropTable('Roles');
   }
 };

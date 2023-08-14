@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   ResultTest.init({
     TestId: DataTypes.BIGINT,
-    TesultId: DataTypes.BIGINT,
+    ResultId: DataTypes.BIGINT,
     status_result_test: DataTypes.BOOLEAN
   }, {
     sequelize,

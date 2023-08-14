@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     results: DataTypes.STRING,
     comments: DataTypes.STRING,
     InterviewId: DataTypes.BIGINT,
-    status_test_inteview: DataTypes.BOOLEAN
+    status_test_interview: DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'TestInterview',

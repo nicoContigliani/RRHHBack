@@ -2,14 +2,9 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    const typeTests = await queryInterface.sequelize.query(
-      'SELECT id FROM TypeTests;',
-      { type: Sequelize.QueryTypes.SELECT }
-    );
-
     const testSeedData = [
       {
-        typeTestId: typeTests[0].id,
+        typeTestId: 1,
         name_test: 'Prueba de Aptitud 1',
         description_test: 'Descripción de la prueba de aptitud 1.',
         status_test: true,
@@ -17,7 +12,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        typeTestId: typeTests[1].id,
+        typeTestId: 2,
         name_test: 'Prueba de Aptitud 2',
         description_test: 'Descripción de la prueba de aptitud 2.',
         status_test: true,
