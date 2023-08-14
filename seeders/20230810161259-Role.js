@@ -1,29 +1,26 @@
 'use strict';
-const { Seeder } = require('sequelize-seeder');
-const models = require('./models'); // Ajusta la ruta a tus modelos
-const { Role } = models; // Asegúrate de que el modelo se llame "Role"
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    const rolesToInsert = [
+    const roleSeedData = [
       {
-        name_role: 'Administrador',
-        status_role: true, // Estado del rol
-        description_role: 'Rol con acceso completo y privilegios de administración',
+        name_role: 'Admin',
+        status_role: true,
+        description_role: 'Administrator role',
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       },
       {
-        name_role: 'Usuario Normal',
-        status_role: true, // Estado del rol
-        description_role: 'Rol con funcionalidades limitadas para usuarios regulares',
+        name_role: 'User',
+        status_role: true,
+        description_role: 'Regular user role',
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       },
-      // Puedes agregar más roles de ejemplo aquí si es necesario
+      // Agrega más roles aquí
     ];
 
-    await queryInterface.bulkInsert('Roles', rolesToInsert, {});
+    await queryInterface.bulkInsert('Roles', roleSeedData, {});
   },
 
   down: async (queryInterface, Sequelize) => {

@@ -33,6 +33,7 @@ import TypeTest from './routes/TypeTestRouter'
 import TypeVacancy from './routes/TypeVacancyRouter'
 import User from './routes/UserRouter'
 import Vacancy from './routes/VacancyRouter'
+import Shift from './routes/ShiftRouter'
 import auth from './routes/auth'
 
 
@@ -74,6 +75,7 @@ app.use('/TypeTest',TypeTest)
 app.use('/TypeVacancy',TypeVacancy)
 app.use('/User',User)
 app.use('/Vacancy',Vacancy)
+app.use('/Shift',Shift)
 
 
 

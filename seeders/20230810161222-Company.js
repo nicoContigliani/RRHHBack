@@ -1,24 +1,30 @@
 'use strict';
-const { Seeder } = require('sequelize-seeder');
-const models = require('./models'); // Ajusta la ruta a tus modelos
-const { Company } = models; // Asegúrate de que el modelo se llame "Company"
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    const dataToInsert = [
+    const companySeedData = [
       {
-        company: 'Compañía 1',
+        company: 'Empresa 1',
         companyPhone: '123-456-7890',
-        companyEmail: 'info@compania1.com',
-        urlCompany: 'https://www.compania1.com',
-        status_company: true, // Estado de la compañía
+        companyEmail: 'empresa1@example.com',
+        urlCompany: 'http://www.empresa1.com',
+        status_company: true,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       },
-      // Puedes agregar más objetos de datos aquí si es necesario
+      {
+        company: 'Empresa 2',
+        companyPhone: '987-654-3210',
+        companyEmail: 'empresa2@example.com',
+        urlCompany: 'http://www.empresa2.com',
+        status_company: true,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      // Agrega más datos de prueba aquí
     ];
 
-    await queryInterface.bulkInsert('Companies', dataToInsert, {});
+    await queryInterface.bulkInsert('Companies', companySeedData, {});
   },
 
   down: async (queryInterface, Sequelize) => {

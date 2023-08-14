@@ -1,31 +1,33 @@
 'use strict';
-const { Seeder } = require('sequelize-seeder');
-const models = require('./models'); // Ajusta la ruta a tus modelos
-const { Test } = models; // Asegúrate de que el modelo se llame "Test"
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    const dataToInsert = [
+    const typeTests = await queryInterface.sequelize.query(
+      'SELECT id FROM TypeTests;',
+      { type: Sequelize.QueryTypes.SELECT }
+    );
+
+    const testSeedData = [
       {
-        typeTestId: 1, // Reemplaza con el ID correspondiente del tipo de prueba
-        name_test: 'Prueba 1',
-        description_test: 'Descripción de la Prueba 1',
+        typeTestId: typeTests[0].id,
+        name_test: 'Prueba de Aptitud 1',
+        description_test: 'Descripción de la prueba de aptitud 1.',
         status_test: true,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       },
       {
-        typeTestId: 2, // Reemplaza con el ID correspondiente del tipo de prueba
-        name_test: 'Prueba 2',
-        description_test: 'Descripción de la Prueba 2',
+        typeTestId: typeTests[1].id,
+        name_test: 'Prueba de Aptitud 2',
+        description_test: 'Descripción de la prueba de aptitud 2.',
         status_test: true,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       },
-      // Puedes agregar más objetos de datos aquí si es necesario
+      // Agrega más datos de prueba aquí
     ];
 
-    await queryInterface.bulkInsert('Tests', dataToInsert, {});
+    await queryInterface.bulkInsert('Tests', testSeedData, {});
   },
 
   down: async (queryInterface, Sequelize) => {

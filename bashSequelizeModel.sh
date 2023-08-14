@@ -26,3 +26,6 @@ sequelize model:create --name InterviewVacance --attributes InterviewId:bigint,V
 sequelize model:create --name InterviewResponsible --attributes InterViewId:bigint,UserId:bigint,responsibilityDescription:string,status_interview_responsible:boolean
 sequelize model:create --name InterviewUser --attributes InterViewId:bigint,UserId:bigint,userDescription:string,status_interview_user:boolean
 sequelize model:create --name CompanyVacances --attributes VacancyId:bigint,UserId:bigint,status_company_vacances:boolean
+sequelize model:create --name TypeShift --attributes name_type_shift:string,description_type_shift:string,status_type_shift:boolean,hours:integer
+sequelize model:create --name Shift --attributes name:string,start_time:time,end_time:time,status_shift:boolean,TypeshiptId:bigint
+sequelize model:create --name BranchShift --attributes BranchId:bigint,ShiftId:bigint,status_branch_shift:boolean, present_day:boolean,delay_day:boolean

@@ -2,34 +2,28 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    // Obtener los modelos necesarios
-    const { SectionType } = queryInterface.sequelize.models;
-
-    // Datos para insertar en la tabla
-    const dataToInsert = [
+    const sectionTypeSeedData = [
       {
-        name_section_type: 'Tipo de Sección 1',
-        description_section_type: 'Descripción del Tipo de Sección 1',
+        name_section_type: 'Sección de Presentación',
+        description_section_type: 'Sección introductoria del proceso de entrevista',
         status_section_type: true,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       },
       {
-        name_section_type: 'Tipo de Sección 2',
-        description_section_type: 'Descripción del Tipo de Sección 2',
+        name_section_type: 'Sección de Preguntas Técnicas',
+        description_section_type: 'Sección para preguntas relacionadas con habilidades técnicas',
         status_section_type: true,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       },
-      // Puedes agregar más objetos de datos aquí si es necesario
+      // Agrega más datos de prueba aquí
     ];
 
-    // Insertar los datos en la tabla
-    await SectionType.bulkCreate(dataToInsert);
+    await queryInterface.bulkInsert('SectionTypes', sectionTypeSeedData, {});
   },
 
   down: async (queryInterface, Sequelize) => {
-    // Eliminar los datos insertados en el método "up"
-    await queryInterface.bulkDelete('SectionType', null, {});
+    await queryInterface.bulkDelete('SectionTypes', null, {});
   }
 };

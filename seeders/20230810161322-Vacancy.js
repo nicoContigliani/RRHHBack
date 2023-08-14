@@ -1,35 +1,32 @@
 'use strict';
-const { Seeder } = require('sequelize-seeder');
-const models = require('./models'); // Ajusta la ruta a tus modelos
-const { Vacancy, TypeVacancy } = models; // Asegúrate de que los modelos se llamen "Vacancy" y "TypeVacancy"
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    // Obtener el ID del tipo de vacante que deseas asociar
-    // const typeVacancy = await TypeVacancy.findOne({
-    //   where: { name_vacancy_type: 'Tipo de Vacante Ejemplo' } // Reemplaza con el nombre correcto
-    // });
-
-    // if (!typeVacancy) {
-    //   console.error('Tipo de vacante no encontrado.');
-    //   return;
-    // }
-
-    const dataToInsert = [
+    const vacancySeedData = [
       {
-        title: 'Vacante de Desarrollador Web',
-        description: 'Descripción de la vacante de desarrollador web',
-        requirements: 'Requisitos para el puesto de desarrollador web',
-        responsibilities: 'Responsabilidades del puesto de desarrollador web',
+        title: 'Desarrollador Frontend',
+        description: 'Descripción de la vacante para desarrollador frontend.',
+        requirements: 'Experiencia en HTML, CSS y JavaScript.',
+        responsibilities: 'Diseñar y desarrollar interfaces de usuario.',
         status_vacancy: true,
-        TypeVacancyId: typeVacancy.id, // Asociar con el tipo de vacante obtenido anteriormente
+        TypeVacancyId: 1, // ID del tipo de vacante relacionado
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       },
-      // Puedes agregar más objetos de datos aquí si es necesario
+      {
+        title: 'Analista de Datos',
+        description: 'Descripción de la vacante para analista de datos.',
+        requirements: 'Conocimiento en análisis de datos y herramientas estadísticas.',
+        responsibilities: 'Analizar datos para tomar decisiones informadas.',
+        status_vacancy: true,
+        TypeVacancyId: 2, // ID de otro tipo de vacante relacionado
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      // Agrega más datos de prueba aquí
     ];
 
-    await queryInterface.bulkInsert('Vacancies', dataToInsert, {});
+    await queryInterface.bulkInsert('Vacancies', vacancySeedData, {});
   },
 
   down: async (queryInterface, Sequelize) => {

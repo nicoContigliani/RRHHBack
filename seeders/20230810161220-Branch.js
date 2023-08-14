@@ -1,27 +1,36 @@
 'use strict';
-const { Seeder } = require('sequelize-seeder');
-const models = require('./models'); // Ajusta la ruta a tus modelos
-const { Branch } = models; // Asegúrate de que el modelo se llame "Branch"
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    const dataToInsert = [
+    const branchSeedData = [
       {
-        name_branch: 'Sucursal 1',
-        conditions: 'Condiciones de la sucursal 1',
-        idCompany: 1, // ID de la compañía correspondiente
-        branch_long: '123.456789', // Longitud de ubicación
-        branch_lat: '12.345678', // Latitud de ubicación
-        branch_score: 4, // Puntuación de la sucursal
-        guest: 100, // Número de invitados
-        status_branch: true, // Estado de la sucursal
+        name_branch: 'Sucursal A',
+        conditions: 'Condiciones de la sucursal A',
+        idCompany: 1,
+        branch_long: '123.456',
+        branch_lat: '78.910',
+        branch_score: 4,
+        guest: 10,
+        status_branch: true,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       },
-      // Puedes agregar más objetos de datos aquí si es necesario
+      {
+        name_branch: 'Sucursal B',
+        conditions: 'Condiciones de la sucursal B',
+        idCompany: 2,
+        branch_long: '987.654',
+        branch_lat: '54.321',
+        branch_score: 3,
+        guest: 15,
+        status_branch: true,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      // Agrega más datos de prueba aquí
     ];
 
-    await queryInterface.bulkInsert('Branches', dataToInsert, {});
+    await queryInterface.bulkInsert('Branches', branchSeedData, {});
   },
 
   down: async (queryInterface, Sequelize) => {

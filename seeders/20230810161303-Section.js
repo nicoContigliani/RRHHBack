@@ -1,31 +1,28 @@
 'use strict';
-const { Seeder } = require('sequelize-seeder');
-const models = require('./models'); // Ajusta la ruta a tus modelos
-const { Section } = models; // Asegúrate de que el modelo se llame "Section"
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    const dataToInsert = [
+    const sectionSeedData = [
       {
-        SectionTypeId: 1, // ID del tipo de sección
-        title: 'Experiencia Laboral',
-        content: 'Detalles sobre mis trabajos anteriores...',
-        status_section: true, // Estado de la sección
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        SectionTypeId: 2, // ID del tipo de sección
-        title: 'Educación',
-        content: 'Información sobre mis antecedentes educativos...',
+        SectionTypeId: 1, // ID del tipo de sección relacionado
+        title: 'Presentación Personal',
+        content: 'En esta sección, el candidato debe hablar sobre sí mismo.',
         status_section: true,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       },
-      // Puedes agregar más objetos de datos aquí para otras secciones
+      {
+        SectionTypeId: 2,
+        title: 'Preguntas Técnicas',
+        content: 'En esta sección, el candidato responderá preguntas técnicas sobre el rol.',
+        status_section: true,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      // Agrega más datos de prueba aquí
     ];
 
-    await queryInterface.bulkInsert('Sections', dataToInsert, {});
+    await queryInterface.bulkInsert('Sections', sectionSeedData, {});
   },
 
   down: async (queryInterface, Sequelize) => {

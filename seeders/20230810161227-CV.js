@@ -1,29 +1,26 @@
 'use strict';
-const { Seeder } = require('sequelize-seeder');
-const models = require('./models'); // Ajusta la ruta a tus modelos
-const { CV } = models; // Asegúrate de que el modelo se llame "CV"
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    const dataToInsert = [
+    const cvSeedData = [
       {
-        title: 'Curriculum Vitae de Juan Pérez',
-        description_cv: 'Este es el currículum vitae de Juan Pérez. Está buscando oportunidades laborales en el campo de la programación.',
-        status_cv: true, // Estado del CV
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        title: 'Perfil Profesional de María Gómez',
-        description_cv: 'Perfil profesional de María Gómez, con experiencia en marketing digital y gestión de redes sociales.',
+        title: 'Currículum de Juan Pérez',
+        description_cv: 'Currículum vitae de Juan Pérez con experiencia en desarrollo web.',
         status_cv: true,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       },
-      // Puedes agregar más objetos de datos aquí para otros CVs
+      {
+        title: 'Currículum de María Gómez',
+        description_cv: 'Currículum vitae de María Gómez con experiencia en marketing.',
+        status_cv: true,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      // Agrega más datos de prueba aquí
     ];
 
-    await queryInterface.bulkInsert('CVs', dataToInsert, {});
+    await queryInterface.bulkInsert('CVs', cvSeedData, {});
   },
 
   down: async (queryInterface, Sequelize) => {

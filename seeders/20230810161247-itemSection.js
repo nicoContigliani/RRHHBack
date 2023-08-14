@@ -1,24 +1,30 @@
 'use strict';
-const { Seeder } = require('sequelize-seeder');
-const models = require('./models'); // Ajusta la ruta a tus modelos
-const { itemSection } = models; // Asegúrate de que el modelo se llame "itemSection"
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    const dataToInsert = [
+    const itemSectionSeedData = [
       {
-        ItemId:1 /* ID del ítem */,
-        SectionId:1 /* ID de la sección */,
-        position: 1, // Posición en la sección
-        atribute: 'Atributo del ítem en la sección',
-        status_item_section: true, // Estado del ítem en la sección
+        ItemId: 1,
+        SectionId: 1,
+        position: 1,
+        atribute: 'Atributo 1',
+        status_item_section: true,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       },
-      // Puedes agregar más objetos de datos aquí si es necesario
+      {
+        ItemId: 2,
+        SectionId: 1,
+        position: 2,
+        atribute: 'Atributo 2',
+        status_item_section: false,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      // Agrega más datos de prueba aquí
     ];
 
-    await queryInterface.bulkInsert('itemSections', dataToInsert, {});
+    await queryInterface.bulkInsert('itemSections', itemSectionSeedData, {});
   },
 
   down: async (queryInterface, Sequelize) => {

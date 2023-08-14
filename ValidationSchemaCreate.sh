@@ -48,6 +48,7 @@ while IFS= read -r line; do
          double) JOI_VALIDATION="${ATTRIBUTE}: Joi.number().required()," ;;
          enum) JOI_VALIDATION="${ATTRIBUTE}: Joi.number().required()," ;;
          date) JOI_VALIDATION="${ATTRIBUTE}: Joi.date().required()," ;;
+         time) JOI_VALIDATION="${ATTRIBUTE}: Joi.time().required()," ;;
         *) echo "Tipo de dato no reconocido: $JOI_TYPE" ;;
       esac
 

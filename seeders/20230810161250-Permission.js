@@ -1,59 +1,56 @@
 'use strict';
-const { Seeder } = require('sequelize-seeder');
-const models = require('./models'); // Ajusta la ruta a tus modelos
-const { Permission } = models; // Asegúrate de que el modelo se llame "Permission"
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    const dataToInsert = [
+    const permissionSeedData = [
       {
-        name_permission: 'Gestión de Usuarios',
-        conditions: 'Permite gestionar usuarios del sistema',
-        code: 'manage_users',
+        name_permission: 'Permission 1',
+        conditions: 'Some conditions for permission 1',
+        code: 'PERM001',
         creates: true,
         reads: true,
-        updates: true,
-        deletes: true,
+        updates: false,
+        deletes: false,
         admins: true,
-        exports: false,
+        exports: true,
         imports: false,
-        approve: false,
+        approve: true,
         generate_reports: true,
         configure: false,
         restrict: false,
         manage_users: true,
         manage_roles: true,
         audit: true,
-        status_permission: true, // Estado del permiso
+        status_permission: true,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       },
       {
-        name_permission: 'Generar Informes',
-        conditions: 'Permite generar informes y reportes',
-        code: 'generate_reports',
-        creates: false,
+        name_permission: 'Permission 2',
+        conditions: 'Some conditions for permission 2',
+        code: 'PERM002',
+        creates: true,
         reads: true,
-        updates: false,
-        deletes: false,
-        admins: false,
+        updates: true,
+        deletes: true,
+        admins: true,
         exports: true,
-        imports: false,
-        approve: false,
+        imports: true,
+        approve: true,
         generate_reports: true,
-        configure: false,
+        configure: true,
         restrict: false,
-        manage_users: false,
-        manage_roles: false,
+        manage_users: true,
+        manage_roles: true,
         audit: true,
-        status_permission: true, // Estado del permiso
+        status_permission: true,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       },
-      // Puedes agregar más objetos de datos aquí si es necesario
+      // Agrega más datos de permisos aquí
     ];
 
-    await queryInterface.bulkInsert('Permissions', dataToInsert, {});
+    await queryInterface.bulkInsert('Permissions', permissionSeedData, {});
   },
 
   down: async (queryInterface, Sequelize) => {

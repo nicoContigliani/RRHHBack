@@ -11,4 +11,3 @@ for file in $models_folder/*.js; do
 done
 
 
-

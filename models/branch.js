@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Branch.belongsToMany(models.User, { through: models.BrachUser });
+      Branch.belongsToMany(models.Shift, { through: models.BranchShift });
       Branch.belongsTo(models.Company, {
         foreignKey: 'idCompany',
       });

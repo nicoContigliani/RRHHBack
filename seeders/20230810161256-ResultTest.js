@@ -1,22 +1,26 @@
 'use strict';
-const { Seeder } = require('sequelize-seeder');
-const models = require('./models'); // Ajusta la ruta a tus modelos
-const { ResultTest } = models; // Asegúrate de que el modelo se llame "ResultTest"
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    const dataToInsert = [
+    const resultTestSeedData = [
       {
-        TestId:1 /* ID del test */,
-        ResultId:1 /* ID del resultado */,
-        status_result_test: true, // Estado de la relación entre test y resultado
+        TestId: 1,  // ID del test
+        ResultId: 1,  // ID del resultado
+        status_result_test: true,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       },
-      // Puedes agregar más objetos de datos aquí si es necesario
+      {
+        TestId: 2,
+        ResultId: 2,
+        status_result_test: true,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      // Agrega más registros de prueba aquí
     ];
 
-    await queryInterface.bulkInsert('ResultTests', dataToInsert, {});
+    await queryInterface.bulkInsert('ResultTests', resultTestSeedData, {});
   },
 
   down: async (queryInterface, Sequelize) => {

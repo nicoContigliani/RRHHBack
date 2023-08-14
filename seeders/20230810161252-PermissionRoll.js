@@ -1,29 +1,26 @@
 'use strict';
-const { Seeder } = require('sequelize-seeder');
-const models = require('./models'); // Ajusta la ruta a tus modelos
-const { PermissionRoll } = models; // Asegúrate de que el modelo se llame "PermissionRoll"
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    const dataToInsert = [
+    const permissionRollSeedData = [
       {
-        RoleId: 1, // ID del rol "Administrador"
-        PermissionId: 1, // ID del permiso "Gestión de Usuarios"
-        status_permission_roll: true, // Estado de la relación entre rol y permiso
+        RoleId: 1, // ID de un rol existente
+        PermissionId: 1, // ID de un permiso existente
+        status_permission_roll: true,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       },
       {
-        RoleId: 2, // ID del rol "Usuario Normal"
-        PermissionId: 2, // ID del permiso "Generar Informes"
-        status_permission_roll: true, // Estado de la relación entre rol y permiso
+        RoleId: 2, // ID de otro rol existente
+        PermissionId: 2, // ID de otro permiso existente
+        status_permission_roll: true,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       },
-      // Puedes agregar más objetos de datos aquí si es necesario
+      // Agrega más datos de relaciones de permisos y roles aquí
     ];
 
-    await queryInterface.bulkInsert('PermissionRolls', dataToInsert, {});
+    await queryInterface.bulkInsert('PermissionRolls', permissionRollSeedData, {});
   },
 
   down: async (queryInterface, Sequelize) => {

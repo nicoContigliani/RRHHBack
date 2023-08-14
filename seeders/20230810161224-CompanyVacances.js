@@ -2,27 +2,28 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    // Obtener los modelos necesarios
-    const { CompanyVacances } = queryInterface.sequelize.models;
-
-    // Datos para insertar en la tabla
-    const dataToInsert = [
+    const companyVacancesSeedData = [
       {
-        VacancyId: 1,  // ID de la vacante
-        UserId: 1,     // ID del usuario
+        VacancyId: 1,
+        UserId: 1,
         status_company_vacances: true,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       },
-      // Puedes agregar más objetos de datos aquí si es necesario
+      {
+        VacancyId: 2,
+        UserId: 2,
+        status_company_vacances: true,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      // Agrega más datos de prueba aquí
     ];
 
-    // Insertar los datos en la tabla
-    await CompanyVacances.bulkCreate(dataToInsert);
+    await queryInterface.bulkInsert('CompanyVacances', companyVacancesSeedData, {});
   },
 
   down: async (queryInterface, Sequelize) => {
-    // Eliminar los datos insertados en el método "up"
     await queryInterface.bulkDelete('CompanyVacances', null, {});
   }
 };

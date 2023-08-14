@@ -1,23 +1,28 @@
 'use strict';
-const { Seeder } = require('sequelize-seeder');
-const models = require('./models'); // Ajusta la ruta a tus modelos
-const { InterviewUser } = models; // Asegúrate de que el modelo se llame "InterviewUser"
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    const dataToInsert = [
+    const interviewUserSeedData = [
       {
-        InterViewId:1 /* ID de la entrevista */,
-        UserId:1 /* ID del usuario */,
-        userDescription: 'Descripción del usuario en la entrevista',
-        status_interview_user: true, // Estado de la relación entre usuario y entrevista
+        InterViewId: 1, // ID de la entrevista relacionada
+        UserId: 1, // ID del usuario relacionado
+        userDescription: 'Entrevistador principal',
+        status_interview_user: true,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       },
-      // Puedes agregar más objetos de datos aquí si es necesario
+      {
+        InterViewId: 1,
+        UserId: 2,
+        userDescription: 'Entrevistador secundario',
+        status_interview_user: true,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      // Agrega más datos de prueba aquí
     ];
 
-    await queryInterface.bulkInsert('InterviewUsers', dataToInsert, {});
+    await queryInterface.bulkInsert('InterviewUsers', interviewUserSeedData, {});
   },
 
   down: async (queryInterface, Sequelize) => {

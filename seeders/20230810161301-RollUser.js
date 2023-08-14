@@ -1,26 +1,30 @@
 'use strict';
-const { Seeder } = require('sequelize-seeder');
-const models = require('./models'); // Ajusta la ruta a tus modelos
-const { RollUser } = models; // Asegúrate de que el modelo se llame "RollUser"
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    const dataToInsert = [
+    // Aquí necesitarás tener la información de los usuarios y roles que deseas asociar
+    const rollUserSeedData = [
       {
         UserId: 1, // ID del usuario
         RoleId: 1, // ID del rol
-        status_role_user: true, // Estado de la relación entre usuario y rol
+        status_role_user: true,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       },
-      // Puedes agregar más objetos de datos aquí si es necesario
+      {
+        UserId: 2,
+        RoleId: 2,
+        status_role_user: true,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      // Agrega más asociaciones aquí
     ];
 
-    await queryInterface.bulkInsert('RollUsers', dataToInsert, {});
+    await queryInterface.bulkInsert('RollUsers', rollUserSeedData, {});
   },
 
   down: async (queryInterface, Sequelize) => {
-    // Eliminar los datos insertados en el método "up"
     await queryInterface.bulkDelete('RollUsers', null, {});
   }
 };
