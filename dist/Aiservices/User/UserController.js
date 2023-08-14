@@ -95,7 +95,6 @@ const deletes = (req, res, next) => __awaiter(void 0, void 0, void 0, function* 
         const { id } = req.params;
         const dataGetId = yield (0, UserDao_1.getIdDao)(id);
         const todos = yield (0, chanegeOfActives_services_1.changeActive)(dataGetId);
-        console.log("🚀 ~ file: UserController.ts:111 ~ deletes ~ todos:", todos);
         const dataReturnS = yield (0, UserDao_1.deletesDao)(todos, id);
         if (dataReturnS) {
             const dataReturnGet = yield getAllAlways();
