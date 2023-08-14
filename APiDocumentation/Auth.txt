@@ -1,0 +1,11 @@
+Auth
+--------------------------------------
+login
+Put -> http://localhost:3000/Auth/Auth
+body
+
+{
+    "email": "nico.contigliani@gmail.com",
+    "password": "123456789"
+}
+-------------------------------------------

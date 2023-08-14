@@ -1,0 +1,43 @@
+User
+
+
+GET -> http://localshot:3000/User/User
+------------------------------
+GETid->http://localhost:3000/User/User/1
+------------------------------
+Post -> http://localhost:3000/User/User
+
+body 
+{
+   "email":"nico.contigliani@gmail.com",
+   "password":"123456789",
+   "fullname":"nicolas Contigliani",
+   "phone":"+549261444106",
+   "birthday":"11/7/2023",
+   "Score":1000,
+   "status_user":true,
+   "createdAt":"11/07/2023",
+   "updatedAt":"11/07/2023"
+}
+
+Headers:    todo:toma
+----------------------------------------
+Post-> http://localhost:3000/User/User/1
+
+body 
+{  
+   "id":1,
+   "email":"nico.contigliani@gmail.com",
+   "password":"123456789",
+   "fullname":"nicolas Contigliani",
+   "phone":"+549261444106",
+   "birthday":"11/7/2023",
+   "Score":1000,
+   "status_user":true,
+   "createdAt":"11/07/2023",
+   "updatedAt":"11/07/2023"
+}
+Headers:    todo:toma
+----------------------------------------------
+delete->http://localhost:3000/User/User/1 
+Headers:    todo:toma
