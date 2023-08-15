@@ -1,6 +1,6 @@
 
 import express, { Request, Response } from 'express';
-import CVUser from '../Aiservices/CVUser/CVUserRouter'
+import CVUser from '../Apiservices/CVUser/CVUserRouter'
 const router = express.Router();
 
 // Ruta

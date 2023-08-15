@@ -1,6 +1,6 @@
 
 import express, { Request, Response } from 'express';
-import CVSection from '../Aiservices/CVSection/CVSectionRouter'
+import CVSection from '../Apiservices/CVSection/CVSectionRouter'
 const router = express.Router();
 
 // Ruta

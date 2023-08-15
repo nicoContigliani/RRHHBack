@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const TypeInterviewRouter_1 = __importDefault(require("../Aiservices/TypeInterview/TypeInterviewRouter"));
+const TypeInterviewRouter_1 = __importDefault(require("../Apiservices/TypeInterview/TypeInterviewRouter"));
 const router = express_1.default.Router();
 // Ruta
 router.use('/TypeInterview', TypeInterviewRouter_1.default);

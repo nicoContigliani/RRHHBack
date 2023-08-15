@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const UserRouter_1 = __importDefault(require("../Aiservices/User/UserRouter"));
+const UserRouter_1 = __importDefault(require("../Apiservices/User/UserRouter"));
 const router = express_1.default.Router();
 // Ruta
 router.use('/User', UserRouter_1.default);

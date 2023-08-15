@@ -1,6 +1,6 @@
 
 import express, { Request, Response } from 'express';
-import Shift from '../Aiservices/Shift/ShiftRouter'
+import Shift from '../Apiservices/Shift/ShiftRouter'
 const router = express.Router();
 
 // Ruta

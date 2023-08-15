@@ -1,6 +1,6 @@
 
 import express, { Request, Response } from 'express';
-import RollUser from '../Aiservices/RollUser/RollUserRouter'
+import RollUser from '../Apiservices/RollUser/RollUserRouter'
 const router = express.Router();
 
 // Ruta

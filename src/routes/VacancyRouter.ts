@@ -1,6 +1,6 @@
 
 import express, { Request, Response } from 'express';
-import Vacancy from '../Aiservices/Vacancy/VacancyRouter'
+import Vacancy from '../Apiservices/Vacancy/VacancyRouter'
 const router = express.Router();
 
 // Ruta

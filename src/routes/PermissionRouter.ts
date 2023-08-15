@@ -1,6 +1,6 @@
 
 import express, { Request, Response } from 'express';
-import Permission from '../Aiservices/Permission/PermissionRouter'
+import Permission from '../Apiservices/Permission/PermissionRouter'
 const router = express.Router();
 
 // Ruta

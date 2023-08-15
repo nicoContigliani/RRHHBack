@@ -1,6 +1,6 @@
 
 import express, { Request, Response } from 'express';
-import BrachUser from '../Aiservices/BrachUser/BrachUserRouter'
+import BrachUser from '../Apiservices/BrachUser/BrachUserRouter'
 const router = express.Router();
 
 // Ruta

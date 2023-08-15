@@ -25,6 +25,7 @@ const {
       RollUser,
       Section,
       SectionType,
+      Shift,
       TestInterview,
       Test,
       TypeInterview,
@@ -38,7 +39,22 @@ const {
 
 export const getDao = async (data: any) => {
       return await User.findAll({
-
+            include: [
+                  {
+                    model: Role,
+                    include: [Permission],
+                  },
+                  {
+                    model: Branch,
+                    where: { id: 1 }, // Filtrar por el ID de la sucursal
+                    include: [
+                      {
+                        model: Company,
+                      },
+                      Shift,
+                    ],
+                  },
+                ],
       })
 }
 export const getIdDao = async (data: any) => {

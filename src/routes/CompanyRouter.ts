@@ -1,6 +1,6 @@
 
 import express, { Request, Response } from 'express';
-import Company from '../Aiservices/Company/CompanyRouter'
+import Company from '../Apiservices/Company/CompanyRouter'
 const router = express.Router();
 
 // Ruta

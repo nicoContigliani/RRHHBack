@@ -1,6 +1,6 @@
 
 import express, { Request, Response } from 'express';
-import PermissionRoll from '../Aiservices/PermissionRoll/PermissionRollRouter'
+import PermissionRoll from '../Apiservices/PermissionRoll/PermissionRollRouter'
 const router = express.Router();
 
 // Ruta

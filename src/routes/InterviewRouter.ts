@@ -1,6 +1,6 @@
 
 import express, { Request, Response } from 'express';
-import Interview from '../Aiservices/Interview/InterviewRouter'
+import Interview from '../Apiservices/Interview/InterviewRouter'
 const router = express.Router();
 
 // Ruta

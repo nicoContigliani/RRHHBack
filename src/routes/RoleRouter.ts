@@ -1,6 +1,6 @@
 
 import express, { Request, Response } from 'express';
-import Role from '../Aiservices/Role/RoleRouter'
+import Role from '../Apiservices/Role/RoleRouter'
 const router = express.Router();
 
 // Ruta

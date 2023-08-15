@@ -1,6 +1,6 @@
 
 import express, { Request, Response } from 'express';
-import CV from '../Aiservices/CV/CVRouter'
+import CV from '../Apiservices/CV/CVRouter'
 const router = express.Router();
 
 // Ruta

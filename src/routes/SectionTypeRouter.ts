@@ -1,6 +1,6 @@
 
 import express, { Request, Response } from 'express';
-import SectionType from '../Aiservices/SectionType/SectionTypeRouter'
+import SectionType from '../Apiservices/SectionType/SectionTypeRouter'
 const router = express.Router();
 
 // Ruta

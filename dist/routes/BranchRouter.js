@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const BranchRouter_1 = __importDefault(require("../Aiservices/Branch/BranchRouter"));
+const BranchRouter_1 = __importDefault(require("../Apiservices/Branch/BranchRouter"));
 const router = express_1.default.Router();
 // Ruta
 router.use('/Branch', BranchRouter_1.default);

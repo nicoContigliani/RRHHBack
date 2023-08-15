@@ -1,6 +1,6 @@
 
 import express, { Request, Response } from 'express';
-import User from '../Aiservices/User/UserRouter'
+import User from '../Apiservices/User/UserRouter'
 const router = express.Router();
 
 // Ruta

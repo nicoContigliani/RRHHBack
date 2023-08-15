@@ -1,6 +1,6 @@
 
 import express, { Request, Response } from 'express';
-import Branch from '../Aiservices/Branch/BranchRouter'
+import Branch from '../Apiservices/Branch/BranchRouter'
 const router = express.Router();
 
 // Ruta

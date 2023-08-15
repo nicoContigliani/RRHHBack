@@ -1,6 +1,6 @@
 
 import express, { Request, Response } from 'express';
-import Test from '../Aiservices/Test/TestRouter'
+import Test from '../Apiservices/Test/TestRouter'
 const router = express.Router();
 
 // Ruta
