@@ -11,7 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getDaoFilter = exports.getDao = void 0;
 const { Op } = require('sequelize');
-const { BrachUser, Branch, Company, CompanyVacances, CV, CVSection, CVUser, Interview, InterviewResponsible, InterviewUser, InterviewVacance, Item, itemSection, Permission, PermissionRoll, Result, ResultTest, Role, RollUser, Section, SectionType, TestInterview, Test, TypeInterview, TypeTest, TypeVacancy, User, Vacancy } = require('../../../models');
+const { BrachUser, Branch, Company, CompanyVacances, CV, CVSection, CVUser, Interview, InterviewResponsible, InterviewUser, InterviewVacance, Item, itemSection, Permission, PermissionRoll, Result, ResultTest, Role, RollUser, Section, SectionType, TestInterview, Test, TypeInterview, TypeTest, TypeVacancy, User, Vacancy, Shift } = require('../../../models');
 const getDao = () => __awaiter(void 0, void 0, void 0, function* () {
     const Alls = yield User.findAll({});
     return Alls;
@@ -32,7 +32,21 @@ const getDaoFilter = (data) => __awaiter(void 0, void 0, void 0, function* () {
                 include: [
                     {
                         model: Permission,
-                        as: 'Permissions' // Reemplaza "Permissions" con el alias de tu relación en el modelo Role
+                        as: 'Permissions'
+                    },
+                ]
+            },
+            {
+                model: Branch,
+                as: 'Branches',
+                include: [
+                    {
+                        model: Company,
+                        as: 'Company'
+                    },
+                    {
+                        model: Shift,
+                        as: 'Shifts'
                     }
                 ]
             }

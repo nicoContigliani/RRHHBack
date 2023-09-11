@@ -3,7 +3,7 @@ const { Op } = require('sequelize');
 
 
 
-const { BrachUser, Branch, Company, CompanyVacances, CV, CVSection, CVUser, Interview, InterviewResponsible, InterviewUser, InterviewVacance, Item, itemSection, Permission, PermissionRoll, Result, ResultTest, Role, RollUser, Section, SectionType, TestInterview, Test, TypeInterview, TypeTest, TypeVacancy, User, Vacancy } = require('../../../models')
+const { BrachUser, Branch, Company, CompanyVacances, CV, CVSection, CVUser, Interview, InterviewResponsible, InterviewUser, InterviewVacance, Item, itemSection, Permission, PermissionRoll, Result, ResultTest, Role, RollUser, Section, SectionType, TestInterview, Test, TypeInterview, TypeTest, TypeVacancy, User, Vacancy,Shift } = require('../../../models')
 
 
 export const getDao = async () => {
@@ -24,18 +24,34 @@ export const getDaoFilter = async (data: any) => {
     },
     include: [
       {
-        model: Role,  // Reemplaza "Role" con el modelo de tus roles
-        as: 'Roles',  // Reemplaza "Roles" con el alias de tu relación en el modelo User
+        model: Role,
+        as: 'Roles',
         include: [
           {
-            model: Permission,  // Reemplaza "Permission" con el modelo de tus permisos
-            as: 'Permissions'   // Reemplaza "Permissions" con el alias de tu relación en el modelo Role
+            model: Permission,
+            as: 'Permissions'
+          },
+        ]
+      },
+      {
+        model: Branch,
+        as: 'Branches',
+        include: [
+          {
+            model: Company,
+            as: 'Company'
+          },
+          {
+            model: Shift,
+            as: 'Shifts'
           }
         ]
       }
+      
     ]
   });
-
-  return Alls
+  
+  return Alls;
+  
 }
 
