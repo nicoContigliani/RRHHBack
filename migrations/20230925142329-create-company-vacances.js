@@ -12,6 +12,9 @@ module.exports = {
       VacancyId: {
         type: Sequelize.BIGINT
       },
+      CompanyId: {
+        type: Sequelize.BIGINT
+      },
       UserId: {
         type: Sequelize.BIGINT
       },

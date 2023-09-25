@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   CompanyVacances.init({
     VacancyId: DataTypes.BIGINT,
+    CompanyId: DataTypes.BIGINT,
     UserId: DataTypes.BIGINT,
     status_company_vacances: DataTypes.BOOLEAN
   }, {

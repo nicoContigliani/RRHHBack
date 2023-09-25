@@ -37,7 +37,70 @@ const {
 
 
 export const getDao = async (data: any) => {
-      return await Company.findAll({})
+      return await Company.findAll({
+            include: [
+                  {
+                        model: Vacancy,
+                        include: [
+                              {
+                                    model: Interview,
+                                    include: [
+                                          {
+                                                model: Test
+                                          },
+                                          {
+                                                model: User
+                                          }
+                                    ]
+                              }
+                        ]
+
+                  }
+                  // {
+                  //   model: CompanyVacances,
+                  //   as: 'companyVacancies',
+                  //   include: [
+                  //     {
+                  //       model: Vacancy,
+                  //       as: 'vacancies',
+                  //       include: [
+                  //         {
+                  //           model: TypeVacancy,
+                  //           as: 'vacancyType',
+                  //         },
+                  //         {
+                  //           model: InterviewVacance,
+                  //           as: 'interviewVacancies',
+                  //           include: [
+                  //             {
+                  //               model: Interview,
+                  //               as: 'interviews',
+                  //               include: [
+                  //                 {
+                  //                   model: TypeInterview,
+                  //                   as: 'interviewType',
+                  //                 },
+                  //               ],
+                  //             },
+                  //             {
+                  //               model: TestInterview,
+                  //               as: 'testInterviews',
+                  //               include: [
+                  //                 {
+                  //                   model: Test,
+                  //                   as: 'test',
+
+                  //                 },
+                  //               ],
+                  //             },
+                  //           ],
+                  //         },
+                  //       ],
+                  //     },
+                  //   ],
+                  // },
+            ],
+      })
 }
 
 export const getIdDao = async (data: any) => {
