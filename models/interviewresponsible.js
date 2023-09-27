@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   InterviewResponsible.init({
-    InterViewId: DataTypes.BIGINT,
+    InterviewId: DataTypes.BIGINT,
     UserId: DataTypes.BIGINT,
     responsibilityDescription: DataTypes.STRING,
     status_interview_responsible: DataTypes.BOOLEAN

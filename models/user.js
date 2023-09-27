@@ -13,8 +13,20 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       User.belongsToMany(models.Role, { through: models.RollUser });
       User.belongsToMany(models.Branch, { through: models.BrachUser });
-      User.belongsToMany(models.Interview, { through: models.InterviewUser });
-      User.belongsToMany(models.Interview, { through: models.InterviewResponsible });
+
+      
+
+      // User.belongsToMany(models.Interview, { through: models.InterviewUser });
+      // User.belongsToMany(models.Interview, { through: models.InterviewResponsible });
+
+      User.belongsToMany(models.Interview, { through: models.InterviewUser, as: 'Interviewees' });
+      User.belongsToMany(models.Interview, { through: models.InterviewResponsible, as: 'Responsibles' });
+      
+      User.belongsToMany(models.RoadMap, { through: models.InterviewUser, as: 'Intervieweess' });
+      User.belongsToMany(models.RoadMap, { through: models.InterviewResponsible, as: 'Responsibless' });
+      
+
+
       User.belongsToMany(models.CV, { through: models.CVUser });
 
   

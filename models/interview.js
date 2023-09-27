@@ -13,8 +13,15 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Interview.belongsToMany(models.Test, { through: models.TestInterview });
       Interview.belongsToMany(models.Vacancy, { through: models.InterviewVacance });
-      Interview.belongsToMany(models.User, { through: models.InterviewUser });
-      Interview.belongsToMany(models.User, { through: models.InterviewResponsible });
+
+      // Interview.belongsToMany(models.User, { through: models.InterviewUser });
+      // Interview.belongsToMany(models.User, { through: models.InterviewResponsible });
+
+      Interview.belongsToMany(models.User, { through: models.InterviewUser, as: 'Interviewees' });
+      Interview.belongsToMany(models.User, { through: models.InterviewResponsible, as: 'Responsibles' });
+      
+
+
       // Interview.hasMany(models.TypeInterview, {
       //   foreignKey: 'id'
       // });

@@ -46,61 +46,31 @@ export const getDao = async (data: any) => {
                                     model: Interview,
                                     include: [
                                           {
-                                                model: Test
+                                                model: Test,
+                                                include: []
                                           },
                                           {
-                                                model: User
+                                                model: User,
+                                                as: 'Responsibles', // Alias definido en la asociación con InterviewResponsible
+                                                through: {
+                                                      model: InterviewResponsible
+                                                }
+                                          },
+                                          {
+                                                model: User,
+                                                as: 'Interviewees', // Alias definido en la asociación con InterviewUser
+                                                through: {
+                                                      model: InterviewUser
+                                                }
                                           }
                                     ]
                               }
                         ]
-
                   }
-                  // {
-                  //   model: CompanyVacances,
-                  //   as: 'companyVacancies',
-                  //   include: [
-                  //     {
-                  //       model: Vacancy,
-                  //       as: 'vacancies',
-                  //       include: [
-                  //         {
-                  //           model: TypeVacancy,
-                  //           as: 'vacancyType',
-                  //         },
-                  //         {
-                  //           model: InterviewVacance,
-                  //           as: 'interviewVacancies',
-                  //           include: [
-                  //             {
-                  //               model: Interview,
-                  //               as: 'interviews',
-                  //               include: [
-                  //                 {
-                  //                   model: TypeInterview,
-                  //                   as: 'interviewType',
-                  //                 },
-                  //               ],
-                  //             },
-                  //             {
-                  //               model: TestInterview,
-                  //               as: 'testInterviews',
-                  //               include: [
-                  //                 {
-                  //                   model: Test,
-                  //                   as: 'test',
+            ]
+      });
 
-                  //                 },
-                  //               ],
-                  //             },
-                  //           ],
-                  //         },
-                  //       ],
-                  //     },
-                  //   ],
-                  // },
-            ],
-      })
+
 }
 
 export const getIdDao = async (data: any) => {

@@ -11,44 +11,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deletesDao = exports.updateDao = exports.postDao = exports.getIdDao = exports.getDao = void 0;
 const { Op } = require('sequelize');
-const { BrachUser, Branch, Company, CompanyVacances, CV, CVSection, CVUser, Interview, InterviewResponsible, InterviewUser, InterviewVacance, Item, itemSection, Permission, PermissionRoll, Result, ResultTest, Role, RollUser, Section, SectionType, TestInterview, Test, TypeInterview, TypeTest, TypeVacancy, User, Vacancy } = require('../../../models');
+const { BrachUser, Branch, Company, CompanyVacances, CV, CVSection, CVUser, Interview, InterviewResponsible, InterviewUser, InterviewVacance, Item, itemSection, Permission, PermissionRoll, Result, ResultTest, Role, RollUser, Section, SectionType, TestInterview, Test, TypeInterview, TypeTest, TypeVacancy, User, Vacancy, RoadMap } = require('../../../models');
 const getDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
-    return yield Company.findAll({
-        include: [
-            {
-                model: Vacancy,
-                include: [
-                    {
-                        model: Interview,
-                        include: [
-                            {
-                                model: Test,
-                                include: []
-                            },
-                            {
-                                model: User,
-                                as: 'Responsibles',
-                                through: {
-                                    model: InterviewResponsible
-                                }
-                            },
-                            {
-                                model: User,
-                                as: 'Interviewees',
-                                through: {
-                                    model: InterviewUser
-                                }
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    });
+    return yield RoadMap.findAll({});
 });
 exports.getDao = getDao;
 const getIdDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
-    return yield Company.findAll({
+    return yield RoadMap.findAll({
         where: {
             id: data // Filtrar por id
         }
@@ -57,16 +26,16 @@ const getIdDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
 exports.getIdDao = getIdDao;
 const postDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        return yield Company.create(data);
+        return yield RoadMap.create(data);
     }
     catch (error) {
-        console.log("🚀 ~ file: CompanyDao.ts:57 ~ postDao ~ error:", error);
+        console.log("🚀 ~ file: SectionDao.ts:57 ~ postDao ~ error:", error);
     }
 });
 exports.postDao = postDao;
 const updateDao = (data, id) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        return yield Company.update(data, { where: { id: id } });
+        return yield RoadMap.update(data, { where: { id: id } });
     }
     catch (error) {
         console.log("🚀 ~ file: userDao.ts:52 ~ updateDao ~ error:", error);
@@ -75,7 +44,7 @@ const updateDao = (data, id) => __awaiter(void 0, void 0, void 0, function* () {
 exports.updateDao = updateDao;
 const deletesDao = (data, id) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        return yield Company.update(data, { where: { id: id } });
+        return yield RoadMap.update(data, { where: { id: id } });
     }
     catch (error) {
         console.log("🚀 ~ file: userDao.ts:52 ~ updateDao ~ error:", error);

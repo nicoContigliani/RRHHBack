@@ -23,9 +23,13 @@ sequelize model:create --name Interview --attributes interviewDateTime:date,inte
 sequelize model:create --name TypeVacancy --attributes name_vacancy_type:string,description_vacancy_type:string,status_vacancy_type:boolean
 sequelize model:create --name Vacancy --attributes title:string,description:string,requirements:string,responsibilities:string,status_vacancy:boolean,TypeVacancyId:bigint
 sequelize model:create --name InterviewVacance --attributes InterviewId:bigint,VacancyId:bigint,interviewDateTime:date,results:string,comments:string,status_interview_vacancy_type:boolean
-sequelize model:create --name InterviewResponsible --attributes InterViewId:bigint,UserId:bigint,responsibilityDescription:string,status_interview_responsible:boolean
-sequelize model:create --name InterviewUser --attributes InterViewId:bigint,UserId:bigint,userDescription:string,status_interview_user:boolean
+sequelize model:create --name InterviewResponsible --attributes InterviewId:bigint,UserId:bigint,responsibilityDescription:string,status_interview_responsible:boolean
+sequelize model:create --name InterviewUser --attributes InterviewId:bigint,UserId:bigint,userDescription:string,status_interview_user:boolean
 sequelize model:create --name CompanyVacances --attributes VacancyId:bigint,CompanyId:bigint,UserId:bigint,status_company_vacances:boolean
 sequelize model:create --name TypeShift --attributes name_type_shift:string,description_type_shift:string,status_type_shift:boolean,hours:integer
 sequelize model:create --name Shift --attributes name:string,start_time:time,end_time:time,status_shift:boolean,TypeshiptId:bigint
 sequelize model:create --name BranchShift --attributes BranchId:bigint,ShiftId:bigint,status_branch_shift:boolean, present_day:boolean,delay_day:boolean
+
+sequelize model:create --name RoadMap --attributes InterviewId:bigint,VacancyId:bigint,responsibilityDescription:string,status_roadmap:boolean,order:bigint,required:boolean,description:text,duration:bigint,location:string,scheduledDateTime:date,completionDateTime:date,outcome:string,nextSteps:text,nextActionDateTime:date
+
+sequelize model:create --name InterviewRoadMap --attributes InterviewId:bigint,RoadMapId:bigint,status_InterviewRoadMap:boolean,comments:text,statusProgres:string

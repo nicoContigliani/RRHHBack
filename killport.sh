@@ -1,4 +1,4 @@
-sudo kill -9 `sudo lsof -t -i:3000`
+sudo fuser -k -n tcp 3001
 
 
 

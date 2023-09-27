@@ -2,24 +2,27 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('InterviewResponsibles', {
+    await queryInterface.createTable('InterviewRoadMaps', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      InterViewId: {
+      InterviewId: {
         type: Sequelize.BIGINT
       },
-      UserId: {
+      RoadMapId: {
         type: Sequelize.BIGINT
       },
-      responsibilityDescription: {
-        type: Sequelize.STRING
-      },
-      status_interview_responsible: {
+      status_InterviewRoadMap: {
         type: Sequelize.BOOLEAN
+      },
+      comments: {
+        type: Sequelize.TEXT
+      },
+      statusProgres: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -32,6 +35,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('InterviewResponsibles');
+    await queryInterface.dropTable('InterviewRoadMaps');
   }
 };

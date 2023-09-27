@@ -9,7 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      InterViewId: {
+      InterviewId: {
         type: Sequelize.BIGINT
       },
       UserId: {
