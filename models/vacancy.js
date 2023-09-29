@@ -16,6 +16,11 @@ module.exports = (sequelize, DataTypes) => {
       Vacancy.belongsTo(models.TypeVacancy, { foreignKey: 'TypeVacancyId' });
       Vacancy.belongsToMany(models.Company, { through: models.CompanyVacances });
 
+      // Vacancy.belongsToMany(models.RoadMap, { through: models.RoadMapVacance, as: 'RoadMap' });
+      Vacancy.belongsToMany(models.RoadMap, { through: models.RoadMapVacance});
+
+
+
     }
   }
   Vacancy.init({

@@ -31,7 +31,10 @@ const {
       TypeTest,
       TypeVacancy,
       User,
-      Vacancy
+      Vacancy,
+      RoadMap,
+      InterviewRoadMap,
+      RoadMapVacance
 } = require('../../../models')
 
 

@@ -25,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
       // Interview.hasMany(models.TypeInterview, {
       //   foreignKey: 'id'
       // });
+      Interview.belongsToMany(models.RoadMap, { through: models.InterviewResponsible });
 
 
       // Interview.belongsToMany(models.Company, { through: models.InterviewVacance, foreignKey: 'InterviewId' });

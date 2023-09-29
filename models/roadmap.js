@@ -13,7 +13,12 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       RoadMap.belongsToMany(models.User, { through: models.InterviewUser, as: 'Interviewees' });
       RoadMap.belongsToMany(models.User, { through: models.InterviewResponsible, as: 'Responsibles' });
-      RoadMap.belongsToMany(models.Interview, { through: models.InterviewResponsible, as: 'Responsibles' });
+      
+      RoadMap.belongsToMany(models.Interview, { through: models.InterviewResponsible });
+
+      // RoadMap.belongsToMany(models.Vacancy, { through: models.RoadMapVacance, as: 'Vacances' });
+      RoadMap.belongsToMany(models.Vacancy, { through: models.RoadMapVacance});
+
 
     }
   }

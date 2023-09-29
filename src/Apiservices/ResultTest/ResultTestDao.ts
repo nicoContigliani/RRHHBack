@@ -31,12 +31,45 @@ const {
       TypeTest,
       TypeVacancy,
       User,
-      Vacancy
+      Vacancy,
+      RoadMap,
+      InterviewRoadMap,
+      RoadMapVacance
 } = require('../../../models')
 
 
-export const deletesDao = async (data: any) => { return data }
-export const getDao = async (data: any) => { return data }
-export const getIdDao = async (data: any) => { return data }
-export const postDao = async (data: any) => { return data }
-export const updateDao = async (data: any) => { return data }     
+
+export const getDao = async (data: any) => {
+      return await ResultTest.findAll({})
+}
+
+export const getIdDao = async (data: any) => {
+      return await ResultTest.findAll({
+            where: {
+                  id: data       // Filtrar por id
+            }
+      });
+}
+export const postDao = async (data: any) => {
+      try {
+            return await ResultTest.create(data)
+      } catch (error) {
+            console.log("🚀 ~ file: ResultTestDao.ts:57 ~ postDao ~ error:", error)
+
+      }
+}
+
+export const updateDao = async (data: any, id: any) => {
+      try {
+            return await ResultTest.update(data, { where: { id: id } })
+      } catch (error) {
+            console.log("🚀 ~ file: userDao.ts:52 ~ updateDao ~ error:", error)
+      }
+}
+export const deletesDao = async (data: any, id: any) => {
+      try {
+            return await ResultTest.update(data, { where: { id: id } })
+      } catch (error) {
+            console.log("🚀 ~ file: userDao.ts:52 ~ updateDao ~ error:", error)
+      }
+}

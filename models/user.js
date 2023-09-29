@@ -22,8 +22,8 @@ module.exports = (sequelize, DataTypes) => {
       User.belongsToMany(models.Interview, { through: models.InterviewUser, as: 'Interviewees' });
       User.belongsToMany(models.Interview, { through: models.InterviewResponsible, as: 'Responsibles' });
       
-      User.belongsToMany(models.RoadMap, { through: models.InterviewUser, as: 'Intervieweess' });
-      User.belongsToMany(models.RoadMap, { through: models.InterviewResponsible, as: 'Responsibless' });
+      User.belongsToMany(models.RoadMap, { through: models.InterviewUser, as: 'IntervieweesForRoadMap' });
+      User.belongsToMany(models.RoadMap, { through: models.InterviewResponsible, as: 'ResponsiblesForRoadMap' });
       
 
 

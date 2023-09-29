@@ -32,20 +32,74 @@ const {
       TypeVacancy,
       User,
       Vacancy,
-      RoadMap
+      RoadMap,
+      InterviewRoadMap,
+      RoadMapVacance
 } = require('../../../models')
 
 
 
+
 export const getDao = async (data: any) => {
-      return await RoadMap.findAll({})
+      return await RoadMap.findAll({
+            include: [
+                  {
+
+                        model: Vacancy,
+                        include: [
+                              {
+                                    model: Interview,
+                                    include: [
+                                          {
+                                                model: User,
+                                                as: 'Interviewees', // Usar el alias correcto definido en las asociaciones
+                                          },
+                                          {
+                                                model: User,
+                                                as: 'Responsibles', // Usar el alias correcto definido en las asociaciones
+                                          },
+                                    ],
+                              },
+                        ],
+                        group: ['Vacancy.id'],
+                        order: [[Vacancy, 'id']],
+                  }
+            ],
+
+
+      })
 }
+
+
 
 export const getIdDao = async (data: any) => {
       return await RoadMap.findAll({
             where: {
                   id: data       // Filtrar por id
-            }
+            },
+            include: [
+                  {
+
+                        model: Vacancy,
+                        include: [
+                              {
+                                    model: Interview,
+                                    include: [
+                                          {
+                                                model: User,
+                                                as: 'Interviewees', // Usar el alias correcto definido en las asociaciones
+                                          },
+                                          {
+                                                model: User,
+                                                as: 'Responsibles', // Usar el alias correcto definido en las asociaciones
+                                          },
+                                    ],
+                              },
+                        ],
+                        group: ['Vacancy.id'],
+                        order: [[Vacancy, 'id']],
+                  }
+            ],
       });
 }
 export const postDao = async (data: any) => {
