@@ -35,8 +35,39 @@ const {
 } = require('../../../models')
 
 
-export const deletesDao = async (data: any) => { return data }
-export const getDao = async (data: any) => { return data }
-export const getIdDao = async (data: any) => { return data }
-export const postDao = async (data: any) => { return data }
-export const updateDao = async (data: any) => { return data }     
+
+
+export const getDao = async (data: any) => {
+      return await CV.findAll({})
+}
+
+export const getIdDao = async (data: any) => {
+      return await CV.findAll({
+            where: {
+                  id: data       // Filtrar por id
+            }
+      });
+}
+export const postDao = async (data: any) => {
+      try {
+            return await CV.create(data)
+      } catch (error) {
+            console.log("🚀 ~ file: CVDao.ts:57 ~ postDao ~ error:", error)
+
+      }
+}
+
+export const updateDao = async (data: any, id: any) => {
+      try {
+            return await CV.update(data, { where: { id: id } })
+      } catch (error) {
+            console.log("🚀 ~ file: CVDao.ts:52 ~ updateDao ~ error:", error)
+      }
+}
+export const deletesDao = async (data: any, id: any) => {
+      try {
+            return await CV.update(data, { where: { id: id } })
+      } catch (error) {
+            console.log("🚀 ~ file: CVDao.ts:52 ~ CVDao ~ error:", error)
+      }
+}

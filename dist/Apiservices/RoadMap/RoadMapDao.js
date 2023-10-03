@@ -12,55 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.deletesDao = exports.updateDao = exports.postDao = exports.getIdDao = exports.getDao = void 0;
 const { Op } = require('sequelize');
 const { BrachUser, Branch, Company, CompanyVacances, CV, CVSection, CVUser, Interview, InterviewResponsible, InterviewUser, InterviewVacance, Item, itemSection, Permission, PermissionRoll, Result, ResultTest, Role, RollUser, Section, SectionType, TestInterview, Test, TypeInterview, TypeTest, TypeVacancy, User, Vacancy, RoadMap, InterviewRoadMap, RoadMapVacance } = require('../../../models');
-// export const getDao = async (data: any) => {
-//       return await RoadMap.findAll({
-//                   include:[{
-//                         model:Vacancy,
-//                         include:[
-//                               {
-//                                     model:Interview,
-//                                     include: [
-//                                           {
-//                                             model: User,
-//                                             as: 'Interviewees', // Usar el alias correcto definido en las asociaciones
-//                                           },
-//                                           {
-//                                             model: User,
-//                                             as: 'Responsibles', // Usar el alias correcto definido en las asociaciones
-//                                           },
-//                                         ],
-//                               }
-//                         ]
-//                   },
-//             ]
-//        })
-// }
-// export const getDao = async (data: any) => {
-//       return await RoadMap.findAll({
-//             include: [
-//                   {
-//                         model:Vacancy,
-//                         include: [
-//                               {
-//                                     model: Interview,
-//                                     include: [
-//                                           {
-//                                                 model: User,
-//                                                 as: 'Interviewees', // Usar el alias correcto definido en las asociaciones
-//                                           },
-//                                           {
-//                                                 model: User,
-//                                                 as: 'Responsibles', // Usar el alias correcto definido en las asociaciones
-//                                           },
-//                                     ],
-//                               },
-//                         ],
-//                   },
-//             ],
-//             group: ['Vacancy.id'], // Agrupar por el campo de identificación de la vacante
-//             order: [[Vacancy, 'id']], // Ordenar por el ID de la vacante
-//       });
-// };
 const getDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
     return yield RoadMap.findAll({
         include: [
