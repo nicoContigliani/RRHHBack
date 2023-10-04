@@ -61,8 +61,8 @@ export const post = async (req: Request, res: Response, next: NextFunction) => {
         let reqBody: IUser = req?.body
         let { email, password } = reqBody
 
-        console.log("🚀 ~ file: UserController.ts:46 ~ post ~ reqBody:", reqBody)
-        const dataReturn: any[] | undefined = await getDao(data)
+
+         const dataReturn: any[] | undefined = await getDao(data)
 
         if (!(dataReturn?.length === 0)) console.log(dataReturn?.length === 0)
         const bcryptReturn: any = await bcryptCreatePassword(password)

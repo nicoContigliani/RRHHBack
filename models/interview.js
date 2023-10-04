@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+
       Interview.belongsToMany(models.Test, { through: models.TestInterview });
       Interview.belongsToMany(models.Vacancy, { through: models.InterviewVacance });
 
@@ -19,16 +20,13 @@ module.exports = (sequelize, DataTypes) => {
 
       Interview.belongsToMany(models.User, { through: models.InterviewUser, as: 'Interviewees' });
       Interview.belongsToMany(models.User, { through: models.InterviewResponsible, as: 'Responsibles' });
-      
+
 
 
       // Interview.hasMany(models.TypeInterview, {
       //   foreignKey: 'id'
       // });
       Interview.belongsToMany(models.RoadMap, { through: models.InterviewResponsible });
-
-
-      // Interview.belongsToMany(models.Company, { through: models.InterviewVacance, foreignKey: 'InterviewId' });
 
     }
   }
@@ -43,7 +41,7 @@ module.exports = (sequelize, DataTypes) => {
     inerview_result: DataTypes.STRING,
     requiredActions: DataTypes.STRING,
     nextActionDateTime: DataTypes.DATE,
-    interview_status: DataTypes.BOOLEAN,
+    status_interview: DataTypes.BOOLEAN,
     TypeInterviewId: DataTypes.BIGINT
   }, {
     sequelize,

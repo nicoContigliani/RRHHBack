@@ -54,7 +54,6 @@ const post = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () 
         const data = "";
         let reqBody = req === null || req === void 0 ? void 0 : req.body;
         let { email, password } = reqBody;
-        console.log("🚀 ~ file: UserController.ts:46 ~ post ~ reqBody:", reqBody);
         const dataReturn = yield (0, UserDao_1.getDao)(data);
         if (!((dataReturn === null || dataReturn === void 0 ? void 0 : dataReturn.length) === 0))
             console.log((dataReturn === null || dataReturn === void 0 ? void 0 : dataReturn.length) === 0);

@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       CV.belongsToMany(models.User, { through: models.CVUser });
       CV.belongsToMany(models.Section, { through: models.CVSection });
+      CV.belongsToMany(models.Item, { through: models.itemSection });
 
     }
   }
@@ -26,3 +27,4 @@ module.exports = (sequelize, DataTypes) => {
   });
   return CV;
 };
+

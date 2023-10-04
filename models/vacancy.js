@@ -20,12 +20,11 @@ module.exports = (sequelize, DataTypes) => {
       Vacancy.belongsToMany(models.RoadMap, { through: models.RoadMapVacance});
 
 
-
     }
   }
   Vacancy.init({
     title: DataTypes.STRING,
-    description: DataTypes.STRING,
+    description: DataTypes.TEXT,
     requirements: DataTypes.STRING,
     responsibilities: DataTypes.STRING,
     status_vacancy: DataTypes.BOOLEAN,
