@@ -12,8 +12,8 @@ module.exports = {
       interviewDateTime: {
         type: Sequelize.DATE
       },
-      interviewType: {
-        type: Sequelize.STRING
+      interviewTypeId: {
+        type: Sequelize.BIGINT
       },
       interviewers: {
         type: Sequelize.STRING

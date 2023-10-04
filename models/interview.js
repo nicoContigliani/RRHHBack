@@ -23,16 +23,15 @@ module.exports = (sequelize, DataTypes) => {
 
 
 
-      // Interview.hasMany(models.TypeInterview, {
-      //   foreignKey: 'id'
-      // });
+      Interview.hasMany(models.TypeInterview, {
+        foreignKey: 'id'
+      });
       Interview.belongsToMany(models.RoadMap, { through: models.InterviewResponsible });
-
     }
   }
   Interview.init({
     interviewDateTime: DataTypes.DATE,
-    interviewType: DataTypes.STRING,
+    interviewTypeId: DataTypes.BIGINT,
     interviewers: DataTypes.STRING,
     interviewMethod: DataTypes.STRING,
     duration: DataTypes.BIGINT,

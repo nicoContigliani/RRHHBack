@@ -17,7 +17,7 @@ module.exports = {
     await queryInterface.bulkInsert('Interviews', [
       {
         interviewDateTime: new Date('2023-08-04T10:00:00'),
-        interviewType: 'Phone interview',
+        interviewTypeId:1,
         interviewers: 'Alice, Bob',
         interviewMethod: 'Video call',
         duration: 60,
@@ -33,7 +33,7 @@ module.exports = {
       },
       {
         interviewDateTime: new Date('2023-08-05T11:00:00'),
-        interviewType: 'On-site interview',
+        interviewTypeId: 2,
         interviewers: 'Carol, Dave',
         interviewMethod: 'In person',
         duration: 120,

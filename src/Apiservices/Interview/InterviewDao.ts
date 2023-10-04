@@ -37,14 +37,41 @@ const {
 
 
 export const getDao = async (data: any) => {
-      return await Interview.findAll({})
+      return await Interview.findAll({
+            include: [
+                  {
+                        model: Test
+                  },
+                  {
+                        model: Vacancy,
+                        include: [
+                              {
+                                    model: Company
+                              }
+                        ]
+                  },
+            ]
+      })
 }
 
 export const getIdDao = async (data: any) => {
       return await Interview.findAll({
             where: {
                   id: data       // Filtrar por id
-            }
+            },
+            include: [
+                  {
+                        model: Test
+                  },
+                  {
+                        model: Vacancy,
+                        include: [
+                              {
+                                    model: Company
+                              }
+                        ]
+                  },
+            ]
       });
 }
 export const postDao = async (data: any) => {

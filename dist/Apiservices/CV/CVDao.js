@@ -12,6 +12,23 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.deletesDao = exports.updateDao = exports.postDao = exports.getIdDao = exports.getDao = void 0;
 const { Op } = require('sequelize');
 const { BrachUser, Branch, Company, CompanyVacances, CV, CVSection, CVUser, Interview, InterviewResponsible, InterviewUser, InterviewVacance, Item, itemSection, Permission, PermissionRoll, Result, ResultTest, Role, RollUser, Section, SectionType, TestInterview, Test, TypeInterview, TypeTest, TypeVacancy, User, Vacancy } = require('../../../models');
+// export const getDao = async (data: any) => {
+//       return await CV.findAll({
+//             include: [
+//                   {
+//                         model: User
+//                   },
+//                   {
+//                         model: Section,
+//                         include: [
+//                               {
+//                                     model: Item,
+//                               }
+//                         ]
+//                   }
+//             ]
+//       })
+// }
 const getDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
     return yield CV.findAll({
         include: [
@@ -26,6 +43,12 @@ const getDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
                     }
                 ]
             }
+        ],
+        orderBy: [
+            {
+                name: 'section.name',
+                order: 'asc',
+            },
         ]
     });
 });
