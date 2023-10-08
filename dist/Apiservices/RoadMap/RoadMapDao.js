@@ -16,25 +16,31 @@ const getDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
     return yield RoadMap.findAll({
         include: [
             {
-                model: Vacancy,
+                model: Interview,
                 include: [
                     {
-                        model: Interview,
-                        include: [
-                            {
-                                model: User,
-                                as: 'Interviewees', // Usar el alias correcto definido en las asociaciones
-                            },
-                            {
-                                model: User,
-                                as: 'Responsibles', // Usar el alias correcto definido en las asociaciones
-                            },
-                        ],
+                        model: User,
+                        as: 'Interviewees',
+                        through: {
+                        // Si tienes una tabla intermedia, como 'IntervieweesInterviews',
+                        // puedes especificar condiciones adicionales aquí.
+                        },
+                        order: [['id', 'ASC']], // Ordena por la columna 'id' del modelo User (entrevistados)
+                    },
+                    {
+                        model: User,
+                        as: 'Responsibles',
+                        through: {
+                        // Si tienes una tabla intermedia, como 'IntervieweesInterviews',
+                        // puedes especificar condiciones adicionales aquí.
+                        },
+                    },
+                    {
+                        model: Vacancy,
                     },
                 ],
-                group: ['Vacancy.id'],
-                order: [[Vacancy, 'id']],
-            }
+                group: ['Interviewees.id'], // Agrupa por el ID del entrevistado
+            },
         ],
     });
 });
@@ -46,25 +52,30 @@ const getIdDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
         },
         include: [
             {
-                model: Vacancy,
+                model: Interview,
                 include: [
                     {
-                        model: Interview,
-                        include: [
-                            {
-                                model: User,
-                                as: 'Interviewees', // Usar el alias correcto definido en las asociaciones
-                            },
-                            {
-                                model: User,
-                                as: 'Responsibles', // Usar el alias correcto definido en las asociaciones
-                            },
-                        ],
+                        model: User,
+                        as: 'Interviewees',
+                        through: {
+                        // Si tienes una tabla intermedia, como 'IntervieweesInterviews',
+                        // puedes especificar condiciones adicionales aquí.
+                        },
+                        order: [['id', 'ASC']], // Ordena por la columna 'id' del modelo User (entrevistados)
+                    },
+                    {
+                        model: User,
+                        as: 'Responsibles',
+                        through: {
+                        // Si tienes una tabla intermedia, como 'IntervieweesInterviews',
+                        // puedes especificar condiciones adicionales aquí.
+                        },
+                    },
+                    {
+                        model: Vacancy, // Corregido 'modul' a 'model'
                     },
                 ],
-                group: ['Vacancy.id'],
-                order: [[Vacancy, 'id']],
-            }
+            },
         ],
     });
 });

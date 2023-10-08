@@ -13,7 +13,16 @@ exports.deletesDao = exports.updateDao = exports.postDao = exports.getIdDao = ex
 const { Op } = require('sequelize');
 const { BrachUser, Branch, Company, CompanyVacances, CV, CVSection, CVUser, Interview, InterviewResponsible, InterviewUser, InterviewVacance, Item, itemSection, Permission, PermissionRoll, Result, ResultTest, Role, RollUser, Section, SectionType, TestInterview, Test, TypeInterview, TypeTest, TypeVacancy, User, Vacancy, RoadMap, InterviewRoadMap, RoadMapVacance } = require('../../../models');
 const getDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
-    return yield Vacancy.findAll({});
+    return yield Vacancy.findAll({
+        include: [
+            {
+                model: TypeVacancy
+            },
+            {
+                model: Company
+            }
+        ]
+    });
 });
 exports.getDao = getDao;
 const getIdDao = (data) => __awaiter(void 0, void 0, void 0, function* () {

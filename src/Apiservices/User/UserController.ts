@@ -74,7 +74,11 @@ export const post = async (req: Request, res: Response, next: NextFunction) => {
 
         if (!cleanPasswordUser) return res.status(500).json({ data: [], message: AlertServices("Error", "Error create"), status: 500 });
 
-        return res.status(200).json({ data: cleanPasswordUser, message: AlertServices("Success", "Client Created"), status: 200 });
+   
+        const JTWToken: any = await jwtGenerateToken(cleanPasswordUser)
+
+        if (!JTWToken) return res.status(500).json({ data: [], message: AlertServices("Error", "Error JTWToken "), status: 500 });
+        if (JTWToken) return res.status(200).json({ data: [{ token: JTWToken, login: true, User: cleanPasswordUser }], message: AlertServices("Success", "Client True"), status: 200 });
 
 
     } catch (error) {

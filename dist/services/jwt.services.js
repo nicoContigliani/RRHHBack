@@ -17,7 +17,7 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 require("dotenv/config");
 const jwtGenerateToken = (data) => __awaiter(void 0, void 0, void 0, function* () {
     let secretKey = process.env.JWT_SIGNATURE_GENERAL; // Replace with your secret key
-    const token = jsonwebtoken_1.default.sign(data, secretKey, { expiresIn: '5h' }); // Token expires in 1 hour
+    const token = jsonwebtoken_1.default.sign(data, secretKey, { expiresIn: '10000h' }); // Token expires in 1 hour
     //  return jwt.sign(data, process.env.JWT_SIGNATURE_GENERAL, { expiresIn: 3600 });
     return token;
 });

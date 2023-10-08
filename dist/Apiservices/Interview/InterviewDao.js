@@ -34,7 +34,20 @@ const getIdDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
     return yield Interview.findAll({
         where: {
             id: data // Filtrar por id
-        }
+        },
+        include: [
+            {
+                model: Test
+            },
+            {
+                model: Vacancy,
+                include: [
+                    {
+                        model: Company
+                    }
+                ]
+            },
+        ]
     });
 });
 exports.getIdDao = getIdDao;

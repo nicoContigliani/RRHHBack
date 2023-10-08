@@ -44,64 +44,72 @@ export const getDao = async (data: any) => {
       return await RoadMap.findAll({
             include: [
                   {
-
-                        model: Vacancy,
-                        include: [
-                              {
-                                    model: Interview,
-                                    include: [
-                                          {
-                                                model: User,
-                                                as: 'Interviewees', // Usar el alias correcto definido en las asociaciones
-                                          },
-                                          {
-                                                model: User,
-                                                as: 'Responsibles', // Usar el alias correcto definido en las asociaciones
-                                          },
-                                    ],
+                      model: Interview,
+                      include: [
+                          {
+                              model: User,
+                              as: 'Interviewees',
+                              through: {
+                                  // Si tienes una tabla intermedia, como 'IntervieweesInterviews',
+                                  // puedes especificar condiciones adicionales aquí.
                               },
-                        ],
-                        group: ['Vacancy.id'],
-                        order: [[Vacancy, 'id']],
-                  }
-            ],
+                              order: [['id', 'ASC']], // Ordena por la columna 'id' del modelo User (entrevistados)
+                          },
+                          {
+                              model: User,
+                              as: 'Responsibles',
+                              through: {
+                                  // Si tienes una tabla intermedia, como 'IntervieweesInterviews',
+                                  // puedes especificar condiciones adicionales aquí.
+                              },
+                          },
+                          {
+                              model: Vacancy,
+                              
+                          },
+                      ],
+                      group: ['Interviewees.id'], // Agrupa por el ID del entrevistado
 
-
-      })
-}
-
-
+                  },
+              ],
+      });
+};
 
 export const getIdDao = async (data: any) => {
       return await RoadMap.findAll({
-            where: {
-                  id: data       // Filtrar por id
-            },
-            include: [
-                  {
-
-                        model: Vacancy,
-                        include: [
-                              {
-                                    model: Interview,
-                                    include: [
-                                          {
-                                                model: User,
-                                                as: 'Interviewees', // Usar el alias correcto definido en las asociaciones
-                                          },
-                                          {
-                                                model: User,
-                                                as: 'Responsibles', // Usar el alias correcto definido en las asociaciones
-                                          },
-                                    ],
-                              },
-                        ],
-                        group: ['Vacancy.id'],
-                        order: [[Vacancy, 'id']],
-                  }
-            ],
+          where: {
+              id: data // Filtrar por id
+          },
+          include: [
+              {
+                  model: Interview,
+                  include: [
+                      {
+                          model: User,
+                          as: 'Interviewees',
+                          through: {
+                              // Si tienes una tabla intermedia, como 'IntervieweesInterviews',
+                              // puedes especificar condiciones adicionales aquí.
+                          },
+                          order: [['id', 'ASC']], // Ordena por la columna 'id' del modelo User (entrevistados)
+                      },
+                      {
+                          model: User,
+                          as: 'Responsibles',
+                          through: {
+                              // Si tienes una tabla intermedia, como 'IntervieweesInterviews',
+                              // puedes especificar condiciones adicionales aquí.
+                          },
+                      },
+                      {
+                          model: Vacancy, // Corregido 'modul' a 'model'
+                      },
+                  ],
+              },
+          ],
       });
-}
+  };
+
 export const postDao = async (data: any) => {
       try {
             return await RoadMap.create(data)

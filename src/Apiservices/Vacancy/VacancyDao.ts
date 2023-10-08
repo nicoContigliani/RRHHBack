@@ -40,7 +40,17 @@ const {
 
 
 export const getDao = async (data: any) => {
-      return await Vacancy.findAll({})
+      return await Vacancy.findAll({
+            include: [
+                  {
+
+                        model: TypeVacancy
+                  },
+                  {
+                        model:Company
+                  }
+            ]
+      })
 }
 
 export const getIdDao = async (data: any) => {

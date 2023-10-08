@@ -17,11 +17,15 @@ const getDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
         include: [
             {
                 model: Role,
-                include: [Permission],
+                include: [
+                    {
+                        model: Permission
+                    }
+                ],
             },
             {
                 model: Branch,
-                where: { id: 1 },
+                //   where: { id: 1 }, // Filtrar por el ID de la sucursal
                 include: [
                     {
                         model: Company,

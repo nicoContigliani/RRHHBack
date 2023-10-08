@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.deletes = exports.update = exports.post = exports.getId = exports.get = void 0;
 const UserDao_1 = require("./UserDao");
 const alert_services_1 = require("../../services/alert.services");
+const jwt_services_1 = require("../../services/jwt.services");
 const UserDto_1 = require("./UserDto");
 const bcrypt_services_1 = require("../../services/bcrypt.services");
 const clean_password_services_1 = require("../../services/clean.password.services");
@@ -63,7 +64,11 @@ const post = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () 
         let cleanPasswordUser = yield (0, clean_password_services_1.cleanPassword)(dataReturnS);
         if (!cleanPasswordUser)
             return res.status(500).json({ data: [], message: (0, alert_services_1.AlertServices)("Error", "Error create"), status: 500 });
-        return res.status(200).json({ data: cleanPasswordUser, message: (0, alert_services_1.AlertServices)("Success", "Client Created"), status: 200 });
+        const JTWToken = yield (0, jwt_services_1.jwtGenerateToken)(cleanPasswordUser);
+        if (!JTWToken)
+            return res.status(500).json({ data: [], message: (0, alert_services_1.AlertServices)("Error", "Error JTWToken "), status: 500 });
+        if (JTWToken)
+            return res.status(200).json({ data: [{ token: JTWToken, login: true, User: cleanPasswordUser }], message: (0, alert_services_1.AlertServices)("Success", "Client True"), status: 200 });
     }
     catch (error) {
     }

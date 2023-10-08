@@ -42,11 +42,16 @@ export const getDao = async (data: any) => {
             include: [
                   {
                     model: Role,
-                    include: [Permission],
+                    include: [
+                        {
+                              model: Permission,
+                              through: { model: PermissionRoll },
+                           },
+                    ],
                   },
                   {
                     model: Branch,
-                    where: { id: 1 }, // Filtrar por el ID de la sucursal
+                  //   where: { id: 1 }, // Filtrar por el ID de la sucursal
                     include: [
                       {
                         model: Company,
