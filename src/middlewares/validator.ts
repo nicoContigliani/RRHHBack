@@ -3,6 +3,9 @@ import jwt from 'jsonwebtoken';
 
 
 export const Validator = (req: {
+    originalUrl: any;
+    url(arg0: string, url: any): unknown;
+    path(arg0: string, path: any): unknown;
     method: string; body: { token: any; }; query: { token: any; }; header: (arg0: string) => any; headers: { authorization: string; };
 }, res: any, next: any) => {
     const token: any = req?.body?.token || req?.query?.token || req.header('auth-token') || req.headers?.authorization?.split(" ")[1];
@@ -13,12 +16,18 @@ export const Validator = (req: {
 
     try {
         const tokenValido: any | undefined | string = jwt.verify(token, process.env.JWT_SIGNATURE_GENERAL || 'pepito123');
-        
+        // console.log("🚀 ~ file: validator.ts:16 ~ tokenValido:", tokenValido,"***************************")
+        // console.log("🚀 ~ file: validator.ts:16 ~ tokenValido:", req?.url)
+
+        const rutaActual: string | undefined = req.originalUrl;
+        console.log("🚀 ~ file: validator.ts:22 ~ rutaActual:", rutaActual)
+
+
+
         if (req.method === 'GET') {
             // La solicitud viene de POST
-            console.log("🚀 ~ file: validator.ts:16 ~ tokenValido:", tokenValido,"***************************")
             console.log("get")
-            
+
 
         } else {
             // La solicitud viene de otro método

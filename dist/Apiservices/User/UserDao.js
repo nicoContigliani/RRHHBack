@@ -19,8 +19,9 @@ const getDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
                 model: Role,
                 include: [
                     {
-                        model: Permission
-                    }
+                        model: Permission,
+                        through: { model: PermissionRoll },
+                    },
                 ],
             },
             {

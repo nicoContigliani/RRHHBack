@@ -21,7 +21,20 @@ sequelize model:create --name TestInterview --attributes CandidateId:bigint,Test
 sequelize model:create --name TypeInterview --attributes name_type_test:string,description_type_test:string,status_Type_interview:boolean
 sequelize model:create --name Interview --attributes interviewDateTime:date,interviewTypeId:bigint,interviewers:string,interviewMethod:string,duration:bigint,rating:float,comments:string,inerview_result:string,requiredActions:string,nextActionDateTime:date,status_interview:boolean,TypeInterviewId:bigint
 sequelize model:create --name TypeVacancy --attributes name_vacancy_type:string,description_vacancy_type:string,status_vacancy_type:boolean
+
 sequelize model:create --name Vacancy --attributes title:string,description:text,requirements:string,responsibilities:string,status_vacancy:boolean,TypeVacancyId:bigint
+sequelize model:create --name SoftSkill --attributes name_SoftSkill:string,description:text,status_SoftSkill:boolean,initial_value_SoftSkill:integer
+sequelize model:create --name HardSkill --attributes name_HardSkill:string,proficiency:string,experienceYears:integer,status_HardSkill:boolean,initial_value_HardSkill:integer
+sequelize model:create --name Location --attributes name_Location:string,country:string,timezone:string,status_Location:boolean,initial_value_Location:integer
+sequelize model:create --name Salary --attributes amount:integer,currency:string,status_Salary:boolean,initial_value_Salary:integer
+sequelize model:create --name Benefit --attributes name_Benefit:string,description:text,validity:string,status_Benefit:boolean,initial_value_Benefit:integer
+sequelize model:create --name URL --attributes link:string,description:text,status_URL:boolean,initial_value_URL:integer
+sequelize model:create --name Lenguaje --attributes name:string,description:text,status_Lenguaje:boolean,initial_value_Lenguaje:integer
+
+
+
+
+
 sequelize model:create --name InterviewVacance --attributes InterviewId:bigint,VacancyId:bigint,interviewDateTime:date,results:string,comments:string,status_interview_vacancy_type:boolean
 sequelize model:create --name InterviewResponsible --attributes InterviewId:bigint,RoadMapId:bigint,UserId:bigint,responsibilityDescription:string,status_interview_responsible:boolean
 sequelize model:create --name InterviewUser --attributes InterviewId:bigint,RoadMapId:bigint,UserId:bigint,userDescription:string,status_interview_user:boolean
@@ -29,6 +42,12 @@ sequelize model:create --name CompanyVacances --attributes VacancyId:bigint,Comp
 sequelize model:create --name TypeShift --attributes name_type_shift:string,description_type_shift:string,status_type_shift:boolean,hours:integer
 sequelize model:create --name Shift --attributes name:string,start_time:time,end_time:time,status_shift:boolean,TypeshiptId:bigint
 sequelize model:create --name BranchShift --attributes BranchId:bigint,ShiftId:bigint,status_branch_shift:boolean, present_day:boolean,delay_day:boolean
+
+sequelize model:create --name Priority --attributes name_Priority:string,priorityDescription:text,jwtPriority:string,status_Priority:boolean
+
+
+
+
 
 sequelize model:create --name RoadMap --attributes InterviewId:bigint,VacancyId:bigint,responsibilityDescription:string,status_roadmap:boolean,order:bigint,required:boolean,description:text,duration:bigint,location:string,scheduledDateTime:date,completionDateTime:date,outcome:string,nextSteps:text,nextActionDateTime:date,image:string
 
