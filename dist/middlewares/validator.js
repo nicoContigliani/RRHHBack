@@ -14,9 +14,12 @@ const Validator = (req, res, next) => {
     }
     try {
         const tokenValido = jsonwebtoken_1.default.verify(token, process.env.JWT_SIGNATURE_GENERAL || 'pepito123');
+        // console.log("🚀 ~ file: validator.ts:16 ~ tokenValido:", tokenValido,"***************************")
+        // console.log("🚀 ~ file: validator.ts:16 ~ tokenValido:", req?.url)
+        const rutaActual = req.originalUrl;
+        console.log("🚀 ~ file: validator.ts:22 ~ rutaActual:", rutaActual);
         if (req.method === 'GET') {
             // La solicitud viene de POST
-            console.log("🚀 ~ file: validator.ts:16 ~ tokenValido:", tokenValido, "***************************");
             console.log("get");
         }
         else {
