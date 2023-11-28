@@ -16,27 +16,91 @@ module.exports = {
     // Añadir items de ejemplo
     await queryInterface.bulkInsert('Items', [
       {
-        itemTitle: 'Software Engineer at Google',
-        itemContent: 'Developed and maintained web applications using Python, Java, and JavaScript',
-        status_item: true,
-        createdAt:new Date(),
-        updatedAt:new Date()
-      },
-      {
-        itemTitle: 'Master of Science in Computer Science',
-        itemContent: 'Stanford University',
-        status_item: true,
-        createdAt:new Date(),
-        updatedAt:new Date()
-      },
-      {
-        itemTitle: 'Python, Java, C/C++, SQL, NoSQL',
+        itemTitle: 'fullname',
         itemContent: '',
         status_item: true,
         createdAt:new Date(),
         updatedAt:new Date()
       },
-      // ... otros items de ejemplo
+      {
+        itemTitle: 'email',
+        itemContent: '',
+        status_item: true,
+        createdAt:new Date(),
+        updatedAt:new Date()
+      },
+      {
+        itemTitle: 'phone',
+        itemContent: '',
+        status_item: true,
+        createdAt:new Date(),
+        updatedAt:new Date()
+      },
+      {
+        itemTitle: 'birthday',
+        itemContent: '',
+        status_item: true,
+        createdAt:new Date(),
+        updatedAt:new Date()
+      },
+      {
+        itemTitle: 'descriptionPerson',
+        itemContent: '',
+        status_item: true,
+        createdAt:new Date(),
+        updatedAt:new Date()
+      },
+      {
+        itemTitle: 'soft_skill',
+        itemContent: '',
+        status_item: true,
+        createdAt:new Date(),
+        updatedAt:new Date()
+      },
+      {
+        itemTitle: 'hard_skill',
+        itemContent: '',
+        status_item: true,
+        createdAt:new Date(),
+        updatedAt:new Date()
+      },
+      {
+        itemTitle: 'education',
+        itemContent: '',
+        status_item: true,
+        createdAt:new Date(),
+        updatedAt:new Date()
+      },
+      {
+        itemTitle: 'experience_work',
+        itemContent: '',
+        status_item: true,
+        createdAt:new Date(),
+        updatedAt:new Date()
+      },
+      {
+        itemTitle: 'experience_freelancer_work',
+        itemContent: '',
+        status_item: true,
+        createdAt:new Date(),
+        updatedAt:new Date()
+      },
+      {
+        itemTitle: 'lenguaje',
+        itemContent: '',
+        status_item: true,
+        createdAt:new Date(),
+        updatedAt:new Date()
+      },
+      {
+        itemTitle: 'disponibility',
+        itemContent: '',
+        status_item: true,
+        createdAt:new Date(),
+        updatedAt:new Date()
+      },
+      
+
     ], {});
   },
 

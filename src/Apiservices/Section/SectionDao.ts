@@ -37,7 +37,13 @@ const {
 
 
 export const getDao = async (data: any) => {
-      return await Section.findAll({})
+      return await Section.findAll({
+            include: [
+                  {
+                        model: Item
+                  }
+            ]
+      })
 }
 
 export const getIdDao = async (data: any) => {

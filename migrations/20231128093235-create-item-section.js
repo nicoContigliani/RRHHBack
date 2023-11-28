@@ -18,11 +18,23 @@ module.exports = {
       position: {
         type: Sequelize.BIGINT
       },
+      title_atribute: {
+        type: Sequelize.STRING
+      },
       atribute: {
+        type: Sequelize.STRING
+      },
+      detail_atribute: {
         type: Sequelize.STRING
       },
       status_item_section: {
         type: Sequelize.BOOLEAN
+      },
+      startDate: {
+        type: Sequelize.DATE
+      },
+      endDate: {
+        type: Sequelize.DATE
       },
       createdAt: {
         allowNull: false,

@@ -11,14 +11,24 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      itemSection.belongsTo(models.Item, {
+        foreignKey: 'ItemId',
+        });
+        itemSection.belongsTo(models.Section, {
+        foreignKey: 'SectionId',
+        });
     }
   }
   itemSection.init({
     ItemId: DataTypes.BIGINT,
     SectionId: DataTypes.BIGINT,
     position: DataTypes.BIGINT,
+    title_atribute: DataTypes.STRING,
     atribute: DataTypes.STRING,
-    status_item_section: DataTypes.BOOLEAN
+    detail_atribute: DataTypes.STRING,
+    status_item_section: DataTypes.BOOLEAN,
+    startDate: DataTypes.DATE,
+    endDate: DataTypes.DATE
   }, {
     sequelize,
     modelName: 'itemSection',

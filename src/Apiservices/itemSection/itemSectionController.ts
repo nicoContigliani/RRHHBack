@@ -29,6 +29,7 @@ export const get = async (req: Request, res: Response, next: NextFunction) => {
 export const getId = async (req: Request, res: Response, next: NextFunction) => {
     const { id } = req.params
     const dataReturn: any[] | undefined = await getIdDao(id)
+    console.log("🚀 ~ file: itemSectionController.ts:32 ~ getId ~ dataReturn:", dataReturn)
     let returnExist = await statusActive(dataReturn)
 
     if (returnExist?.length === 0) return res.status(200).json({ data: [], message: AlertServices("Success", "It Dosen't find"), status: 200 });

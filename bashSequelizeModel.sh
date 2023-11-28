@@ -12,7 +12,7 @@ sequelize model:create --name CV --attributes title:string,description_cv:string
 sequelize model:create --name CVSection --attributes CVId:bigint,SectionId:bigint,position:bigint,describle_cv_section:string,status_cv_section:boolean
 sequelize model:create --name CVUser --attributes UserId:bigint,CVId:bigint,status_cv_user:boolean
 sequelize model:create --name Item --attributes itemTitle:string,itemContent:string,status_item:boolean
-sequelize model:create --name itemSection --attributes ItemId:bigint,SectionId:bigint,position:bigint,atribute:string,status_item_section:boolean
+sequelize model:create --name itemSection --attributes ItemId:bigint,SectionId:bigint,position:bigint,title_atribute:string,atribute:string,detail_atribute:string,status_item_section:boolean,startDate:date,endDate:date
 sequelize model:create --name TypeTest --attributes name_type_test:string,description_type_test:string,status_type_test:boolean
 sequelize model:create --name Test --attributes typeTestId:bigint,name_test:string,description_test:string,status_test:boolean
 sequelize model:create --name Result --attributes  result:string,description_result_test:string,status_result:boolean

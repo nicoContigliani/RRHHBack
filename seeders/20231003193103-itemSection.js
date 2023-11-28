@@ -2,7 +2,7 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     /**
      * Add seed commands here.
      *
@@ -16,46 +16,110 @@ module.exports = {
     // Añadir items de secciones de ejemplo
     await queryInterface.bulkInsert('itemSections', [
       {
-        ItemId: 1, // Item 1
-        SectionId: 1, // Sección de experiencia laboral
-        position: 1, // Primer item de la sección
-        atribute: 'Software Engineer at Google',
-        status_item_section: true,
-        createdAt:new Date(),
-        updatedAt:new Date()
-      },
-      {
-        ItemId: 2, // Item 2
+        ItemId: 1,
         SectionId: 1,
-        position: 2,
-        atribute: 'Developed and maintained web applications using Python, Java, and JavaScript',
+        position: 1, 
+        title_atribute: '',
+        atribute: 'Nicolás Contigliani',
+        detail_atribute: '',
+        startDate: '',
+        endDate: '',
         status_item_section: true,
-        createdAt:new Date(),
-        updatedAt:new Date()
+        createdAt: new Date(),
+        updatedAt: new Date()
       },
       {
-        ItemId: 3, // Item 3
-        SectionId: 2, // Sección de educación
-        position: 1,
-        atribute: 'Master of Science in Computer Science from Stanford University',
+        ItemId: 2,
+        SectionId: 1,
+        position: 1, 
+        title_atribute: '',
+        atribute: 'nico.contigliani@gmail.com',
+        detail_atribute: '',
+        startDate: '',
+        endDate: '',
         status_item_section: true,
-        createdAt:new Date(),
-        updatedAt:new Date()
+        createdAt: new Date(),
+        updatedAt: new Date()
       },
       {
-        ItemId: 4, // Item 4
-        SectionId: 3, // Sección de habilidades
-        position: 1,
-        atribute: 'Python, Java, C/C++, SQL, NoSQL',
+        ItemId: 3,
+        SectionId: 1,
+        position: 1, 
+        title_atribute: '',
+        atribute: '+5492612444106',
+        detail_atribute: '',
+        startDate: '',
+        endDate: '',
         status_item_section: true,
-        createdAt:new Date(),
-        updatedAt:new Date()
+        createdAt: new Date(),
+        updatedAt: new Date()
       },
+      {
+        ItemId: 4,
+        SectionId: 1,
+        position: 1, 
+        title_atribute: '',
+        atribute: '06/03/1988',
+        detail_atribute: '',
+        startDate: '',
+        endDate: '',
+        status_item_section: true,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        ItemId: 5,
+        SectionId: 2,
+        position: 1, 
+        title_atribute: '',
+        atribute: 'Soy un profesional de TI con la capacidad de trabajar en equipo .Estoy trabajando con tecnologíasNode.js, React.js y base de datos relacionales como Postgres y MySQL En búsqueda de nuevos desafíos',
+        detail_atribute: '',
+        startDate: '',
+        endDate: '',
+        status_item_section: true,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        ItemId: 6,
+        SectionId: 5,
+        position: 1, 
+        title_atribute: '',
+        atribute: 'curioso',
+        detail_atribute: '',
+        startDate: '',
+        endDate: '',
+        status_item_section: true,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        ItemId: 6,
+        SectionId: 5,
+        position: 1, 
+        title_atribute: '',
+        atribute: 'Soy un profesional de TI con la capacidad de trabajar en equipo .Estoy trabajando con tecnologíasNode.js, React.js y base de datos relacionales como Postgres y MySQL En búsqueda de nuevos desafíos',
+        detail_atribute: '',
+        startDate: '',
+        endDate: '',
+        status_item_section: true,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+
+
+
+
+
+
+
+
+
       // ... otros items de secciones de ejemplo
     ], {});
   },
 
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     /**
      * Add commands to revert seed here.
      *

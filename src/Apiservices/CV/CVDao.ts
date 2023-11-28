@@ -70,7 +70,7 @@ export const getDao = async (data: any) => {
                                     model: Item,
                               }
                         ]
-                  }
+                  },
             ],
             orderBy: [
                   {
@@ -84,7 +84,29 @@ export const getDao = async (data: any) => {
 
 
 export const getIdDao = async (data: any) => {
+      console.log("🚀 ~ file: CVDao.ts:87 ~ getIdDao ~ data:", data)
       return await CV.findAll({
+            include: [
+                  {
+                        model: User,
+                  },
+                  {
+                        model: Section,
+                        include: [
+                              {
+                                    model: Item,
+                                   
+                              }
+                        ]
+                  }
+            ],
+            exclude: ['createdAt','updatedAt'],
+            orderBy: [
+                  {
+                        name: 'section.name',
+                        order: 'asc',
+                  },
+            ],
             where: {
                   id: data       // Filtrar por id
             }

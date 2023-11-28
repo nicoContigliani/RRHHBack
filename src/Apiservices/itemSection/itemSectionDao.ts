@@ -37,15 +37,42 @@ const {
 
 
 export const getDao = async (data: any) => {
-      return await itemSection.findAll({})
+      return await itemSection.findAll({
+            include: [
+                  {
+                        model: Item
+                  },
+                  {
+                        model: Section
+                  }
+            ]
+      })
 }
 
 export const getIdDao = async (data: any) => {
-      return await itemSection.findAll({
-            where: {
-                  id: data       // Filtrar por id
-            }
-      });
+      console.log("🚀 ~ file: itemSectionDao.ts:53 ~ getIdDao ~ data:", data)
+
+      try {
+
+            return await itemSection.findAll({
+                  include: [
+                        {
+                              model: Item
+                        },
+                        {
+                              model: Section
+                        }
+                  ],
+                  where: {
+                        id: data       // Filtrar por id
+                  }
+            });
+      } catch (error) {
+            console.log("🚀 ~ file: itemSectionDao.ts:71 ~ getIdDao ~ error:", error)
+
+      }
+
+
 }
 export const postDao = async (data: any) => {
       try {

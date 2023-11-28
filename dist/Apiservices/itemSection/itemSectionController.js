@@ -48,6 +48,7 @@ exports.get = get;
 const getId = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     const dataReturn = yield (0, itemSectionDao_1.getIdDao)(id);
+    console.log("🚀 ~ file: itemSectionController.ts:32 ~ getId ~ dataReturn:", dataReturn);
     let returnExist = yield (0, statusActive_services_1.statusActive)(dataReturn);
     if ((returnExist === null || returnExist === void 0 ? void 0 : returnExist.length) === 0)
         return res.status(200).json({ data: [], message: (0, alert_services_1.AlertServices)("Success", "It Dosen't find"), status: 200 });

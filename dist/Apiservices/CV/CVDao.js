@@ -42,7 +42,7 @@ const getDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
                         model: Item,
                     }
                 ]
-            }
+            },
         ],
         orderBy: [
             {
@@ -54,7 +54,28 @@ const getDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.getDao = getDao;
 const getIdDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log("🚀 ~ file: CVDao.ts:87 ~ getIdDao ~ data:", data);
     return yield CV.findAll({
+        include: [
+            {
+                model: User,
+            },
+            {
+                model: Section,
+                include: [
+                    {
+                        model: Item,
+                    }
+                ]
+            }
+        ],
+        exclude: ['createdAt', 'updatedAt'],
+        orderBy: [
+            {
+                name: 'section.name',
+                order: 'asc',
+            },
+        ],
         where: {
             id: data // Filtrar por id
         }
