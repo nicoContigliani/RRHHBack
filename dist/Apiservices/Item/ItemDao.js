@@ -26,6 +26,8 @@ const getIdDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
 exports.getIdDao = getIdDao;
 const postDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        data.createdAt = new Date();
+        data.updatedAt = new Date();
         return yield Item.create(data);
     }
     catch (error) {

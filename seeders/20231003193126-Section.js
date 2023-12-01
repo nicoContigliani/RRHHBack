@@ -73,7 +73,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        SectionTypeId: 7,
+        SectionTypeId: 8,
         title: 'lenguaje',
         content: '',
         status_section: true,
@@ -81,7 +81,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        SectionTypeId: 7,
+        SectionTypeId: 9,
         title: 'disponibility',
         content: '',
         status_section: true,

@@ -49,6 +49,9 @@ export const getIdDao = async (data: any) => {
 }
 export const postDao = async (data: any) => {
       try {
+            data.createdAt = new Date()
+            data.updatedAt = new Date()
+
             return await Item.create(data)
       } catch (error) {
             console.log("🚀 ~ file: ItemDao.ts:57 ~ postDao ~ error:", error)

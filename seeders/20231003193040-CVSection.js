@@ -16,32 +16,87 @@ module.exports = {
     // Añadir secciones de CV de ejemplo
     await queryInterface.bulkInsert('CVSections', [
       {
-        CVId: 1, // CV de John Doe
-        SectionId: 1, // Experiencia laboral
-        position: 1, // Primera sección del CV
-        describle_cv_section: 'Software Engineer at Google',
+        CVId: 2,
+        SectionId: 1,
+        position: 1,
+        describle_cv_section: '',
         status_cv_section: true,
         createdAt:new Date(),
         updatedAt:new Date()
       },
       {
-        CVId: 1,
-        SectionId: 2, // Educación
-        position: 2, // Segunda sección del CV
-        describle_cv_section: 'Master of Science in Computer Science from Stanford University',
+        CVId: 2,
+        SectionId: 2,
+        position: 1,
+        describle_cv_section: '',
         status_cv_section: true,
         createdAt:new Date(),
         updatedAt:new Date()
       },
       {
-        CVId: 1,
-        SectionId: 3, // Habilidades
-        position: 3, // Tercera sección del CV
-        describle_cv_section: 'Python, Java, C/C++, SQL, NoSQL',
+        CVId: 2,
+        SectionId: 3,
+        position: 1,
+        describle_cv_section: '',
         status_cv_section: true,
         createdAt:new Date(),
         updatedAt:new Date()
       },
+      {
+        CVId: 2,
+        SectionId: 4,
+        position: 1,
+        describle_cv_section: '',
+        status_cv_section: true,
+        createdAt:new Date(),
+        updatedAt:new Date()
+      },
+      {
+        CVId: 2,
+        SectionId: 5,
+        position: 1,
+        describle_cv_section: '',
+        status_cv_section: true,
+        createdAt:new Date(),
+        updatedAt:new Date()
+      },
+      {
+        CVId: 2,
+        SectionId: 6,
+        position: 1,
+        describle_cv_section: '',
+        status_cv_section: true,
+        createdAt:new Date(),
+        updatedAt:new Date()
+      },
+      {
+        CVId: 2,
+        SectionId: 7,
+        position: 1,
+        describle_cv_section: '',
+        status_cv_section: true,
+        createdAt:new Date(),
+        updatedAt:new Date()
+      },
+      {
+        CVId: 2,
+        SectionId: 8,
+        position: 1,
+        describle_cv_section: '',
+        status_cv_section: true,
+        createdAt:new Date(),
+        updatedAt:new Date()
+      },
+      {
+        CVId: 2,
+        SectionId: 9,
+        position: 1,
+        describle_cv_section: '',
+        status_cv_section: true,
+        createdAt:new Date(),
+        updatedAt:new Date()
+      },
+    
       // ... otras secciones de CV de ejemplo
     ], {});
   },
@@ -57,3 +112,5 @@ module.exports = {
     await queryInterface.bulkDelete('CVSections', null, {});
   }
 };
+
+//no funciona 
