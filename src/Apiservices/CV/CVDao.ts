@@ -60,25 +60,22 @@ const {
 export const getDao = async (data: any) => {
       return await CV.findAll({
             include: [
-                  {
-                        model: User
-                  },
-                  {
-                        model: Section,
-                        include: [
-                              {
-                                    model: Item,
-                              }
-                        ]
-                  },
+                {
+                    model: User,
+                },
+                {
+                    model: Section,
+                    include: [
+                        {
+                            model: Item,
+                        },
+                    ],
+                },
             ],
-            orderBy: [
-                  {
-                        name: 'section.name',
-                        order: 'asc',
-                  },
-            ]
-      })
+            order: [
+                ['id', 'ASC'], // Assuming `section` is the alias for the Section model
+            ],
+        });
 }
 
 
@@ -95,12 +92,12 @@ export const getIdDao = async (data: any) => {
                         include: [
                               {
                                     model: Item,
-                                   
+
                               }
                         ]
                   }
             ],
-            exclude: ['createdAt','updatedAt'],
+            exclude: ['createdAt', 'updatedAt'],
             orderBy: [
                   {
                         name: 'section.name',

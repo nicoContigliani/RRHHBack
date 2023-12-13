@@ -33,23 +33,20 @@ const getDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
     return yield CV.findAll({
         include: [
             {
-                model: User
+                model: User,
             },
             {
                 model: Section,
                 include: [
                     {
                         model: Item,
-                    }
-                ]
+                    },
+                ],
             },
         ],
-        orderBy: [
-            {
-                name: 'section.name',
-                order: 'asc',
-            },
-        ]
+        order: [
+            ['id', 'ASC'], // Assuming `section` is the alias for the Section model
+        ],
     });
 });
 exports.getDao = getDao;
