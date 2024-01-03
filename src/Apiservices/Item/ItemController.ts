@@ -36,16 +36,17 @@ export const getId = async (req: Request, res: Response, next: NextFunction) => 
 }
 
 export const post = async (req: Request, res: Response, next: NextFunction) => {
+    console.log("🚀 ~ file: ItemController.ts:40 ~ post ~ req.body:", req.body)
     let { error, value } = ItemValidationSchema.validate(req.body);
     try {
         const currentTime = await today()
         value.createdAt = currentTime
         value.updatedAt = currentTime
-
+        if (error) console.error(error.details)
         if (error) return res.status(500).json(errorResponse);
 
         const dataReturnS = await postDao(value)
-        if (!dataReturnS) return res.status(500).json(errorResponse);
+        // if (!dataReturnS) return res.status(500).json(errorResponse);
 
         let returnExist = await getAllAlways()
         if (!returnExist) return res.status(500).json(errorResponse);

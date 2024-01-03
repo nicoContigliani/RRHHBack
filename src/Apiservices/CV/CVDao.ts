@@ -57,27 +57,52 @@ const {
 
 
 
+// export const getDao = async (data: any) => {
+//       return await CV.findAll({
+//             include: [
+//                 {
+//                     model: User,
+//                 },
+//                 {
+//                     model: Section,
+//                     include: [
+//                         {
+//                             model: Item,
+//                         },
+//                     ],
+//                 },
+//             ],
+//             orderBy: [
+//                   {
+//                         name: 'section.name',
+//                         order: 'asc',
+//                   },
+//             ],
+//         });
+// }
 export const getDao = async (data: any) => {
       return await CV.findAll({
+        include: [
+          {
+            model: User,
+          },
+          {
+            model: Section,
             include: [
-                {
-                    model: User,
-                },
-                {
-                    model: Section,
-                    include: [
-                        {
-                            model: Item,
-                        },
-                    ],
-                },
+              {
+                model: Item,
+              },
             ],
-            order: [
-                ['id', 'ASC'], // Assuming `section` is the alias for the Section model
-            ],
-        });
-}
-
+          },
+        ],
+        orderBy: [
+          {
+            name: 'section.name',
+            order: 'asc',
+          },
+        ],
+      });
+    };
 
 
 export const getIdDao = async (data: any) => {

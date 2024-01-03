@@ -6,6 +6,7 @@ import { bcryptComparePassword } from '../../services/bcrypt.services';
 import { UserPasswordReturnToCompare } from '../../services/UserPasswordReturnToCompare.services';
 import { cleanPassword } from '../../services/clean.password.services';
 import { jwtGenerateToken } from '../../services/jwt.services';
+import { formaterDataAuth } from './authDto';
 // import { getIdDao } from '../User/userDao';
 
 
@@ -34,12 +35,13 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
 
         if (!passworValidator) return res.status(500).json({ data: [], message: AlertServices("Error", "Error Password "), status: 500 });
 
-        const dataCleanPasswordUser = await cleanPassword(dataReturn)
-        const JTWToken: any = await jwtGenerateToken(dataCleanPasswordUser)
-
+        const dataCleanPasswordUser: any = await cleanPassword(dataReturn)
+        console.log("🚀 ~ file: authController.ts:39 ~ login ~ dataCleanPasswordUser:", dataCleanPasswordUser)
+        let dataCleanUser: any | undefined | any[] | {} = formaterDataAuth(dataCleanPasswordUser)
+        let JTWToken: any = await jwtGenerateToken(dataCleanPasswordUser)
 
         if (!JTWToken) return res.status(500).json({ data: [], message: AlertServices("Error", "Error JTWToken "), status: 500 });
-        if (JTWToken) return res.status(200).json({ data: [{ token: JTWToken, login: true, User: dataCleanPasswordUser }], message: AlertServices("Success", "Client True"), status: 200 });
+        if (JTWToken) return res.status(200).json({ data: [{ token: JTWToken, login: true, User: dataCleanUser, UserE: dataCleanPasswordUser }], message: AlertServices("Success", "Client True"), status: 200 });
 
     } catch (error) {
         console.log("🚀 ~ file: authController.ts:11 ~ login ~ error:", error)

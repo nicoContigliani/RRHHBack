@@ -41,8 +41,8 @@ export const post = async (req: Request, res: Response, next: NextFunction) => {
         value.createdAt = currentTime
         value.updatedAt = currentTime
 
+        if (error) console.error(error.details)
         if (error) return res.status(500).json(errorResponse);
-
         const dataReturnS = await postDao(value)
         if (!dataReturnS) return res.status(500).json(errorResponse);
 
@@ -65,8 +65,8 @@ export const update = async (req: Request, res: Response, next: NextFunction) =>
         if (!createdAt) return res.status(500).json(errorResponse);
 
         let { error, value } = ResultTestValidationSchema.validate(updateCreate);
+        if (error) console.error(error.details)
         if (error) return res.status(500).json(errorResponse);
-
 
         const dataReturnS = await updateDao(req.body, id)
         if (dataReturnS) {
