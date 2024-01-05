@@ -61,6 +61,8 @@ const post = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () 
         value.createdAt = currentTime;
         value.updatedAt = currentTime;
         if (error)
+            console.error(error.details);
+        if (error)
             return res.status(500).json(errorResponse);
         const dataReturnS = yield (0, InterviewDao_1.postDao)(value);
         if (!dataReturnS)

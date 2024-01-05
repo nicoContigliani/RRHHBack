@@ -25,14 +25,14 @@ const getIdDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.getIdDao = getIdDao;
 const postDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log("🚀 ~ file: ItemDao.ts:51 ~ postDao ~ data:", data);
-    // try {
-    //       data.createdAt = new Date()
-    //       data.updatedAt = new Date()
-    //       return await Item.create(data)
-    // } catch (error) {
-    //       console.log("🚀 ~ file: ItemDao.ts:57 ~ postDao ~ error:", error)
-    // }
+    try {
+        data.createdAt = new Date();
+        data.updatedAt = new Date();
+        return yield Item.create(data);
+    }
+    catch (error) {
+        console.log("🚀 ~ file: ItemDao.ts:57 ~ postDao ~ error:", error);
+    }
 });
 exports.postDao = postDao;
 const updateDao = (data, id) => __awaiter(void 0, void 0, void 0, function* () {

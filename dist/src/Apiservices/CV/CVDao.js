@@ -106,6 +106,7 @@ const getIdDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.getIdDao = getIdDao;
 const postDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log("🚀 ~ file: CVDao.ts:138 ~ postDao ~ data:", data);
     try {
         return yield CV.create(data);
     }

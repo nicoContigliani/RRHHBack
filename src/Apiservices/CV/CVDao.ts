@@ -82,27 +82,27 @@ const {
 // }
 export const getDao = async (data: any) => {
       return await CV.findAll({
-        include: [
-          {
-            model: User,
-          },
-          {
-            model: Section,
             include: [
-              {
-                model: Item,
-              },
+                  {
+                        model: User,
+                  },
+                  {
+                        model: Section,
+                        include: [
+                              {
+                                    model: Item,
+                              },
+                        ],
+                  },
             ],
-          },
-        ],
-        orderBy: [
-          {
-            name: 'section.name',
-            order: 'asc',
-          },
-        ],
+            orderBy: [
+                  {
+                        name: 'section.name',
+                        order: 'asc',
+                  },
+            ],
       });
-    };
+};
 
 
 export const getIdDao = async (data: any) => {
@@ -135,12 +135,14 @@ export const getIdDao = async (data: any) => {
       });
 }
 export const postDao = async (data: any) => {
+      console.log("🚀 ~ file: CVDao.ts:138 ~ postDao ~ data:", data)
       try {
             return await CV.create(data)
       } catch (error) {
             console.log("🚀 ~ file: CVDao.ts:57 ~ postDao ~ error:", error)
 
       }
+
 }
 
 export const updateDao = async (data: any, id: any) => {

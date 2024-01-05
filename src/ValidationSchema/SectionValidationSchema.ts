@@ -1,7 +1,13 @@
 import Joi from 'joi';
 
 const SectionValidationSchema = Joi.object({
-SectionTypeId: Joi.number().integer().required(),title: Joi.string().required(),content: Joi.string().required(),status_section: Joi.boolean().required(),
+    id: Joi.number().integer().optional(),
+    SectionTypeId: Joi.number().integer().required(),
+    title: Joi.string().required(),
+    content: Joi.string().allow(null, ''),
+    status_section: Joi.boolean().required(),
+    createdAt: Joi.string(),
+    updatedAt: Joi.string(),
 });
 
 export default SectionValidationSchema;

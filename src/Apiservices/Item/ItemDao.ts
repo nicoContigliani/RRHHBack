@@ -48,16 +48,15 @@ export const getIdDao = async (data: any) => {
       });
 }
 export const postDao = async (data: any) => {
-      console.log("🚀 ~ file: ItemDao.ts:51 ~ postDao ~ data:", data)
-      // try {
-      //       data.createdAt = new Date()
-      //       data.updatedAt = new Date()
+      try {
+            data.createdAt = new Date()
+            data.updatedAt = new Date()
 
-      //       return await Item.create(data)
-      // } catch (error) {
-      //       console.log("🚀 ~ file: ItemDao.ts:57 ~ postDao ~ error:", error)
+            return await Item.create(data)
+      } catch (error) {
+            console.log("🚀 ~ file: ItemDao.ts:57 ~ postDao ~ error:", error)
 
-      // }
+      }
 }
 
 export const updateDao = async (data: any, id: any) => {

@@ -36,7 +36,6 @@ export const getId = async (req: Request, res: Response, next: NextFunction) => 
 }
 
 export const post = async (req: Request, res: Response, next: NextFunction) => {
-    console.log("🚀 ~ file: ItemController.ts:40 ~ post ~ req.body:", req.body)
     let { error, value } = ItemValidationSchema.validate(req.body);
     try {
         const currentTime = await today()
