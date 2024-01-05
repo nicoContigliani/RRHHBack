@@ -1,53 +1,39 @@
 'use strict';
 
-/** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-    */
-
-    // Add seed data for the `InterviewVacance` table
-    await queryInterface.bulkInsert('InterviewVacances', [
-      {
-        InterviewId: 1, // Interview 1
-        VacancyId: 1, // Frontend Developer vacancy
-        interviewDateTime: new Date('2023-10-10T10:00:00'),
-        results: 'Candidate was selected',
-        comments: 'Candidate was a good fit for the role',
-        status_interview_vacancy_type: false,
-        createdAt:new Date(),
-        updatedAt:new Date()
-      },
-      {
-        InterviewId: 2, // Interview 2
-        VacancyId: 2, // Backend Developer vacancy
-        interviewDateTime: new Date('2023-10-11T10:00:00'),
-        results: 'Candidate was not selected',
-        comments: 'Candidate did not meet the requirements',
-        status_interview_vacancy_type: true,
-        createdAt:new Date(),
-        updatedAt:new Date()
-      },
-      // ... other interview vacancies
-    ], {});
+  async up(queryInterface, Sequelize) {
+    try {
+      await queryInterface.bulkInsert('InterviewVacances', [
+        {
+          id: 1,
+          InterviewId: 1,
+          VacancyId: 1,
+          interviewDateTime: '2023-10-10 10:00:00.000',
+          results: 'Candidate was selected',
+          comments: 'Candidate was a good fit for the role',
+          status_interview_vacancy_type: false,
+          createdAt: '2023-10-06 12:05:25.892',
+          updatedAt: '2023-10-06 12:05:25.892'
+        },
+        {
+          id: 2,
+          InterviewId: 2,
+          VacancyId: 2,
+          interviewDateTime: '2023-10-11 10:00:00.000',
+          results: 'Candidate was not selected',
+          comments: 'Candidate did not meet the requirements',
+          status_interview_vacancy_type: true,
+          createdAt: '2023-10-06 12:05:25.892',
+          updatedAt: '2023-10-06 12:05:25.892'
+        },
+      ], {});
+    } catch (error) {
+      console.error('Error during seed:', error);
+      throw error;
+    }
   },
 
-  async down (queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
-
-    // Delete all seed data from the `InterviewVacance` table
+  async down(queryInterface, Sequelize) {
     await queryInterface.bulkDelete('InterviewVacances', null, {});
   }
 };

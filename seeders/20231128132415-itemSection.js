@@ -1,188 +1,284 @@
 'use strict';
 
-/** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.bulkInsert('itemSections', [
-      {
-        ItemId: 1,
-        SectionId: 1,
-        position: 1,
-        title_atribute: '',
-        atribute: 'Nicolás Contigliani',
-        detail_atribute: '',
-        startDate: '',
-        endDate: '',
-        status_item_section: true,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        ItemId: 2,
-        SectionId: 1,
-        position: 1,
-        title_atribute: '',
-        atribute: 'nico.contigliani@gmail.com',
-        detail_atribute: '',
-        startDate: '',
-        endDate: '',
-        status_item_section: true,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        ItemId: 3,
-        SectionId: 1,
-        position: 1,
-        title_atribute: '',
-        atribute: '+5492612444106',
-        detail_atribute: '',
-        startDate: '',
-        endDate: '',
-        status_item_section: true,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        ItemId: 4,
-        SectionId: 1,
-        position: 1,
-        title_atribute: '',
-        atribute: '06/03/1988',
-        detail_atribute: '',
-        startDate: '',
-        endDate: '',
-        status_item_section: true,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        ItemId: 5,
-        SectionId: 2,
-        position: 1,
-        title_atribute: '',
-        atribute: 'Soy un profesional de TI con la capacidad de trabajar en equipo .Estoy trabajando con tecnologíasNode.js, React.js y base de datos relacionales como Postgres y MySQL En búsqueda de nuevos desafíos',
-        detail_atribute: '',
-        startDate: '',
-        endDate: '',
-        status_item_section: true,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        ItemId: 6,
-        SectionId: 5,
-        position: 1,
-        title_atribute: '',
-        atribute: 'curioso',
-        detail_atribute: '',
-        startDate: '',
-        endDate: '',
-        status_item_section: true,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        ItemId: 6,
-        SectionId: 5,
-        position: 1,
-        title_atribute: '',
-        atribute: 'responsable',
-        detail_atribute: '',
-        startDate: '',
-        endDate: '',
-        status_item_section: true,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        ItemId: 7,
-        SectionId: 6,
-        position: 1,
-        title_atribute: 'front-end',
-        atribute: 'React',
-        detail_atribute: '',
-        startDate: '',
-        endDate: '',
-        status_item_section: true,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        ItemId: 7,
-        SectionId: 6,
-        position: 1,
-        title_atribute: 'front-end',
-        atribute: 'MaterialUI',
-        detail_atribute: '',
-        startDate: '',
-        endDate: '',
-        status_item_section: true,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        ItemId: 7,
-        SectionId: 6,
-        position: 1,
-        title_atribute: 'Back-End',
-        atribute: 'Node',
-        detail_atribute: '',
-        startDate: '',
-        endDate: '',
-        status_item_section: true,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        ItemId: 7,
-        SectionId: 6,
-        position: 1,
-        title_atribute: 'Back-End',
-        atribute: 'Express',
-        detail_atribute: '',
-        startDate: '',
-        endDate: '',
-        status_item_section: true,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        ItemId: 9,
-        SectionId: 7,
-        position: 1,
-        title_atribute: 'Universidad de Palermo',
-        atribute: 'Batman',
-        detail_atribute: '',
-        startDate: '',
-        endDate: '',
-        status_item_section: true,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        ItemId: 8,
-        SectionId: 3,
-        position: 1,
-        title_atribute: 'Company',
-        atribute: 'Open Dev',
-        detail_atribute: '',
-        startDate: '',
-        endDate: '',
-        status_item_section: true,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-    ])
+    try {
+      await queryInterface.bulkInsert('itemSections', [
+        {
+          id: 1,
+          ItemId: 100,
+          SectionId: 1,
+          position: 1,
+          title_atribute: 'fullname',
+          atribute: 'Nicolas Contigliani',
+          detail_atribute: null,
+          status_item_section: true,
+          startDate: new Date('2023-10-06 12:05:25.993'),
+          endDate: new Date('2023-10-06 12:05:25.993'),
+          createdAt: new Date('2023-10-06 12:05:25.993'),
+          updatedAt: new Date('2023-10-06 12:05:25.993')
+        },
+        {
+          id: 2,
+          ItemId: 101,
+          SectionId: 1,
+          position: 1,
+          title_atribute: 'email',
+          atribute: 'nico.contigliani@gmail.com',
+          detail_atribute: '',
+          status_item_section: true,
+          startDate: new Date('2023-10-06 12:05:25.993'),
+          endDate: new Date('2023-10-06 12:05:25.993'),
+          createdAt: new Date('2023-10-06 12:05:25.993'),
+          updatedAt: new Date('2023-10-06 12:05:25.993')
+        },
+        {
+          id: 3,
+          ItemId: 102,
+          SectionId: 1,
+          position: 1,
+          title_atribute: 'phone',
+          atribute: '+5492612444106',
+          detail_atribute: '',
+          status_item_section: true,
+          startDate: new Date('2023-10-06 12:05:25.993'),
+          endDate: new Date('2023-10-06 12:05:25.993'),
+          createdAt: new Date('2023-10-06 12:05:25.993'),
+          updatedAt: new Date('2023-10-06 12:05:25.993')
+        },
+        {
+          id: 4,
+          ItemId: 103,
+          SectionId: 1,
+          position: 1,
+          title_atribute: 'birthday',
+          atribute: '06/03/1988',
+          detail_atribute: '',
+          status_item_section: true,
+          startDate: new Date('2023-10-06 12:05:25.993'),
+          endDate: new Date('2023-10-06 12:05:25.993'),
+          createdAt: new Date('2023-10-06 12:05:25.993'),
+          updatedAt: new Date('2023-10-06 12:05:25.993')
+        },
+        {
+          id: 13,
+          ItemId: 601,
+          SectionId: 6,
+          position: 1,
+          title_atribute: 'Hard Skill',
+          atribute: 'Node',
+          detail_atribute: '',
+          status_item_section: true,
+          startDate: new Date('2023-10-06 12:05:25.993'),
+          endDate: new Date('2023-10-06 12:05:25.993'),
+          createdAt: new Date('2023-10-06 12:05:25.993'),
+          updatedAt: new Date('2023-10-06 12:05:25.993')
+        },
+        {
+          id: 14,
+          ItemId: 602,
+          SectionId: 6,
+          position: 1,
+          title_atribute: 'Hard Skill',
+          atribute: 'Express',
+          detail_atribute: '',
+          status_item_section: true,
+          startDate: new Date('2023-10-06 12:05:25.993'),
+          endDate: new Date('2023-10-06 12:05:25.993'),
+          createdAt: new Date('2023-10-06 12:05:25.993'),
+          updatedAt: new Date('2023-10-06 12:05:25.993')
+        },
+        {
+          id: 15,
+          ItemId: 603,
+          SectionId: 6,
+          position: 1,
+          title_atribute: 'Hard Skill',
+          atribute: 'Mongo',
+          detail_atribute: '',
+          status_item_section: true,
+          startDate: new Date('2023-10-06 12:05:25.993'),
+          endDate: new Date('2023-10-06 12:05:25.993'),
+          createdAt: new Date('2023-10-06 12:05:25.993'),
+          updatedAt: new Date('2023-10-06 12:05:25.993')
+        },
+        {
+          id: 16,
+          ItemId: 604,
+          SectionId: 6,
+          position: 1,
+          title_atribute: 'Hard Skill',
+          atribute: 'Postgres',
+          detail_atribute: '',
+          status_item_section: true,
+          startDate: new Date('2023-10-06 12:05:25.993'),
+          endDate: new Date('2023-10-06 12:05:25.993'),
+          createdAt: new Date('2023-10-06 12:05:25.993'),
+          updatedAt: new Date('2023-10-06 12:05:25.993')
+        },
+        {
+          id: 17,
+          ItemId: 700,
+          SectionId: 7,
+          position: 1,
+          title_atribute: 'Studie',
+          atribute: 'IESS',
+          detail_atribute: '',
+          status_item_section: true,
+          startDate: new Date('2023-10-06 12:05:25.993'),
+          endDate: new Date('2023-10-06 12:05:25.993'),
+          createdAt: new Date('2023-10-06 12:05:25.993'),
+          updatedAt: new Date('2023-10-06 12:05:25.993')
+        },
+        {
+          id: 18,
+          ItemId: 800,
+          SectionId: 8,
+          position: 1,
+          title_atribute: 'Lenguaje',
+          atribute: 'English',
+          detail_atribute: '',
+          status_item_section: true,
+          startDate: new Date('2023-10-06 12:05:25.993'),
+          endDate: new Date('2023-10-06 12:05:25.993'),
+          createdAt: new Date('2023-10-06 12:05:25.993'),
+          updatedAt: new Date('2023-10-06 12:05:25.993')
+        },
+        {
+          id: 19,
+          ItemId: 900,
+          SectionId: 9,
+          position: 1,
+          title_atribute: 'Disponibility',
+          atribute: 'All',
+          detail_atribute: '',
+          status_item_section: true,
+          startDate: new Date('2023-10-06 12:05:25.993'),
+          endDate: new Date('2023-10-06 12:05:25.993'),
+          createdAt: new Date('2023-10-06 12:05:25.993'),
+          updatedAt: new Date('2023-10-06 12:05:25.993')
+        },
+        {
+          id: 5,
+          ItemId: 200,
+          SectionId: 2,
+          position: 1,
+          title_atribute: 'Description',
+          atribute: 'Soy un profesional completo que hace...',
+          detail_atribute: '',
+          status_item_section: true,
+          startDate: new Date('2023-10-06 12:05:25.993'),
+          endDate: new Date('2023-10-06 12:05:25.993'),
+          createdAt: new Date('2023-10-06 12:05:25.993'),
+          updatedAt: new Date('2023-10-06 12:05:25.993')
+        },
+        {
+          id: 7,
+          ItemId: 301,
+          SectionId: 3,
+          position: 1,
+          title_atribute: 'Work',
+          atribute: 'Flexxus',
+          detail_atribute: '',
+          status_item_section: true,
+          startDate: new Date('2023-10-06 12:05:25.993'),
+          endDate: new Date('2023-10-06 12:05:25.993'),
+          createdAt: new Date('2023-10-06 12:05:25.993'),
+          updatedAt: new Date('2023-10-06 12:05:25.993')
+        },
+        {
+          id: 6,
+          ItemId: 300,
+          SectionId: 3,
+          position: 1,
+          title_atribute: 'Work',
+          atribute: 'OpenDev',
+          detail_atribute: '',
+          status_item_section: true,
+          startDate: new Date('2023-10-06 12:05:25.993'),
+          endDate: new Date('2023-10-06 12:05:25.993'),
+          createdAt: new Date('2023-10-06 12:05:25.993'),
+          updatedAt: new Date('2023-10-06 12:05:25.993')
+        },
+        {
+          id: 8,
+          ItemId: 302,
+          SectionId: 3,
+          position: 1,
+          title_atribute: 'Work',
+          atribute: 'GDP',
+          detail_atribute: '',
+          status_item_section: true,
+          startDate: new Date('2023-10-06 12:05:25.993'),
+          endDate: new Date('2023-10-06 12:05:25.993'),
+          createdAt: new Date('2023-10-06 12:05:25.993'),
+          updatedAt: new Date('2023-10-06 12:05:25.993')
+        },
+        {
+          id: 9,
+          ItemId: 400,
+          SectionId: 4,
+          position: 1,
+          title_atribute: 'Work Freelancer',
+          atribute: 'Sistema seguros',
+          detail_atribute: '',
+          status_item_section: true,
+          startDate: new Date('2023-10-06 12:05:25.993'),
+          endDate: new Date('2023-10-06 12:05:25.993'),
+          createdAt: new Date('2023-10-06 12:05:25.993'),
+          updatedAt: new Date('2023-10-06 12:05:25.993')
+        },
+        {
+          id: 10,
+          ItemId: 500,
+          SectionId: 5,
+          position: 1,
+          title_atribute: 'Soft Skill',
+          atribute: 'curious',
+          detail_atribute: '',
+          status_item_section: true,
+          startDate: new Date('2023-10-06 12:05:25.993'),
+          endDate: new Date('2023-10-06 12:05:25.993'),
+          createdAt: new Date('2023-10-06 12:05:25.993'),
+          updatedAt: new Date('2023-10-06 12:05:25.993')
+        },
+        {
+          id: 11,
+          ItemId: 501,
+          SectionId: 5,
+          position: 1,
+          title_atribute: 'Soft Skill',
+          atribute: 'responsibility',
+          detail_atribute: '',
+          status_item_section: true,
+          startDate: new Date('2023-10-06 12:05:25.993'),
+          endDate: new Date('2023-10-06 12:05:25.993'),
+          createdAt: new Date('2023-10-06 12:05:25.993'),
+          updatedAt: new Date('2023-10-06 12:05:25.993')
+        },
+        {
+          id: 12,
+          ItemId: 600,
+          SectionId: 6,
+          position: 1,
+          title_atribute: 'Hard Skill',
+          atribute: 'React',
+          detail_atribute: '',
+          status_item_section: true,
+          startDate: new Date('2023-10-06 12:05:25.993'),
+          endDate: new Date('2023-10-06 12:05:25.993'),
+          createdAt: new Date('2023-10-06 12:05:25.993'),
+          updatedAt: new Date('2023-10-06 12:05:25.993')
+        },
+      ], {});
+    } catch (error) {
+      console.error('Error during seed:', error);
+      throw error;
+    }
   },
 
   async down(queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
+    await queryInterface.bulkDelete('itemSections', null, {});
   }
 };
-//nofunciona
+

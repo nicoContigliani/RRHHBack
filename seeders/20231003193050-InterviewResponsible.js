@@ -11,47 +11,50 @@ module.exports = {
      *   name: 'John Doe',
      *   isBetaMember: false
      * }], {});
-    */
+     */
 
-    // Add seed data for the `InterviewResponsible` table
     await queryInterface.bulkInsert('InterviewResponsibles', [
       {
-        InterviewId: 1, // Interview 1
-        RoadMapId: 1, // Frontend Developer roadmap
-        UserId: 2, // User Alice
+        id: 1,
+        InterviewId: 1,
+        RoadMapId: 1,
+        UserId: 2,
         responsibilityDescription: 'Lead the interview',
         status_interview_responsible: true,
-        createdAt: new Date(),
-        updatedAt: new Date()
+        createdAt: new Date('2023-10-06 12:05:25.873'),
+        updatedAt: new Date('2023-10-06 12:05:25.873'),
       },
       {
-        InterviewId: 1, // Interview 1
-        RoadMapId: 1, // Frontend Developer roadmap
-        UserId: 3, // User Bob
+        id: 2,
+        InterviewId: 1,
+        RoadMapId: 1,
+        UserId: 3,
         responsibilityDescription: 'Ask technical questions',
         status_interview_responsible: true,
-        createdAt: new Date(),
-        updatedAt: new Date()
+        createdAt: new Date('2023-10-06 12:05:25.873'),
+        updatedAt: new Date('2023-10-06 12:05:25.873'),
       },
       {
-        InterviewId: 1, // Interview 1
-        RoadMapId: 2, // Backend Developer roadmap
-        UserId: 4, // User Carol
+        id: 3,
+        InterviewId: 1,
+        RoadMapId: 2,
+        UserId: 4,
         responsibilityDescription: 'Lead the interview',
         status_interview_responsible: true,
-        createdAt: new Date(),
-        updatedAt: new Date()
+        createdAt: new Date('2023-10-06 12:05:25.873'),
+        updatedAt: new Date('2023-10-06 12:05:25.873'),
       },
       {
-        InterviewId: 1, // Interview 1
-        RoadMapId: 2, // Backend Developer roadmap
-        UserId: 5, // User Dave
+        id: 4,
+        InterviewId: 1,
+        RoadMapId: 2,
+        UserId: 5,
         responsibilityDescription: 'Ask technical questions',
         status_interview_responsible: true,
-        createdAt: new Date(),
-        updatedAt: new Date()
+        createdAt: new Date('2023-10-06 12:05:25.873'),
+        updatedAt: new Date('2023-10-06 12:05:25.873'),
       },
-      // ... other interview responsibles
+      // ... otras inserciones de datos en InterviewResponsibles
     ], {});
   },
 
@@ -63,7 +66,6 @@ module.exports = {
      * await queryInterface.bulkDelete('People', null, {});
      */
 
-    // Delete all seed data from the `InterviewResponsible` table
     await queryInterface.bulkDelete('InterviewResponsibles', null, {});
-  }
+  },
 };

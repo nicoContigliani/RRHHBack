@@ -2,7 +2,7 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     /**
      * Add seed commands here.
      *
@@ -11,13 +11,13 @@ module.exports = {
      *   name: 'John Doe',
      *   isBetaMember: false
      * }], {});
-    */
+     */
 
-    // Add seed data for the `Interview` table
     await queryInterface.bulkInsert('Interviews', [
       {
-        interviewDateTime: new Date('2023-08-04T10:00:00'),
-        interviewTypeId:1,
+        id: 1,
+        interviewDateTime: new Date('2023-08-04T10:00:00.000Z'),
+        interviewTypeId: 1,
         interviewers: 'Alice, Bob',
         interviewMethod: 'Video call',
         duration: 60,
@@ -27,12 +27,13 @@ module.exports = {
         requiredActions: null,
         nextActionDateTime: null,
         status_interview: true,
-        TypeInterviewId: 1, // Technical interview type
-        createdAt:new Date(),
-        updatedAt:new Date()
+        TypeInterviewId: 1,
+        createdAt: new Date('2023-10-06T12:05:25.867Z'),
+        updatedAt: new Date('2023-10-06T12:05:25.867Z'),
       },
       {
-        interviewDateTime: new Date('2023-08-05T11:00:00'),
+        id: 2,
+        interviewDateTime: new Date('2023-08-05T11:00:00.000Z'),
         interviewTypeId: 2,
         interviewers: 'Carol, Dave',
         interviewMethod: 'In person',
@@ -43,15 +44,15 @@ module.exports = {
         requiredActions: null,
         nextActionDateTime: null,
         status_interview: true,
-        TypeInterviewId: 1, // Technical interview type
-        createdAt:new Date(),
-        updatedAt:new Date()
+        TypeInterviewId: 1,
+        createdAt: new Date('2023-10-06T12:05:25.867Z'),
+        updatedAt: new Date('2023-10-06T12:05:25.867Z'),
       },
-      // ... other interviews
+      // ... otras inserciones de datos en Interviews
     ], {});
   },
 
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     /**
      * Add commands to revert seed here.
      *
@@ -59,7 +60,6 @@ module.exports = {
      * await queryInterface.bulkDelete('People', null, {});
      */
 
-    // Delete all seed data from the `Interview` table
     await queryInterface.bulkDelete('Interviews', null, {});
-  }
+  },
 };

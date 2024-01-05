@@ -7,88 +7,100 @@ module.exports = {
      * Add seed commands here.
      *
      * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
+     * await queryInterface.bulkInsert('Sections', [{
+     *   id: 7,
+     *   SectionTypeId: 7,
+     *   title: 'education',
+     *   content: '',
+     *   status_section: true,
+     *   createdAt: new Date('2023-11-28 10:18:44.332'),
+     *   updatedAt: new Date('2023-11-28 10:18:44.332')
      * }], {});
-    */
+     */
 
-    // Añadir secciones de ejemplo
     await queryInterface.bulkInsert('Sections', [
-
       {
-        SectionTypeId: 1, // Experiencia laboral
-        title: 'dataPerson',
-        content: '',
-        status_section: true,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        SectionTypeId: 2, // Experiencia laboral
-        title: 'descriptionPerson',
-        content: '',
-        status_section: true,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        SectionTypeId: 3, 
-        title: 'experience_work',
-        content: '',
-        status_section: true,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        SectionTypeId: 4, 
-        title: 'experience_freelancer_work',
-        content: '',
-        status_section: true,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        SectionTypeId: 5, 
-        title: 'soft_skill',
-        content: '',
-        status_section: true,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        SectionTypeId: 6, 
-        title: 'hard_skill',
-        content: '',
-        status_section: true,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
+        id: 7,
         SectionTypeId: 7,
         title: 'education',
         content: '',
         status_section: true,
-        createdAt: new Date(),
-        updatedAt: new Date()
+        createdAt: new Date('2023-11-28 10:18:44.332'),
+        updatedAt: new Date('2023-11-28 10:18:44.332'),
       },
       {
+        id: 8,
         SectionTypeId: 8,
         title: 'lenguaje',
         content: '',
         status_section: true,
-        createdAt: new Date(),
-        updatedAt: new Date()
+        createdAt: new Date('2023-11-28 10:18:44.332'),
+        updatedAt: new Date('2023-11-28 10:18:44.332'),
       },
       {
+        id: 9,
         SectionTypeId: 9,
         title: 'disponibility',
         content: '',
         status_section: true,
-        createdAt: new Date(),
-        updatedAt: new Date()
+        createdAt: new Date('2023-11-28 10:18:44.332'),
+        updatedAt: new Date('2023-11-28 10:18:44.332'),
       },
-      // ... otras secciones
+      {
+        id: 1,
+        SectionTypeId: 1,
+        title: 'data Person',
+        content: '',
+        status_section: true,
+        createdAt: new Date('2023-11-28 10:18:44.332'),
+        updatedAt: new Date('2023-11-28 10:18:44.332'),
+      },
+      {
+        id: 2,
+        SectionTypeId: 2,
+        title: 'description Person',
+        content: '',
+        status_section: true,
+        createdAt: new Date('2023-11-28 10:18:44.332'),
+        updatedAt: new Date('2023-11-28 10:18:44.332'),
+      },
+      {
+        id: 3,
+        SectionTypeId: 3,
+        title: 'experience work',
+        content: '',
+        status_section: true,
+        createdAt: new Date('2023-11-28 10:18:44.332'),
+        updatedAt: new Date('2023-11-28 10:18:44.332'),
+      },
+      {
+        id: 4,
+        SectionTypeId: 4,
+        title: 'experience freelancer',
+        content: '',
+        status_section: true,
+        createdAt: new Date('2023-11-28 10:18:44.332'),
+        updatedAt: new Date('2023-11-28 10:18:44.332'),
+      },
+      {
+        id: 5,
+        SectionTypeId: 5,
+        title: 'soft skill',
+        content: '',
+        status_section: true,
+        createdAt: new Date('2023-11-28 10:18:44.332'),
+        updatedAt: new Date('2023-11-28 10:18:44.332'),
+      },
+      {
+        id: 6,
+        SectionTypeId: 6,
+        title: 'hard skill',
+        content: '',
+        status_section: true,
+        createdAt: new Date('2023-11-28 10:18:44.332'),
+        updatedAt: new Date('2023-11-28 10:18:44.332'),
+      },
+      // ... otras inserciones de datos en Sections
     ], {});
   },
 
@@ -97,9 +109,9 @@ module.exports = {
      * Add commands to revert seed here.
      *
      * Example:
-     * await queryInterface.bulkDelete('People', null, {});
+     * await queryInterface.bulkDelete('Sections', null, {});
      */
 
     await queryInterface.bulkDelete('Sections', null, {});
-  }
+  },
 };

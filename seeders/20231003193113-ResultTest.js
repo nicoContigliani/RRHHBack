@@ -2,7 +2,7 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     /**
      * Add seed commands here.
      *
@@ -11,43 +11,46 @@ module.exports = {
      *   name: 'John Doe',
      *   isBetaMember: false
      * }], {});
-    */
+     */
 
-    // Add seed data for the `ResultTest` table
     await queryInterface.bulkInsert('ResultTests', [
       {
-        TestId: 1, // Test 1
-        ResultId: 1, // Result Passed
+        id: 1,
+        TestId: 1,
+        ResultId: 1,
         status_result_test: true,
-        createdAt:new Date(),
-        updatedAt:new Date()
+        createdAt: new Date('2023-10-06 12:05:25.922'),
+        updatedAt: new Date('2023-10-06 12:05:25.922'),
       },
       {
-        TestId: 1, // Test 1
-        ResultId: 2, // Result Failed
+        id: 2,
+        TestId: 1,
+        ResultId: 2,
         status_result_test: false,
-        createdAt:new Date(),
-        updatedAt:new Date()
+        createdAt: new Date('2023-10-06 12:05:25.922'),
+        updatedAt: new Date('2023-10-06 12:05:25.922'),
       },
       {
-        TestId: 2, // Test 2
-        ResultId: 1, // Result Passed
+        id: 3,
+        TestId: 2,
+        ResultId: 1,
         status_result_test: true,
-        createdAt:new Date(),
-        updatedAt:new Date()
+        createdAt: new Date('2023-10-06 12:05:25.922'),
+        updatedAt: new Date('2023-10-06 12:05:25.922'),
       },
       {
-        TestId: 2, // Test 2
-        ResultId: 2, // Result Failed
+        id: 4,
+        TestId: 2,
+        ResultId: 2,
         status_result_test: false,
-        createdAt:new Date(),
-        updatedAt:new Date()
+        createdAt: new Date('2023-10-06 12:05:25.922'),
+        updatedAt: new Date('2023-10-06 12:05:25.922'),
       },
-      // ... other result tests
+      // ... otras inserciones de datos en ResultTests
     ], {});
   },
 
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     /**
      * Add commands to revert seed here.
      *
@@ -55,7 +58,6 @@ module.exports = {
      * await queryInterface.bulkDelete('People', null, {});
      */
 
-    // Delete all seed data from the `ResultTest` table
     await queryInterface.bulkDelete('ResultTests', null, {});
-  }
+  },
 };

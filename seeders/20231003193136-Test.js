@@ -2,56 +2,62 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     /**
      * Add seed commands here.
      *
      * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
+     * await queryInterface.bulkInsert('Tests', [{
+     *   id: 1,
+     *   typeTestId: 1,
+     *   name_test: 'Frontend Technical Test',
+     *   description_test: 'A test to assess the candidate''s frontend technical skills.',
+     *   status_test: true,
+     *   createdAt: new Date('2023-10-06 12:05:25.968'),
+     *   updatedAt: new Date('2023-10-06 12:05:25.968'),
      * }], {});
-    */
+     */
 
-    // Add seed data for the `Test` table
     await queryInterface.bulkInsert('Tests', [
       {
-        typeTestId: 1, // Technical test type
+        id: 1,
+        typeTestId: 1,
         name_test: 'Frontend Technical Test',
-        description_test: 'A test to assess the candidate\'s frontend technical skills.',
+        description_test: 'A test to assess the candidate s frontend technical skills.',
         status_test: true,
-        createdAt:new Date(),
-        updatedAt:new Date()
+        createdAt: new Date('2023-10-06 12:05:25.968'),
+        updatedAt: new Date('2023-10-06 12:05:25.968'),
       },
       {
-        typeTestId: 1, // Technical test type
+        id: 2,
+        typeTestId: 1,
         name_test: 'Backend Technical Test',
-        description_test: 'A test to assess the candidate\'s backend technical skills.',
+        description_test: 'A test to assess the candidate s backend technical skills.',
         status_test: true,
-        createdAt:new Date(),
-        updatedAt:new Date()
+        createdAt: new Date('2023-10-06 12:05:25.968'),
+        updatedAt: new Date('2023-10-06 12:05:25.968'),
       },
       {
-        typeTestId: 2, // Behavioral test type
+        id: 3,
+        typeTestId: 2,
         name_test: 'Behavioral Test',
-        description_test: 'A test to assess the candidate\'s behavioral skills.',
+        description_test: 'A test to assess the candidate s behavioral skills.',
         status_test: true,
-        createdAt:new Date(),
-        updatedAt:new Date()
+        createdAt: new Date('2023-10-06 12:05:25.968'),
+        updatedAt: new Date('2023-10-06 12:05:25.968'),
       },
-      // ... other tests
+      // ... otras inserciones de datos en Tests
     ], {});
   },
 
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     /**
      * Add commands to revert seed here.
      *
      * Example:
-     * await queryInterface.bulkDelete('People', null, {});
+     * await queryInterface.bulkDelete('Tests', null, {});
      */
 
-    // Delete all seed data from the `Test` table
     await queryInterface.bulkDelete('Tests', null, {});
-  }
+  },
 };

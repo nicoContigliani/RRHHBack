@@ -2,7 +2,7 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     /**
      * Add seed commands here.
      *
@@ -11,10 +11,11 @@ module.exports = {
      *   name: 'John Doe',
      *   isBetaMember: false
      * }], {});
-    */
+     */
 
     await queryInterface.bulkInsert('Permissions', [
       {
+        id: 1,
         name_permission: 'Crear usuarios',
         conditions: '',
         code: 'CREATE_USERS',
@@ -31,12 +32,13 @@ module.exports = {
         restrict: false,
         manage_users: true,
         manage_roles: false,
-        audit: false,
+        audit: true,
         status_permission: true,
-        createdAt:new Date(),
-        updatedAt:new Date()
+        createdAt: new Date('2023-10-06 12:05:25.907'),
+        updatedAt: new Date('2023-10-06 12:05:25.907'),
       },
       {
+        id: 2,
         name_permission: 'Leer usuarios',
         conditions: '',
         code: 'READ_USERS',
@@ -53,12 +55,13 @@ module.exports = {
         restrict: false,
         manage_users: false,
         manage_roles: false,
-        audit: false,
+        audit: true,
         status_permission: true,
-        createdAt:new Date(),
-        updatedAt:new Date()
+        createdAt: new Date('2023-10-06 12:05:25.907'),
+        updatedAt: new Date('2023-10-06 12:05:25.907'),
       },
       {
+        id: 3,
         name_permission: 'Actualizar usuarios',
         conditions: '',
         code: 'UPDATE_USERS',
@@ -75,12 +78,13 @@ module.exports = {
         restrict: false,
         manage_users: true,
         manage_roles: false,
-        audit: false,
+        audit: true,
         status_permission: true,
-        createdAt:new Date(),
-        updatedAt:new Date()
+        createdAt: new Date('2023-10-06 12:05:25.907'),
+        updatedAt: new Date('2023-10-06 12:05:25.907'),
       },
       {
+        id: 4,
         name_permission: 'Eliminar usuarios',
         conditions: '',
         code: 'DELETE_USERS',
@@ -97,16 +101,39 @@ module.exports = {
         restrict: false,
         manage_users: true,
         manage_roles: false,
-        audit: false,
+        audit: true,
         status_permission: true,
-        createdAt:new Date(),
-        updatedAt:new Date()
+        createdAt: new Date('2023-10-06 12:05:25.907'),
+        updatedAt: new Date('2023-10-06 12:05:25.907'),
       },
-      // ... otros permisos
+      {
+        id: 5,
+        name_permission: 'Todos',
+        conditions: '',
+        code: 'Todo',
+        creates: true,
+        reads: true,
+        updates: true,
+        deletes: true,
+        admins: true,
+        exports: true,
+        imports: true,
+        approve: true,
+        generate_reports: true,
+        configure: true,
+        restrict: true,
+        manage_users: true,
+        manage_roles: true,
+        audit: true,
+        status_permission: true,
+        createdAt: new Date('2023-10-06 12:05:25.907'),
+        updatedAt: new Date('2023-10-06 12:05:25.907'),
+      },
+      // ... otras inserciones de datos en Permissions
     ], {});
   },
 
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     /**
      * Add commands to revert seed here.
      *
@@ -115,5 +142,5 @@ module.exports = {
      */
 
     await queryInterface.bulkDelete('Permissions', null, {});
-  }
+  },
 };

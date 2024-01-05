@@ -2,7 +2,7 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     /**
      * Add seed commands here.
      *
@@ -11,33 +11,34 @@ module.exports = {
      *   name: 'John Doe',
      *   isBetaMember: false
      * }], {});
-    */
+     */
 
-    // Add seed data for the `RoadMapVacance` table
     await queryInterface.bulkInsert('RoadMapVacances', [
       {
-        VacancyId: 1, // Frontend Developer vacancy
-        RoadMapId: 1, // Frontend Developer roadmap
+        id: 1,
+        VacancyId: 1,
+        RoadMapId: 1,
         status_RoadMapVacance: true,
         comments: 'This roadmap is required for the Frontend Developer vacancy.',
         statusProgres: 'In progress',
-        createdAt:new Date(),
-        updatedAt:new Date()
+        createdAt: new Date('2023-10-06 12:05:25.932'),
+        updatedAt: new Date('2023-10-06 12:05:25.932'),
       },
       {
-        VacancyId: 2, // Backend Developer vacancy
-        RoadMapId: 2, // Backend Developer roadmap
+        id: 2,
+        VacancyId: 2,
+        RoadMapId: 2,
         status_RoadMapVacance: true,
         comments: 'This roadmap is required for the Backend Developer vacancy.',
         statusProgres: 'In progress',
-        createdAt:new Date(),
-        updatedAt:new Date()
+        createdAt: new Date('2023-10-06 12:05:25.932'),
+        updatedAt: new Date('2023-10-06 12:05:25.932'),
       },
-      // ... other roadmaps
+      // ... otras inserciones de datos en RoadMapVacances
     ], {});
   },
 
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     /**
      * Add commands to revert seed here.
      *
@@ -45,7 +46,6 @@ module.exports = {
      * await queryInterface.bulkDelete('People', null, {});
      */
 
-    // Delete all seed data from the `RoadMapVacance` table
     await queryInterface.bulkDelete('RoadMapVacances', null, {});
-  }
+  },
 };

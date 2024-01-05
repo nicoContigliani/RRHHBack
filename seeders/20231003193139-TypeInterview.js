@@ -2,53 +2,58 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     /**
      * Add seed commands here.
      *
      * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
+     * await queryInterface.bulkInsert('TypeInterviews', [{
+     *   id: 1,
+     *   name_type_test: 'Technical interview',
+     *   description_type_test: 'A test to assess the candidate''s technical skills.',
+     *   status_Type_interview: true,
+     *   createdAt: new Date('2023-10-06 12:05:25.971'),
+     *   updatedAt: new Date('2023-10-06 12:05:25.971'),
      * }], {});
-    */
+     */
 
-    // Add seed data for the `TypeInterview` table
     await queryInterface.bulkInsert('TypeInterviews', [
       {
+        id: 1,
         name_type_test: 'Technical interview',
-        description_type_test: 'A test to assess the candidate\'s technical skills.',
+        description_type_test: 'A test to assess the candidate s technical skills.',
         status_Type_interview: true,
-        createdAt:new Date(),
-        updatedAt:new Date()
+        createdAt: new Date('2023-10-06 12:05:25.971'),
+        updatedAt: new Date('2023-10-06 12:05:25.971'),
       },
       {
+        id: 2,
         name_type_test: 'Behavioral interview',
-        description_type_test: 'A test to assess the candidate\'s behavioral skills.',
+        description_type_test: 'A test to assess the candidate s behavioral skills.',
         status_Type_interview: true,
-        createdAt:new Date(),
-        updatedAt:new Date()
+        createdAt: new Date('2023-10-06 12:05:25.971'),
+        updatedAt: new Date('2023-10-06 12:05:25.971'),
       },
       {
+        id: 3,
         name_type_test: 'Coding interview',
-        description_type_test: 'A test to assess the candidate\'s coding skills.',
+        description_type_test: 'A test to assess the candidate coding skills.',
         status_Type_interview: true,
-        createdAt:new Date(),
-        updatedAt:new Date()
+        createdAt: new Date('2023-10-06 12:05:25.971'),
+        updatedAt: new Date('2023-10-06 12:05:25.971'),
       },
-      // ... other interview types
+      // ... otras inserciones de datos en TypeInterviews
     ], {});
   },
 
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     /**
      * Add commands to revert seed here.
      *
      * Example:
-     * await queryInterface.bulkDelete('People', null, {});
+     * await queryInterface.bulkDelete('TypeInterviews', null, {});
      */
 
-    // Delete all seed data from the `TypeInterview` table
     await queryInterface.bulkDelete('TypeInterviews', null, {});
-  }
+  },
 };

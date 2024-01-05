@@ -2,7 +2,7 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     /**
      * Add seed commands here.
      *
@@ -11,22 +11,22 @@ module.exports = {
      *   name: 'John Doe',
      *   isBetaMember: false
      * }], {});
-    */
+     */
 
-    // Añadir asignaciones de CV a usuarios de ejemplo
     await queryInterface.bulkInsert('CVUsers', [
       {
-        UserId: 1, // Usuario John Doe
-        CVId: 1, // CV de John Doe
+        id: 1,
+        UserId: 1,
+        CVId: 1,
         status_cv_user: true,
-        createdAt:new Date(),
-        updatedAt:new Date()
+        createdAt: new Date('2023-10-06 12:05:25.854'),
+        updatedAt: new Date('2023-10-06 12:05:25.854'),
       },
-      // ... otras asignaciones de CV a usuarios de ejemplo
+      // ... otras inserciones de datos en CVUsers
     ], {});
   },
 
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     /**
      * Add commands to revert seed here.
      *
@@ -35,5 +35,5 @@ module.exports = {
      */
 
     await queryInterface.bulkDelete('CVUsers', null, {});
-  }
+  },
 };

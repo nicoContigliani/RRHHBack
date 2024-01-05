@@ -2,7 +2,7 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     /**
      * Add seed commands here.
      *
@@ -11,11 +11,11 @@ module.exports = {
      *   name: 'John Doe',
      *   isBetaMember: false
      * }], {});
-    */
+     */
 
     await queryInterface.bulkInsert('Branches', [
-      // Sucursal 1 de Google
       {
+        id: 1,
         name_branch: 'Googleplex',
         conditions: 'Sunny',
         idCompany: 1,
@@ -24,11 +24,11 @@ module.exports = {
         branch_score: 5,
         guest: 100,
         status_branch: true,
-        createdAt:new Date(),
-        updatedAt:new Date()
+        createdAt: new Date('2023-10-06 12:05:25.822'),
+        updatedAt: new Date('2023-10-06 12:05:25.822'),
       },
-      // Sucursal 2 de Microsoft
       {
+        id: 2,
         name_branch: 'Microsoft Redmond',
         conditions: 'Cloudy',
         idCompany: 2,
@@ -37,11 +37,11 @@ module.exports = {
         branch_score: 4,
         guest: 50,
         status_branch: true,
-        createdAt:new Date(),
-        updatedAt:new Date()
+        createdAt: new Date('2023-10-06 12:05:25.822'),
+        updatedAt: new Date('2023-10-06 12:05:25.822'),
       },
-      // Sucursal 3 de Amazon
       {
+        id: 3,
         name_branch: 'Amazon Seattle',
         conditions: 'Rainy',
         idCompany: 3,
@@ -50,14 +50,14 @@ module.exports = {
         branch_score: 3,
         guest: 25,
         status_branch: true,
-        createdAt:new Date(),
-        updatedAt:new Date()
+        createdAt: new Date('2023-10-06 12:05:25.822'),
+        updatedAt: new Date('2023-10-06 12:05:25.822'),
       },
-      // ... otras sucursales
+      // ... otras inserciones de datos en Branches
     ], {});
   },
 
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     /**
      * Add commands to revert seed here.
      *
@@ -66,5 +66,5 @@ module.exports = {
      */
 
     await queryInterface.bulkDelete('Branches', null, {});
-  }
+  },
 };

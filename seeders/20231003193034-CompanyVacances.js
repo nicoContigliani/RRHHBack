@@ -2,7 +2,7 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     /**
      * Add seed commands here.
      *
@@ -11,31 +11,32 @@ module.exports = {
      *   name: 'John Doe',
      *   isBetaMember: false
      * }], {});
-    */
+     */
 
-    // Add seed data for the `CompanyVacances` table
     await queryInterface.bulkInsert('CompanyVacances', [
       {
-        VacancyId: 1, // Frontend Developer vacancy
-        CompanyId: 1, // Google
-        UserId: 1, // User John Doe
+        id: 1,
+        VacancyId: 1,
+        CompanyId: 1,
+        UserId: 1,
         status_company_vacances: true,
-        createdAt:new Date(),
-        updatedAt:new Date()
+        createdAt: new Date('2023-10-06 12:05:25.838'),
+        updatedAt: new Date('2023-10-06 12:05:25.838'),
       },
       {
-        VacancyId: 2, // Backend Developer vacancy
-        CompanyId: 1, // Google
-        UserId: 1, // User John Doe
+        id: 2,
+        VacancyId: 2,
+        CompanyId: 1,
+        UserId: 1,
         status_company_vacances: true,
-        createdAt:new Date(),
-        updatedAt:new Date()
+        createdAt: new Date('2023-10-06 12:05:25.838'),
+        updatedAt: new Date('2023-10-06 12:05:25.838'),
       },
-      // ... other company vacancies
+      // ... otras inserciones de datos en CompanyVacances
     ], {});
   },
 
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     /**
      * Add commands to revert seed here.
      *
@@ -43,7 +44,6 @@ module.exports = {
      * await queryInterface.bulkDelete('People', null, {});
      */
 
-    // Delete all seed data from the `CompanyVacances` table
     await queryInterface.bulkDelete('CompanyVacances', null, {});
-  }
+  },
 };

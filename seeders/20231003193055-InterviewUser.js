@@ -2,7 +2,7 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     /**
      * Add seed commands here.
      *
@@ -11,33 +11,34 @@ module.exports = {
      *   name: 'John Doe',
      *   isBetaMember: false
      * }], {});
-    */
+     */
 
-    // Add seed data for the `InterviewUser` table
     await queryInterface.bulkInsert('InterviewUsers', [
       {
-        InterviewId: 1, // Interview 1
-        RoadMapId: 1, // Frontend Developer roadmap
-        UserId: 1, // User John Doe
+        id: 1,
+        InterviewId: 1,
+        RoadMapId: 1,
+        UserId: 1,
         userDescription: 'Candidate',
         status_interview_user: true,
-        createdAt:new Date(),
-        updatedAt:new Date()
+        createdAt: new Date('2023-10-06 12:05:25.888'),
+        updatedAt: new Date('2023-10-06 12:05:25.888'),
       },
       {
-        InterviewId: 1, // Interview 1
-        RoadMapId: 2, // Backend Developer roadmap
-        UserId: 1, // User John Doe
+        id: 2,
+        InterviewId: 1,
+        RoadMapId: 2,
+        UserId: 1,
         userDescription: 'Candidate',
         status_interview_user: true,
-        createdAt:new Date(),
-        updatedAt:new Date()
+        createdAt: new Date('2023-10-06 12:05:25.888'),
+        updatedAt: new Date('2023-10-06 12:05:25.888'),
       },
-      // ... other interview users
+      // ... otras inserciones de datos en InterviewUsers
     ], {});
   },
 
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     /**
      * Add commands to revert seed here.
      *
@@ -45,7 +46,6 @@ module.exports = {
      * await queryInterface.bulkDelete('People', null, {});
      */
 
-    // Delete all seed data from the `InterviewUser` table
     await queryInterface.bulkDelete('InterviewUsers', null, {});
-  }
+  },
 };

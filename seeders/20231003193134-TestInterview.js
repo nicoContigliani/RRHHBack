@@ -2,54 +2,62 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     /**
      * Add seed commands here.
      *
      * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
+     * await queryInterface.bulkInsert('TestInterviews', [{
+     *   id: 1,
+     *   CandidateId: 1,
+     *   TestId: 1,
+     *   interviewDateTime: new Date('2023-08-04 10:00:00.000'),
+     *   results: 'Passed',
+     *   comments: 'The candidate performed well in the test and demonstrated a good understanding of frontend development.',
+     *   InterviewId: 1,
+     *   status_test_interview: true,
+     *   createdAt: new Date('2023-10-06 12:05:25.959'),
+     *   updatedAt: new Date('2023-10-06 12:05:25.959'),
      * }], {});
-    */
+     */
 
-    // Add seed data for the `TestInterview` table
     await queryInterface.bulkInsert('TestInterviews', [
       {
-        CandidateId: 1, // Candidate John Doe
-        TestId: 1, // Frontend Technical Test
-        interviewDateTime: new Date('2023-08-04T10:00:00'),
+        id: 1,
+        CandidateId: 1,
+        TestId: 1,
+        interviewDateTime: new Date('2023-08-04 10:00:00.000'),
         results: 'Passed',
         comments: 'The candidate performed well in the test and demonstrated a good understanding of frontend development.',
-        InterviewId: 1, // Interview 1
+        InterviewId: 1,
         status_test_interview: true,
-        createdAt:new Date(),
-        updatedAt:new Date()
+        createdAt: new Date('2023-10-06 12:05:25.959'),
+        updatedAt: new Date('2023-10-06 12:05:25.959'),
       },
       {
-        CandidateId: 1, // Candidate John Doe
-        TestId: 2, // Backend Technical Test
-        interviewDateTime: new Date('2023-08-04T11:00:00'),
+        id: 2,
+        CandidateId: 1,
+        TestId: 2,
+        interviewDateTime: new Date('2023-08-04 11:00:00.000'),
         results: 'Passed',
         comments: 'The candidate also performed well in the backend technical test and demonstrated a good understanding of backend development.',
-        InterviewId: 1, // Interview 1
+        InterviewId: 1,
         status_test_interview: true,
-        createdAt:new Date(),
-        updatedAt:new Date()
+        createdAt: new Date('2023-10-06 12:05:25.959'),
+        updatedAt: new Date('2023-10-06 12:05:25.959'),
       },
-      // ... other test interviews
+      // ... otras inserciones de datos en TestInterviews
     ], {});
   },
 
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     /**
      * Add commands to revert seed here.
      *
      * Example:
-     * await queryInterface.bulkDelete('People', null, {});
+     * await queryInterface.bulkDelete('TestInterviews', null, {});
      */
 
-    // Delete all seed data from the `TestInterview` table
     await queryInterface.bulkDelete('TestInterviews', null, {});
-  }
+  },
 };
