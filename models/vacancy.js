@@ -17,22 +17,25 @@ module.exports = (sequelize, DataTypes) => {
       Vacancy.belongsToMany(models.Company, { through: models.CompanyVacances });
 
       // Vacancy.belongsToMany(models.RoadMap, { through: models.RoadMapVacance, as: 'RoadMap' });
-      Vacancy.belongsToMany(models.RoadMap, { through: models.RoadMapVacance});
+      Vacancy.belongsToMany(models.RoadMap, { through: models.RoadMapVacance });
 
       Vacancy.belongsTo(models.TypeVacancy, {
         foreignKey: 'id',
       });
-
 
     }
   }
   Vacancy.init({
     title: DataTypes.STRING,
     description: DataTypes.TEXT,
-    requirements: DataTypes.STRING,
-    responsibilities: DataTypes.STRING,
+    requirements: DataTypes.TEXT,
+    responsibilities: DataTypes.TEXT,
     status_vacancy: DataTypes.BOOLEAN,
-    TypeVacancyId: DataTypes.BIGINT
+    status_vacancy_work: DataTypes.STRING,
+    start_vacancy: DataTypes.DATE,
+    finish_vacancy: DataTypes.DATE,
+    TypeVacancyId: DataTypes.BIGINT,
+    extra_data: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Vacancy',

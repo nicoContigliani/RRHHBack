@@ -16,16 +16,28 @@ module.exports = {
         type: Sequelize.TEXT
       },
       requirements: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       responsibilities: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       status_vacancy: {
         type: Sequelize.BOOLEAN
       },
+      status_vacancy_work: {
+        type: Sequelize.STRING
+      },
+      start_vacancy: {
+        type: Sequelize.DATE
+      },
+      finish_vacancy: {
+        type: Sequelize.DATE
+      },
       TypeVacancyId: {
         type: Sequelize.BIGINT
+      },
+      extra_data: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

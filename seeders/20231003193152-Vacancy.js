@@ -30,6 +30,9 @@ module.exports = {
           'Bachelors degree in Computer Science or a related field. 2+ years of experience in frontend development. Experience with React and TypeScript is a plus.',
         responsibilities:
           'Develop and maintain our frontend web applications. Work with our team to design and implement new features. Collaborate with other developers to ensure that our code is well-written and maintainable.',
+        status_vacancy_work: 'to make',
+        start_vacancy: new Date('2023-10-06 12:05:25.993'),
+        finish_vacancy: new Date('2023-10-06 12:05:25.993'),
         status_vacancy: true,
         TypeVacancyId: 1,
         createdAt: new Date('2023-10-06 12:05:25.993'),
@@ -44,6 +47,10 @@ module.exports = {
           'Bachelors degree in Computer Science or a related field. 2+ years of experience in backend development. Experience with Java, Python, or another backend programming language is a plus.',
         responsibilities:
           'Develop and maintain our backend web applications. Work with our team to design and implement new features. Collaborate with other developers to ensure that our code is well-written and maintainable.',
+        status_vacancy_work: 'to make',
+        start_vacancy: new Date('2023-10-06 12:05:25.993'),
+        finish_vacancy: new Date('2023-10-06 12:05:25.993'),
+        status_vacancy: true,
         status_vacancy: true,
         TypeVacancyId: 2,
         createdAt: new Date('2023-10-06 12:05:25.993'),
