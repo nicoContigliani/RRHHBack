@@ -55,6 +55,15 @@ export const getDao = async (data: any) => {
 
 export const getIdDao = async (data: any) => {
       return await Vacancy.findAll({
+            include: [
+                  {
+
+                        model: TypeVacancy
+                  },
+                  {
+                        model:Company
+                  }
+            ],
             where: {
                   id: data       // Filtrar por id
             }

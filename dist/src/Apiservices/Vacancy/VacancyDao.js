@@ -27,6 +27,14 @@ const getDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
 exports.getDao = getDao;
 const getIdDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
     return yield Vacancy.findAll({
+        include: [
+            {
+                model: TypeVacancy
+            },
+            {
+                model: Company
+            }
+        ],
         where: {
             id: data // Filtrar por id
         }

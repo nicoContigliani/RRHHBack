@@ -1,3 +1,4 @@
+
 'use strict';
 const {
   Model
@@ -11,18 +12,18 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-          // define association here
-          Vacancy.belongsToMany(models.Interview, { through: models.InterviewVacance });
-          // Vacancy.belongsToMany(models.Company, { through: models.InterviewVacance });
-          Vacancy.belongsTo(models.TypeVacancy, { foreignKey: 'TypeVacancyId' });
-          Vacancy.belongsToMany(models.Company, { through: models.CompanyVacances });
-    
-          // Vacancy.belongsToMany(models.RoadMap, { through: models.RoadMapVacance, as: 'RoadMap' });
-          Vacancy.belongsToMany(models.RoadMap, { through: models.RoadMapVacance });
-    
-          Vacancy.belongsTo(models.TypeVacancy, {
-            foreignKey: 'id',
-          });
+      Vacancy.belongsToMany(models.Interview, { through: models.InterviewVacance });
+      // Vacancy.belongsToMany(models.Company, { through: models.InterviewVacance });
+      Vacancy.belongsTo(models.TypeVacancy, { foreignKey: 'TypeVacancyId' });
+      Vacancy.belongsToMany(models.Company, { through: models.CompanyVacances });
+
+      // Vacancy.belongsToMany(models.RoadMap, { through: models.RoadMapVacance, as: 'RoadMap' });
+      Vacancy.belongsToMany(models.RoadMap, { through: models.RoadMapVacance });
+
+      Vacancy.belongsTo(models.TypeVacancy, {
+        foreignKey: 'id',
+      });
+
     }
   }
   Vacancy.init({
@@ -35,8 +36,7 @@ module.exports = (sequelize, DataTypes) => {
     start_vacancy: DataTypes.DATE,
     finish_vacancy: DataTypes.DATE,
     TypeVacancyId: DataTypes.BIGINT,
-    extra_data: DataTypes.STRING,
-    location: DataTypes.STRING
+    extra_data: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Vacancy',

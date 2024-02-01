@@ -22,7 +22,7 @@ sequelize model:create --name TypeInterview --attributes name_type_test:string,d
 sequelize model:create --name Interview --attributes interviewDateTime:date,interviewTypeId:bigint,interviewers:string,interviewMethod:string,duration:bigint,rating:float,comments:string,inerview_result:string,requiredActions:string,nextActionDateTime:date,status_interview:boolean,TypeInterviewId:bigint
 sequelize model:create --name TypeVacancy --attributes name_vacancy_type:string,description_vacancy_type:string,status_vacancy_type:boolean
 
-sequelize model:create --name Vacancy --attributes title:string,description:text,requirements:text,responsibilities:text,status_vacancy:boolean,status_vacancy_work:string,start_vacancy:date,finish_vacancy:date,TypeVacancyId:bigint,extra_data:string
+sequelize model:create --name Vacancy --attributes title:string,description:text,requirements:text,responsibilities:text,status_vacancy:boolean,status_vacancy_work:string,start_vacancy:date,finish_vacancy:date,TypeVacancyId:bigint,extra_data:string,location:string
 
 sequelize model:create --name SoftSkill --attributes name_SoftSkill:string,description:text,status_SoftSkill:boolean,initial_value_SoftSkill:integer
 sequelize model:create --name HardSkill --attributes name_HardSkill:string,proficiency:string,experienceYears:integer,status_HardSkill:boolean,initial_value_HardSkill:integer
