@@ -4,7 +4,8 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Users', {
       id: {
-        allowNull: false,
+        // allowNull: false,
+        unique: true, // Ensure uniqueness
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
@@ -22,7 +23,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       birthday: {
-        type: Sequelize.STRING
+        type: Sequelize.DATE
       },
       Score: {
         type: Sequelize.BIGINT
@@ -40,7 +41,12 @@ module.exports = {
       }
     });
   },
+
+
+  
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Users');
   }
 };
+
+// ALTER SEQUENCE "Users_id_seq" RESTART WITH 6;

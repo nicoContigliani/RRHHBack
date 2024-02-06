@@ -1,0 +1,11 @@
+--- crear usuario general 
+--- ingresar a crear cv o ver CV 
+--- Crear CV  (se ha creado usuario y ahora se crea cv... a su vez se agrega CVUser con ambos id)
+
+---- luego se agrega en cvSection el cVID y se le pega por ahora 9 secciones del 1 al 9
+
+---- em la tabla seccion no se hace nada 
+
+luego llega lo mas complejo 
+
+en itemSection -> todol oque viene de los steps

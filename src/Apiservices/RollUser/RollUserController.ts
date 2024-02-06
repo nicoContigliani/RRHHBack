@@ -36,6 +36,7 @@ export const getId = async (req: Request, res: Response, next: NextFunction) => 
 
 export const post = async (req: Request, res: Response, next: NextFunction) => {
     let { error, value } = RollUserValidationSchema.validate(req.body);
+    console.log("🚀 ~ post ~ value:", value)
     try {
         const currentTime = await today()
         value.createdAt = currentTime
@@ -44,6 +45,7 @@ export const post = async (req: Request, res: Response, next: NextFunction) => {
         if (error) console.error(error.details)
         if (error) return res.status(500).json(errorResponse);
         const dataReturnS = await postDao(value)
+        console.log("🚀 ~ post ~ dataReturnS:", dataReturnS)
         if (!dataReturnS) return res.status(500).json(errorResponse);
 
         let returnExist = await getAllAlways()

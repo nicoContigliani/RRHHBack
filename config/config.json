@@ -2,8 +2,8 @@
   "development": {
     "username": "root",
     "password": "postgres",
-    "database": "integratio",
     "host": "127.0.0.1",
+    "database": "integratio",
     "dialect": "postgres"
   },
   "test": {

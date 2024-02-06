@@ -56,6 +56,7 @@ const getId = (req, res, next) => __awaiter(void 0, void 0, void 0, function* ()
 exports.getId = getId;
 const post = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     let { error, value } = RollUserValidationSchema_1.default.validate(req.body);
+    console.log("🚀 ~ post ~ value:", value);
     try {
         const currentTime = yield (0, today_services_1.today)();
         value.createdAt = currentTime;
@@ -65,6 +66,7 @@ const post = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () 
         if (error)
             return res.status(500).json(errorResponse);
         const dataReturnS = yield (0, RollUserDao_1.postDao)(value);
+        console.log("🚀 ~ post ~ dataReturnS:", dataReturnS);
         if (!dataReturnS)
             return res.status(500).json(errorResponse);
         let returnExist = yield getAllAlways();

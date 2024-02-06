@@ -8,18 +8,66 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.login = exports.signIn = void 0;
 const authDao_1 = require("./authDao");
+const RollUserDao_1 = require("../RollUser/RollUserDao");
 const alert_services_1 = require("../../services/alert.services");
 const bcrypt_services_1 = require("../../services/bcrypt.services");
 const UserPasswordReturnToCompare_services_1 = require("../../services/UserPasswordReturnToCompare.services");
 const clean_password_services_1 = require("../../services/clean.password.services");
 const jwt_services_1 = require("../../services/jwt.services");
 const authDto_1 = require("./authDto");
+const SigInValidationSchema_1 = __importDefault(require("../../ValidationSchema/SigInValidationSchema"));
+const today_services_1 = require("../../services/today.services");
 // import { getIdDao } from '../User/userDao';
+const errorResponse = { data: [], message: (0, alert_services_1.AlertServices)("Error", "Error create"), status: 500 };
 const signIn = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     console.log("toma por miron");
+    const { email, password, fullname, phone, birthday, Score, status_user } = req === null || req === void 0 ? void 0 : req.body;
+    let dataReturn = yield (0, authDao_1.getDaoFilter)(email);
+    if (dataReturn)
+        return res.status(200).json({ data: [], message: (0, alert_services_1.AlertServices)("Error", "There is Client"), status: 500 });
+    let { error, value } = SigInValidationSchema_1.default.validate(req.body);
+    console.log("🚀 ~ signIn ~ value:", value);
+    try {
+        const currentTime = yield (0, today_services_1.today)();
+        const bcryptReturn = yield (0, bcrypt_services_1.bcryptCreatePassword)(password);
+        value.createdAt = currentTime;
+        value.updatedAt = currentTime;
+        value.password = bcryptReturn;
+        if (error)
+            console.error(error.details);
+        if (error)
+            return res.status(500).json(errorResponse);
+        const dataReturnS = yield (0, authDao_1.postDao)(value);
+        if (dataReturnS) {
+            let { dataValues: { id, status_user } } = dataReturnS;
+            try {
+                const todo = { UserId: id, RoleId: 2, status_role_user: status_user };
+                if (id && status_user)
+                    yield (0, RollUserDao_1.postDao)(todo);
+            }
+            catch (error) {
+                console.log("🚀 ~ error:", error);
+            }
+            let cleanPasswordUser = yield (0, clean_password_services_1.cleanPassword)(dataReturnS);
+            if (!cleanPasswordUser)
+                return res.status(500).json({ data: [], message: (0, alert_services_1.AlertServices)("Error", "Error create"), status: 500 });
+            const JTWToken = yield (0, jwt_services_1.jwtGenerateToken)(cleanPasswordUser);
+            if (!JTWToken)
+                return res.status(500).json({ data: [], message: (0, alert_services_1.AlertServices)("Error", "Error JTWToken "), status: 500 });
+            if (JTWToken)
+                return res.status(200).json({ data: [{ token: JTWToken, login: true, User: cleanPasswordUser }], message: (0, alert_services_1.AlertServices)("Success", "Client True"), status: 200 });
+        }
+    }
+    catch (error) {
+        console.log("Error in createTypeTest:", error);
+        return res.status(500).json({ data: [], message: (0, alert_services_1.AlertServices)("Error", "Internal Server Error"), status: 500 });
+    }
 });
 exports.signIn = signIn;
 const login = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {

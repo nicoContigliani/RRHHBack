@@ -271,3 +271,47 @@
 // INSERT INTO public."itemSections" (id, "ItemId", "SectionId", "position", title_atribute, atribute, detail_atribute, status_item_section, "startDate", "endDate", "createdAt", "updatedAt") VALUES(12, 600, 6, 1, 'Hard Skill', 'React', '', true, '2025-03-11 00:00:00.000', '2025-03-11 00:00:00.000', '2025-03-11 00:00:00.000', '2025-03-11 00:00:00.000');
 
 // select * from users uS ;
+
+
+
+
+
+
+//ALTER SEQUENCE "BrachUsers_id_seq" RESTART WITH 4;
+//ALTER SEQUENCE "Branches_id_seq" RESTART WITH 4;
+//ALTER SEQUENCE "BranchShifts_id_seq" RESTART WITH 4;
+//ALTER SEQUENCE "Companies_id_seq" RESTART WITH 4;
+//ALTER SEQUENCE "CompanyVacances_id_seq" RESTART WITH 3;
+//ALTER SEQUENCE "CVs_id_seq" RESTART WITH 5;
+//ALTER SEQUENCE "CVSections_id_seq" RESTART WITH 14;
+//ALTER SEQUENCE "CVUsers_id_seq" RESTART WITH 2;
+//ALTER SEQUENCE "Interviews_id_seq" RESTART WITH 3;
+//ALTER SEQUENCE "InterviewResponsibles_id_seq" RESTART WITH 5;
+//ALTER SEQUENCE "InterviewRoadMaps_id_seq" RESTART WITH 3;
+//ALTER SEQUENCE "InterviewUsers_id_seq" RESTART WITH 3;
+//ALTER SEQUENCE "InterviewVacances_id_seq" RESTART WITH 3;
+
+//ojoitem
+
+//TODO estas dos generan error
+//ALTER SEQUENCE "Permissions_id_seq" RESTART WITH 6;
+//ALTER SEQUENCE "PermissionRolls_id_seq" RESTART WITH 6;
+
+
+//ALTER SEQUENCE "Results_id_seq" RESTART WITH 3;
+//ALTER SEQUENCE "ResultTests_id_seq" RESTART WITH 5;
+//ALTER SEQUENCE "RoadMaps_id_seq" RESTART WITH 5;
+//ALTER SEQUENCE "RoadMapVacances_id_seq" RESTART WITH 3;
+//ALTER SEQUENCE "Roles_id_seq" RESTART WITH 4;
+//ALTER SEQUENCE "RollUsers_id_seq" RESTART WITH 6;
+//ALTER SEQUENCE "Sections_id_seq" RESTART WITH 10;
+//ALTER SEQUENCE "SectionTypes_id_seq" RESTART WITH 10;
+//ALTER SEQUENCE "Shifts_id_seq" RESTART WITH 4;
+//ALTER SEQUENCE "TestInterviews_id_seq" RESTART WITH 3;
+//ALTER SEQUENCE "Tests_id_seq" RESTART WITH 4;
+//ALTER SEQUENCE "TypeInterviews_id_seq" RESTART WITH 4;
+//ALTER SEQUENCE "TypeShifts_id_seq" RESTART WITH 4;
+//ALTER SEQUENCE "TypeTests_id_seq" RESTART WITH 4;
+//ALTER SEQUENCE "TypeVacancies_id_seq" RESTART WITH 4;
+//ALTER SEQUENCE "Users_id_seq" RESTART WITH 6;
+//ALTER SEQUENCE "itemSections_id_seq" RESTART WITH 3;

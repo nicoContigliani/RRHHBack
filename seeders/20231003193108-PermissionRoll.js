@@ -15,6 +15,14 @@ module.exports = {
 
     await queryInterface.bulkInsert('PermissionRolls', [
       {
+        id: 1,
+        RoleId: 3,
+        PermissionId: 1,
+        status_permission_roll: true,
+        createdAt: new Date('2023-10-06 12:05:25.915'),
+        updatedAt: new Date('2023-10-06 12:05:25.915'),
+      },
+      {
         id: 2,
         RoleId: 1,
         PermissionId: 5,
@@ -46,14 +54,7 @@ module.exports = {
         createdAt: new Date('2023-10-06 12:05:25.915'),
         updatedAt: new Date('2023-10-06 12:05:25.915'),
       },
-      {
-        id: 1,
-        RoleId: 3,
-        PermissionId: 1,
-        status_permission_roll: true,
-        createdAt: new Date('2023-10-06 12:05:25.915'),
-        updatedAt: new Date('2023-10-06 12:05:25.915'),
-      },
+    
       // ... otras inserciones de datos en PermissionRolls
     ], {});
   },

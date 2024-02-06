@@ -4,7 +4,8 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('PermissionRolls', {
       id: {
-        allowNull: false,
+        // allowNull: false,
+        unique: true, // Ensure uniqueness        
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER

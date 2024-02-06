@@ -18,17 +18,9 @@ module.exports = {
 
     await queryInterface.bulkInsert('RollUsers', [
       {
-        id: 4,
-        UserId: 3,
-        RoleId: 3,
-        status_role_user: true,
-        createdAt: new Date('2023-10-06 12:05:25.940'),
-        updatedAt: new Date('2023-10-06 12:05:25.940'),
-      },
-      {
-        id: 5,
-        UserId: 4,
-        RoleId: 3,
+        id: 1,
+        UserId: 2,
+        RoleId: 1,
         status_role_user: true,
         createdAt: new Date('2023-10-06 12:05:25.940'),
         updatedAt: new Date('2023-10-06 12:05:25.940'),
@@ -50,13 +42,23 @@ module.exports = {
         updatedAt: new Date('2023-10-06 12:05:25.940'),
       },
       {
-        id: 1,
-        UserId: 2,
-        RoleId: 1,
+        id: 4,
+        UserId: 3,
+        RoleId: 3,
         status_role_user: true,
         createdAt: new Date('2023-10-06 12:05:25.940'),
         updatedAt: new Date('2023-10-06 12:05:25.940'),
       },
+      {
+        id: 5,
+        UserId: 4,
+        RoleId: 3,
+        status_role_user: true,
+        createdAt: new Date('2023-10-06 12:05:25.940'),
+        updatedAt: new Date('2023-10-06 12:05:25.940'),
+      },
+ 
+
       // ... otras inserciones de datos en RollUsers
     ], {});
   },

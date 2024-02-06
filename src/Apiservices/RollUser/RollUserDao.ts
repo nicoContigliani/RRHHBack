@@ -51,6 +51,7 @@ export const getIdDao = async (data: any) => {
       });
 }
 export const postDao = async (data: any) => {
+
       try {
             return await RollUser.create(data)
       } catch (error) {

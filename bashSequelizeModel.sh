@@ -1,4 +1,4 @@
-sequelize model:create --name User --attributes email:string,password:string,fullname:string,phone:string,birthday:string,Score:bigint,status_user:boolean
+sequelize model:create --name User --attributes email:string,password:string,fullname:string,phone:string,birthday:date,Score:bigint,status_user:boolean
 sequelize model:create --name Role --attributes name_role:string,status_role:boolean,description_role:string;
 sequelize model:create --name Permission --attributes name_permission:string,conditions:string,code:string,creates:boolean,reads:boolean,updates:boolean,deletes:boolean,admins:boolean,exports:boolean,imports:boolean,approve:boolean,generate_reports:boolean,configure:boolean,restrict:boolean,manage_users:boolean,manage_roles:boolean,audit:boolean,status_permission:boolean
 sequelize model:create --name RollUser --attributes UserId:bigint,RoleId:bigint,status_role_user:boolean
