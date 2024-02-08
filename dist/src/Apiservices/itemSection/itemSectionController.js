@@ -56,22 +56,43 @@ const getId = (req, res, next) => __awaiter(void 0, void 0, void 0, function* ()
 });
 exports.getId = getId;
 const post = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    let { error, value } = itemSectionValidationSchema_1.default.validate(req.body);
+    const isArray = Array.isArray(req.body);
     try {
         const currentTime = yield (0, today_services_1.today)();
-        value.createdAt = currentTime;
-        value.updatedAt = currentTime;
-        if (error)
-            console.error(error.details);
-        if (error)
-            return res.status(500).json(errorResponse);
-        const dataReturnS = yield (0, itemSectionDao_1.postDao)(value);
-        if (!dataReturnS)
-            return res.status(500).json(errorResponse);
+        const dataReturnS = [];
+        if (isArray) {
+            for (const obj of req.body) {
+                const { error, value } = itemSectionValidationSchema_1.default.validate(obj);
+                if (error) {
+                    console.log(obj, "*****************************");
+                    console.error(error.details);
+                    return res.status(500).json(errorResponse);
+                }
+                obj.createdAt = currentTime;
+                obj.updatedAt = currentTime;
+                const dataReturn = yield (0, itemSectionDao_1.postDao)(obj);
+                if (!dataReturn)
+                    return res.status(500).json(errorResponse);
+                dataReturnS.push(dataReturn);
+            }
+        }
+        else {
+            const { error, value } = itemSectionValidationSchema_1.default.validate(req.body);
+            if (error) {
+                console.error(error.details);
+                return res.status(500).json(errorResponse);
+            }
+            value.createdAt = currentTime;
+            value.updatedAt = currentTime;
+            const dataReturn = yield (0, itemSectionDao_1.postDao)(value);
+            if (!dataReturn)
+                return res.status(500).json(errorResponse);
+            dataReturnS.push(dataReturn);
+        }
         let returnExist = yield getAllAlways();
         if (!returnExist)
             return res.status(500).json(errorResponse);
-        return res.status(200).json({ data: returnExist, message: (0, alert_services_1.AlertServices)("Success", "Created"), status: 200 });
+        return res.status(200).json({ data: dataReturnS, message: (0, alert_services_1.AlertServices)("Success", "Created"), status: 200 });
     }
     catch (error) {
         console.log("Error in createTypeTest:", error);

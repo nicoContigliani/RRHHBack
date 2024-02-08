@@ -2,10 +2,282 @@
 --- ingresar a crear cv o ver CV 
 --- Crear CV  (se ha creado usuario y ahora se crea cv... a su vez se agrega CVUser con ambos id)
 
----- luego se agrega en cvSection el cVID y se le pega por ahora 9 secciones del 1 al 9
+--- luego segun el perfil(X) se inserta  copias section[{}] y toma el ultimo id el numero ya uqe luego en cvSection va del primer idSectionCopiado hata el ultimo idSectionCopiado 
 
----- em la tabla seccion no se hace nada 
+---- luego se agrega en cvSection el cVID y se le pega (el ultimo id creado en section el numero ya uqe luego en cvSection va del primer idSectionCopiado hata el ultimo idSectionCopiado )
 
 luego llega lo mas complejo 
 
-en itemSection -> todol oque viene de los steps
+en itemSection -> todol oque viene de los steps iportante (capturar de Section los 9 o mas id  de la seccion que pueden ser los últimos)
+
+
+
+
+[
+  {
+    "id": 1,
+    "ItemId": 100,
+    "SectionId": 10,
+    "position": 1,
+    "title_atribute": "fullname",
+    "atribute": "India Contigliani",
+    "detail_atribute": null,
+    "status_item_section": true,
+    "startDate": "2023-10-06T12:05:25.993Z",
+    "endDate": "2023-10-06T12:05:25.993Z",
+    "createdAt": "2023-10-06T12:05:25.993Z",
+    "updatedAt": "2023-10-06T12:05:25.993Z"
+  },
+  {
+    "id": 2,
+    "ItemId": 101,
+    "SectionId": 10,
+    "position": 1,
+    "title_atribute": "email",
+    "atribute": "nico.contigliani@gmail.com",
+    "detail_atribute": "",
+    "status_item_section": true,
+    "startDate": "2023-10-06T12:05:25.993Z",
+    "endDate": "2023-10-06T12:05:25.993Z",
+    "createdAt": "2023-10-06T12:05:25.993Z",
+    "updatedAt": "2023-10-06T12:05:25.993Z"
+  },
+  {
+    "id": 3,
+    "ItemId": 102,
+    "SectionId": 10,
+    "position": 1,
+    "title_atribute": "phone",
+    "atribute": "+5492612444106",
+    "detail_atribute": "",
+    "status_item_section": true,
+    "startDate": "2023-10-06T12:05:25.993Z",
+    "endDate": "2023-10-06T12:05:25.993Z",
+    "createdAt": "2023-10-06T12:05:25.993Z",
+    "updatedAt": "2023-10-06T12:05:25.993Z"
+  },
+  {
+    "id": 4,
+    "ItemId": 103,
+    "SectionId": 10,
+    "position": 1,
+    "title_atribute": "birthday",
+    "atribute": "06/03/1988",
+    "detail_atribute": "",
+    "status_item_section": true,
+    "startDate": "2023-10-06T12:05:25.993Z",
+    "endDate": "2023-10-06T12:05:25.993Z",
+    "createdAt": "2023-10-06T12:05:25.993Z",
+    "updatedAt": "2023-10-06T12:05:25.993Z"
+  },
+  {
+    "id": 5,
+    "ItemId": 200,
+    "SectionId": 11,
+    "position": 1,
+    "title_atribute": "Description",
+    "atribute": "Soy un profesional completo que hace...",
+    "detail_atribute": "",
+    "status_item_section": true,
+    "startDate": "2023-10-06T12:05:25.993Z",
+    "endDate": "2023-10-06T12:05:25.993Z",
+    "createdAt": "2023-10-06T12:05:25.993Z",
+    "updatedAt": "2023-10-06T12:05:25.993Z"
+  },
+  {
+    "id": 6,
+    "ItemId": 300,
+    "SectionId": 12,
+    "position": 1,
+    "title_atribute": "Work",
+    "atribute": "OpenDev",
+    "detail_atribute": "",
+    "status_item_section": true,
+    "startDate": "2023-10-06T12:05:25.993Z",
+    "endDate": "2023-10-06T12:05:25.993Z",
+    "createdAt": "2023-10-06T12:05:25.993Z",
+    "updatedAt": "2023-10-06T12:05:25.993Z"
+  },
+  {
+    "id": 7,
+    "ItemId": 301,
+    "SectionId": 12,
+    "position": 1,
+    "title_atribute": "Work",
+    "atribute": "Flexxus",
+    "detail_atribute": "",
+    "status_item_section": true,
+    "startDate": "2023-10-06T12:05:25.993Z",
+    "endDate": "2023-10-06T12:05:25.993Z",
+    "createdAt": "2023-10-06T12:05:25.993Z",
+    "updatedAt": "2023-10-06T12:05:25.993Z"
+  },
+  {
+    "id": 8,
+    "ItemId": 302,
+    "SectionId": 12,
+    "position": 1,
+    "title_atribute": "Work",
+    "atribute": "GDP",
+    "detail_atribute": "",
+    "status_item_section": true,
+    "startDate": "2023-10-06T12:05:25.993Z",
+    "endDate": "2023-10-06T12:05:25.993Z",
+    "createdAt": "2023-10-06T12:05:25.993Z",
+    "updatedAt": "2023-10-06T12:05:25.993Z"
+  },
+  {
+    "id": 9,
+    "ItemId": 400,
+    "SectionId": 13,
+    "position": 1,
+    "title_atribute": "Work Freelancer",
+    "atribute": "Sistema seguros",
+    "detail_atribute": "",
+    "status_item_section": true,
+    "startDate": "2023-10-06T12:05:25.993Z",
+    "endDate": "2023-10-06T12:05:25.993Z",
+    "createdAt": "2023-10-06T12:05:25.993Z",
+    "updatedAt": "2023-10-06T12:05:25.993Z"
+  },
+  {
+    "id": 10,
+    "ItemId": 500,
+    "SectionId": 14,
+    "position": 1,
+    "title_atribute": "Soft Skill",
+    "atribute": "curious",
+    "detail_atribute": "",
+    "status_item_section": true,
+    "startDate": "2023-10-06T12:05:25.993Z",
+    "endDate": "2023-10-06T12:05:25.993Z",
+    "createdAt": "2023-10-06T12:05:25.993Z",
+    "updatedAt": "2023-10-06T12:05:25.993Z"
+  },
+   {
+    "id": 11,
+    "ItemId": 501,
+    "SectionId": 14,
+    "position": 1,
+    "title_atribute": "Soft Skill",
+    "atribute": "responsibility",
+    "detail_atribute": "",
+    "status_item_section": true,
+    "startDate": "2023-10-06T12:05:25.993Z",
+    "endDate": "2023-10-06T12:05:25.993Z",
+    "createdAt": "2023-10-06T12:05:25.993Z",
+    "updatedAt": "2023-10-06T12:05:25.993Z"
+  },
+  {
+    "id": 12,
+    "ItemId": 600,
+    "SectionId": 15,
+    "position": 1,
+    "title_atribute": "Hard Skill",
+    "atribute": "React",
+    "detail_atribute": "",
+    "status_item_section": true,
+    "startDate": "2023-10-06T12:05:25.993Z",
+    "endDate": "2023-10-06T12:05:25.993Z",
+    "createdAt": "2023-10-06T12:05:25.993Z",
+    "updatedAt": "2023-10-06T12:05:25.993Z"
+  },
+  {
+    "id": 13,
+    "ItemId": 601,
+    "SectionId": 15,
+    "position": 1,
+    "title_atribute": "Hard Skill",
+    "atribute": "Node",
+    "detail_atribute": "",
+    "status_item_section": true,
+    "startDate": "2023-10-06T12:05:25.993Z",
+    "endDate": "2023-10-06T12:05:25.993Z",
+    "createdAt": "2023-10-06T12:05:25.993Z",
+    "updatedAt": "2023-10-06T12:05:25.993Z"
+  },
+  {
+    "id": 14,
+    "ItemId": 602,
+    "SectionId": 15,
+    "position": 1,
+    "title_atribute": "Hard Skill",
+    "atribute": "Express",
+    "detail_atribute": "",
+    "status_item_section": true,
+    "startDate": "2023-10-06T12:05:25.993Z",
+    "endDate": "2023-10-06T12:05:25.993Z",
+    "createdAt": "2023-10-06T12:05:25.993Z",
+    "updatedAt": "2023-10-06T12:05:25.993Z"
+  },
+  {
+    "id": 15,
+    "ItemId": 603,
+    "SectionId": 15,
+    "position": 1,
+    "title_atribute": "Hard Skill",
+    "atribute": "Mongo",
+    "detail_atribute": "",
+    "status_item_section": true,
+    "startDate": "2023-10-06T12:05:25.993Z",
+    "endDate": "2023-10-06T12:05:25.993Z",
+    "createdAt": "2023-10-06T12:05:25.993Z",
+    "updatedAt": "2023-10-06T12:05:25.993Z"
+  },
+  {
+    "id": 16,
+    "ItemId": 604,
+    "SectionId": 15,
+    "position": 1,
+    "title_atribute": "Hard Skill",
+    "atribute": "Postgres",
+    "detail_atribute": "",
+    "status_item_section": true,
+    "startDate": "2023-10-06T12:05:25.993Z",
+    "endDate": "2023-10-06T12:05:25.993Z",
+    "createdAt": "2023-10-06T12:05:25.993Z",
+    "updatedAt": "2023-10-06T12:05:25.993Z"
+  },
+  {
+    "id": 17,
+    "ItemId": 700,
+    "SectionId": 16,
+    "position": 1,
+    "title_atribute": "Studie",
+    "atribute": "IESS",
+    "detail_atribute": "",
+    "status_item_section": true,
+    "startDate": "2023-10-06T12:05:25.993Z",
+    "endDate": "2023-10-06T12:05:25.993Z",
+    "createdAt": "2023-10-06T12:05:25.993Z",
+    "updatedAt": "2023-10-06T12:05:25.993Z"
+  },
+  {
+    "id": 18,
+    "ItemId": 800,
+    "SectionId": 17,
+    "position": 1,
+    "title_atribute": "Lenguaje",
+    "atribute": "English",
+    "detail_atribute": "",
+    "status_item_section": true,
+    "startDate": "2023-10-06T12:05:25.993Z",
+    "endDate": "2023-10-06T12:05:25.993Z",
+    "createdAt": "2023-10-06T12:05:25.993Z",
+    "updatedAt": "2023-10-06T12:05:25.993Z"
+  },
+  {
+    "id": 19,
+    "ItemId": 900,
+    "SectionId": 18,
+    "position": 1,
+    "title_atribute": "Disponibility",
+    "atribute": "All",
+    "detail_atribute": "",
+    "status_item_section": true,
+    "startDate": "2023-10-06T12:05:25.993Z",
+    "endDate": "2023-10-06T12:05:25.993Z",
+    "createdAt": "2023-10-06T12:05:25.993Z",
+    "updatedAt": "2023-10-06T12:05:25.993Z"
+  }
+]

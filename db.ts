@@ -314,4 +314,4 @@
 //ALTER SEQUENCE "TypeTests_id_seq" RESTART WITH 4;
 //ALTER SEQUENCE "TypeVacancies_id_seq" RESTART WITH 4;
 //ALTER SEQUENCE "Users_id_seq" RESTART WITH 6;
-//ALTER SEQUENCE "itemSections_id_seq" RESTART WITH 3;
+//ALTER SEQUENCE "itemSections_id_seq" RESTART WITH 13;

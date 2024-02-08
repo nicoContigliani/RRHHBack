@@ -37,26 +37,47 @@ export const getId = async (req: Request, res: Response, next: NextFunction) => 
 }
 
 export const post = async (req: Request, res: Response, next: NextFunction) => {
-    let { error, value } = TestInterviewValidationSchema.validate(req.body);
+    const isArray = Array.isArray(req.body);
+
     try {
-        const currentTime = await today()
-        value.createdAt = currentTime
-        value.updatedAt = currentTime
+        const currentTime = await today();
+        const dataReturnS = [];
 
-        if (error) console.error(error.details)
-        if (error) return res.status(500).json(errorResponse);
+        if (isArray) {
+            for (const obj of req.body) {
+                const { error, value } = TestInterviewValidationSchema.validate(obj);
+                if (error) {
+                    console.error(error.details);
+                    return res.status(500).json(errorResponse);
+                }
+                obj.createdAt = currentTime;
+                obj.updatedAt = currentTime;
+                const dataReturn = await postDao(obj);
+                if (!dataReturn) return res.status(500).json(errorResponse);
+                dataReturnS.push(dataReturn);
+            }
+        } else {
+            const { error, value } = TestInterviewValidationSchema.validate(req.body);
+            if (error) {
+                console.error(error.details);
+                return res.status(500).json(errorResponse);
+            }
+            value.createdAt = currentTime;
+            value.updatedAt = currentTime;
+            const dataReturn = await postDao(value);
+            if (!dataReturn) return res.status(500).json(errorResponse);
+            dataReturnS.push(dataReturn);
+        }
 
-        const dataReturnS = await postDao(value)
-        if (!dataReturnS) return res.status(500).json(errorResponse);
-
-        let returnExist = await getAllAlways()
+        let returnExist = await getAllAlways();
         if (!returnExist) return res.status(500).json(errorResponse);
 
-        return res.status(200).json({ data: returnExist, message: AlertServices("Success", "Created"), status: 200 });
+        return res.status(200).json({ data: dataReturnS, message: AlertServices("Success", "Created"), status: 200 });
     } catch (error) {
         console.log("Error in createTypeTest:", error);
         return res.status(500).json({ data: [], message: AlertServices("Error", "Internal Server Error"), status: 500 });
     }
+
 }
 
 export const update = async (req: Request, res: Response, next: NextFunction) => {

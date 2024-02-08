@@ -15,7 +15,7 @@ module.exports = {
 
     await queryInterface.bulkInsert('CVSections', [
       {
-        id: 5,
+        id: 1,
         CVId: 2,
         SectionId: 1,
         position: 1,
@@ -25,7 +25,7 @@ module.exports = {
         updatedAt: new Date('2025-03-11 00:00:00.000'),
       },
       {
-        id: 6,
+        id: 2,
         CVId: 2,
         SectionId: 2,
         position: 1,
@@ -35,7 +35,7 @@ module.exports = {
         updatedAt: new Date('2025-03-11 00:00:00.000'),
       },
       {
-        id: 7,
+        id: 3,
         CVId: 2,
         SectionId: 3,
         position: 1,
@@ -45,7 +45,7 @@ module.exports = {
         updatedAt: new Date('2025-03-11 00:00:00.000'),
       },
       {
-        id: 8,
+        id: 4,
         CVId: 2,
         SectionId: 4,
         position: 1,
@@ -55,7 +55,7 @@ module.exports = {
         updatedAt: new Date('2025-03-11 00:00:00.000'),
       },
       {
-        id: 9,
+        id: 5,
         CVId: 2,
         SectionId: 5,
         position: 1,
@@ -65,7 +65,7 @@ module.exports = {
         updatedAt: new Date('2025-03-11 00:00:00.000'),
       },
       {
-        id: 10,
+        id: 6,
         CVId: 2,
         SectionId: 6,
         position: 1,
@@ -75,7 +75,7 @@ module.exports = {
         updatedAt: new Date('2025-03-11 00:00:00.000'),
       },
       {
-        id: 11,
+        id: 7,
         CVId: 2,
         SectionId: 7,
         position: 1,
@@ -85,7 +85,7 @@ module.exports = {
         updatedAt: new Date('2025-03-11 00:00:00.000'),
       },
       {
-        id: 12,
+        id: 8,
         CVId: 2,
         SectionId: 8,
         position: 1,
@@ -95,7 +95,7 @@ module.exports = {
         updatedAt: new Date('2025-03-11 00:00:00.000'),
       },
       {
-        id: 13,
+        id: 9,
         CVId: 2,
         SectionId: 9,
         position: 1,

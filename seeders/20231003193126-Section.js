@@ -3,20 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('Sections', [{
-     *   id: 7,
-     *   SectionTypeId: 7,
-     *   title: 'education',
-     *   content: '',
-     *   status_section: true,
-     *   createdAt: new Date('2023-11-28 10:18:44.332'),
-     *   updatedAt: new Date('2023-11-28 10:18:44.332')
-     * }], {});
-     */
+
 
     await queryInterface.bulkInsert('Sections', [
     

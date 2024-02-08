@@ -56,7 +56,6 @@ const getDaoFilter = (data) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.getDaoFilter = getDaoFilter;
 const postDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log("🚀 ~ postDao ~ data:", data, "*************");
     try {
         return yield User.create(data);
     }
