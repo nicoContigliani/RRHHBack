@@ -64,7 +64,6 @@ const post = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () 
             for (const obj of req.body) {
                 const { error, value } = itemSectionValidationSchema_1.default.validate(obj);
                 if (error) {
-                    console.log(obj, "*****************************");
                     console.error(error.details);
                     return res.status(500).json(errorResponse);
                 }

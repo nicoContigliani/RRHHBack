@@ -1,8 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
+import { formaterDataAuthServices } from '../services/formaterDataAuth.services';
 
 
 export const Validator = (req: {
+    [x: string]: any;
     originalUrl: any;
     url(arg0: string, url: any): unknown;
     path(arg0: string, path: any): unknown;
@@ -16,8 +18,47 @@ export const Validator = (req: {
 
     try {
         const tokenValido: any | undefined | string = jwt.verify(token, process.env.JWT_SIGNATURE_GENERAL || 'pepito123');
-        // console.log("🚀 ~ file: validator.ts:16 ~ tokenValido:", tokenValido,"***************************")
-        // console.log("🚀 ~ file: validator.ts:16 ~ tokenValido:", req?.url)
+        console.log("🚀 ~ tokenValido:19**************************", tokenValido)
+        const {id,
+            email,
+            fullname,
+            phone,
+            birthday,
+            Score,
+            status_user,
+            name_role,
+            name_permission,
+            conditions,
+            code,
+            creates,
+            reads,
+            updates,
+            deletes,
+            admins,
+            exports,
+            imports,
+            approve,
+            generate_reports,
+            configure,
+            restrict,
+            manage_users,
+            manage_roles,
+            audit,
+            name_branch,
+            branch_long,
+            branch_lat,
+            branch_score,
+            company,
+            companyPhone,
+            companyEmail,
+            urlCompany,
+            status_company,
+            shift_name,
+            start_time,
+            end_time,
+            status_shift,} = formaterDataAuthServices(tokenValido)
+
+
 
         const rutaActual: string | undefined = req.originalUrl;
         console.log("🚀 ~ file: validator.ts:22 ~ rutaActual:", rutaActual)
@@ -27,6 +68,7 @@ export const Validator = (req: {
         if (req.method === 'GET') {
             // La solicitud viene de POST
             console.log("get")
+            console.log(req.params)
 
 
         } else {

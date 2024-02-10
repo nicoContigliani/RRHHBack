@@ -3,7 +3,7 @@ import { NextFunction, Request, Response } from 'express';
 import Joi from 'joi';
 
 
-import {getDao, getIdDao, postDao, updateDao,deletesDao } from './CVDao';
+import { getDao, getIdDao, postDao, updateDao, deletesDao } from './CVDao';
 
 import { statusActive } from '../../services/statusActive.services';
 import { AlertServices } from '../../services/alert.services';
@@ -16,13 +16,6 @@ const errorResponse = { data: [], message: AlertServices("Error", "Error create"
 
 export const get = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const contentType = req.headers['content-type'];
-
-        // Imprimir el header en la consola
-        console.log('Content-Type:', contentType);
-
-
-        
         const data = ""
         const dataReturn: any[] | undefined = await getDao(data)
         let returnExist = await statusActive(dataReturn)
@@ -44,25 +37,27 @@ export const getId = async (req: Request, res: Response, next: NextFunction) => 
 }
 
 export const post = async (req: Request, res: Response, next: NextFunction) => {
-    let { error, value } = CVValidationSchema.validate(req.body);
-    try {
-        const currentTime = await today()
-        value.createdAt = currentTime
-        value.updatedAt = currentTime
-        if (error) console.error(error.details)
-        if (error) return res.status(500).json(errorResponse);
 
-        const dataReturnS = await postDao(value)
-        if (!dataReturnS) return res.status(500).json(errorResponse);
+    console.log("toma por mirón")
+    // let { error, value } = CVValidationSchema.validate(req.body);
+    // try {
+    //     const currentTime = await today()
+    //     value.createdAt = currentTime
+    //     value.updatedAt = currentTime
+    //     if (error) console.error(error.details)
+    //     if (error) return res.status(500).json(errorResponse);
 
-        let returnExist = await getAllAlways()
-        if (!returnExist) return res.status(500).json(errorResponse);
+    //     const dataReturnS = await postDao(value)
+    //     if (!dataReturnS) return res.status(500).json(errorResponse);
 
-        return res.status(200).json({ data: returnExist, message: AlertServices("Success", "Created"), status: 200 });
-    } catch (error) {
-        console.log("Error in createTypeTest:", error);
-        return res.status(500).json({ data: [], message: AlertServices("Error", "Internal Server Error"), status: 500 });
-    }
+    //     let returnExist = await getAllAlways()
+    //     if (!returnExist) return res.status(500).json(errorResponse);
+
+    //     return res.status(200).json({ data: returnExist, message: AlertServices("Success", "Created"), status: 200 });
+    // } catch (error) {
+    //     console.log("Error in createTypeTest:", error);
+    //     return res.status(500).json({ data: [], message: AlertServices("Error", "Internal Server Error"), status: 500 });
+    // }
 }
 
 export const update = async (req: Request, res: Response, next: NextFunction) => {

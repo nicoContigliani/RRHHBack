@@ -10,6 +10,7 @@ import Branch from './routes/BranchRouter'
 import Company from './routes/CompanyRouter'
 import CompanyVacances from './routes/CompanyVacancesRouter'
 import CV from './routes/CVRouter'
+import CVNext from './routes/CVNextRouter'
 import CVSection from './routes/CVSectionRouter'
 import CVUser from './routes/CVUserRouter'
 import Interview from './routes/InterviewRouter'
@@ -53,6 +54,8 @@ app.use('/Branch',Branch)
 app.use('/Company',Company)
 app.use('/CompanyVacances',CompanyVacances)
 app.use('/CV',CV)
+app.use('/CVNext',CVNext)
+
 app.use('/CVSection',CVSection)
 app.use('/CVUser',CVUser)
 app.use('/Interview',Interview)

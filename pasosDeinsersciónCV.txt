@@ -2,7 +2,8 @@
 --- ingresar a crear cv o ver CV 
 --- Crear CV  (se ha creado usuario y ahora se crea cv... a su vez se agrega CVUser con ambos id)
 
---- luego segun el perfil(X) se inserta  copias section[{}] y toma el ultimo id el numero ya uqe luego en cvSection va del primer idSectionCopiado hata el ultimo idSectionCopiado 
+--- luego segun el perfil(X) se inserta  copias section[{}] y 
+toma el ultimo id el numero ya uqe luego en cvSection va del primer idSectionCopiado hata el ultimo idSectionCopiado 
 
 ---- luego se agrega en cvSection el cVID y se le pega (el ultimo id creado en section el numero ya uqe luego en cvSection va del primer idSectionCopiado hata el ultimo idSectionCopiado )
 

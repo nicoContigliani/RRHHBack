@@ -28,14 +28,10 @@ const CVDao_1 = require("./CVDao");
 const statusActive_services_1 = require("../../services/statusActive.services");
 const alert_services_1 = require("../../services/alert.services");
 const CVValidationSchema_1 = __importDefault(require("../../ValidationSchema/CVValidationSchema"));
-const today_services_1 = require("../../services/today.services");
 const chanegeOfActives_services_1 = require("../../services/chanegeOfActives.services");
 const errorResponse = { data: [], message: (0, alert_services_1.AlertServices)("Error", "Error create"), status: 500 };
 const get = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const contentType = req.headers['content-type'];
-        // Imprimir el header en la consola
-        console.log('Content-Type:', contentType);
         const data = "";
         const dataReturn = yield (0, CVDao_1.getDao)(data);
         let returnExist = yield (0, statusActive_services_1.statusActive)(dataReturn);
@@ -58,27 +54,23 @@ const getId = (req, res, next) => __awaiter(void 0, void 0, void 0, function* ()
 });
 exports.getId = getId;
 const post = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    let { error, value } = CVValidationSchema_1.default.validate(req.body);
-    try {
-        const currentTime = yield (0, today_services_1.today)();
-        value.createdAt = currentTime;
-        value.updatedAt = currentTime;
-        if (error)
-            console.error(error.details);
-        if (error)
-            return res.status(500).json(errorResponse);
-        const dataReturnS = yield (0, CVDao_1.postDao)(value);
-        if (!dataReturnS)
-            return res.status(500).json(errorResponse);
-        let returnExist = yield getAllAlways();
-        if (!returnExist)
-            return res.status(500).json(errorResponse);
-        return res.status(200).json({ data: returnExist, message: (0, alert_services_1.AlertServices)("Success", "Created"), status: 200 });
-    }
-    catch (error) {
-        console.log("Error in createTypeTest:", error);
-        return res.status(500).json({ data: [], message: (0, alert_services_1.AlertServices)("Error", "Internal Server Error"), status: 500 });
-    }
+    console.log("toma por mirón");
+    // let { error, value } = CVValidationSchema.validate(req.body);
+    // try {
+    //     const currentTime = await today()
+    //     value.createdAt = currentTime
+    //     value.updatedAt = currentTime
+    //     if (error) console.error(error.details)
+    //     if (error) return res.status(500).json(errorResponse);
+    //     const dataReturnS = await postDao(value)
+    //     if (!dataReturnS) return res.status(500).json(errorResponse);
+    //     let returnExist = await getAllAlways()
+    //     if (!returnExist) return res.status(500).json(errorResponse);
+    //     return res.status(200).json({ data: returnExist, message: AlertServices("Success", "Created"), status: 200 });
+    // } catch (error) {
+    //     console.log("Error in createTypeTest:", error);
+    //     return res.status(500).json({ data: [], message: AlertServices("Error", "Internal Server Error"), status: 500 });
+    // }
 });
 exports.post = post;
 const update = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
