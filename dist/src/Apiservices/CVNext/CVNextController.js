@@ -54,6 +54,7 @@ const getId = (req, res, next) => __awaiter(void 0, void 0, void 0, function* ()
 });
 exports.getId = getId;
 const post = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log("🚀 ~ post ~ req.body:", req.body);
     console.log("toma por mirón");
     // let { error, value } = CVValidationSchema.validate(req.body);
     // try {

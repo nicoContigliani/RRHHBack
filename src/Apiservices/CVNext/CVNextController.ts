@@ -38,6 +38,13 @@ export const getId = async (req: Request, res: Response, next: NextFunction) => 
 
 export const post = async (req: Request, res: Response, next: NextFunction) => {
 
+
+    console.log("🚀 ~ post ~ req.body:", req.body)
+
+
+
+    
+
     console.log("toma por mirón")
     // let { error, value } = CVValidationSchema.validate(req.body);
     // try {
