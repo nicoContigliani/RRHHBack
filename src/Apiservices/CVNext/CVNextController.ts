@@ -5,11 +5,16 @@ import Joi from 'joi';
 
 import { getDao, getIdDao, postDao, updateDao, deletesDao } from './CVDao';
 
+import {postDao as postDaoCVUser } from '../CVUser/CVUserDao' 
+
 import { statusActive } from '../../services/statusActive.services';
 import { AlertServices } from '../../services/alert.services';
 import CVValidationSchema from '../../ValidationSchema/CVValidationSchema';
 import { today } from '../../services/today.services';
 import { changeActive } from '../../services/chanegeOfActives.services';
+import { personDataCVExist } from '../../services/cvData/personDataCVExist';
+import { fullnameTabulatorServices } from '../../services/cvData/fullnameTabulator.services';
+import { cvGetIdOfNewCV } from '../../services/cvData/cvGetIdOfNewCV.services';
 
 const errorResponse = { data: [], message: AlertServices("Error", "Error create"), status: 500 };
 
@@ -38,14 +43,84 @@ export const getId = async (req: Request, res: Response, next: NextFunction) => 
 
 export const post = async (req: Request, res: Response, next: NextFunction) => {
 
+    // --- crear usuario general 
+    // --- ingresar a crear cv o ver CV 
+    // --- Crear CV  (se ha creado usuario y ahora se crea cv... a su vez se agrega CVUser con ambos id)
+    // --- luego segun el perfil(X) se inserta  copias section[{}] y 
+    // toma el ultimo id el numero ya uqe luego en cvSection va del primer idSectionCopiado hata el ultimo idSectionCopiado  
+    // ---- luego se agrega en cvSection el cVID y se le pega (el ultimo id creado en section el numero ya uqe luego en cvSection va del primer idSectionCopiado hata el ultimo idSectionCopiado )
+    // luego llega lo mas complejo  
+    // en itemSection -> todol oque viene de los steps iportante (capturar de Section los 9 o mas id  de la seccion que pueden ser los últimos)
 
-    console.log("🚀 ~ post ~ req.body:", req.body)
+    const {
+        PersonalInformation,
+        PersonTitle,
+        PersonalDescription,
+        Education,
+        Experience,
+        HardSkill,
+        SoffSkill,
+        Lenguage,
+        Disponibility
+    } = req.body
+
+    const { Score, birthday, CreateAt, email, fullname, id, phone, status_user, updateAt } = PersonalInformation[0]
+
+    const fullnameTabulator = await fullnameTabulatorServices(fullname)
+
+    try {
+        const data = ""
+        const dataReturn: any[] | undefined = await getDao(data)
+        const cvExist: any = await personDataCVExist(dataReturn, fullnameTabulator)
+        if (cvExist) return res.status(500).json({ data: [], message: AlertServices("Error", "Internal Server Error"), status: 500 });
+
+
+        const currentTime = await today()
+        const newObjectForCV = {
+            title: fullnameTabulator,
+            description_cv: fullname,
+            status_cv: true,
+            createdAt: currentTime,
+            updatedAt: currentTime,
+        }
+
+
+        
+     const dataReturnCreateCV = await postDao(newObjectForCV)
+     console.log("🚀 ~ post ~ dataReturnCreateCV:", dataReturnCreateCV)
+    //  if(dataReturnCreateCV) return res.status(500).json({ data: [], message: AlertServices("Error", "Internal Server Error"), status: 500 });
+     const getIdCV= await cvGetIdOfNewCV(dataReturnCreateCV)
+     
+     console.log("🚀 ~PASOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
+     
+     
+     const newObjectForCVUser = {
+        UserId: id,
+        CVId: getIdCV,
+        status_cv_user: true,
+        createdAt: currentTime,
+        updatedAt: currentTime,
+    }
+     const dataReturnCreateCVUSer  = await postDaoCVUser(newObjectForCVUser)    
+     console.log("🚀 ~ post ~ dataReturnCreateCVUSer:", dataReturnCreateCVUSer)
+    //  if(dataReturnCreateCVUSer) return res.status(500).json({ data: [], message: AlertServices("Error", "Internal Server Error"), status: 500 });
+    //  const getIdCV= await cvGetIdOfNewCV(dataReturnCreateCV)
 
 
 
-    
+    } catch (error) {
+        console.log("🚀 ~ post ~ error:", error)
+    }
 
-    console.log("toma por mirón")
+
+
+
+
+
+
+
+
+
     // let { error, value } = CVValidationSchema.validate(req.body);
     // try {
     //     const currentTime = await today()
