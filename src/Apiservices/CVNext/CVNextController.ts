@@ -5,7 +5,12 @@ import Joi from 'joi';
 
 import { getDao, getIdDao, postDao, updateDao, deletesDao } from './CVDao';
 
-import {postDao as postDaoCVUser } from '../CVUser/CVUserDao' 
+import { postDao as postDaoCVUser } from '../CVUser/CVUserDao'
+import { getDao as getDaoSection, postDao as postDaoSection } from '../Section/SectionDao'
+
+import { getDao as getDaoCVSection, postDao as postDaoCVSection } from '../CVSection/CVSectionDao'
+
+
 
 import { statusActive } from '../../services/statusActive.services';
 import { AlertServices } from '../../services/alert.services';
@@ -15,6 +20,8 @@ import { changeActive } from '../../services/chanegeOfActives.services';
 import { personDataCVExist } from '../../services/cvData/personDataCVExist';
 import { fullnameTabulatorServices } from '../../services/cvData/fullnameTabulator.services';
 import { cvGetIdOfNewCV } from '../../services/cvData/cvGetIdOfNewCV.services';
+import { cvGetIdCVUSerObject } from '../../services/cvData/cvGetIdCVUSerObjectServices';
+import { cvGetIdMaxArray } from '../../services/cvData/cvGetIdMaxArray.services';
 
 const errorResponse = { data: [], message: AlertServices("Error", "Error create"), status: 500 };
 
@@ -84,27 +91,159 @@ export const post = async (req: Request, res: Response, next: NextFunction) => {
             updatedAt: currentTime,
         }
 
-
         
-     const dataReturnCreateCV = await postDao(newObjectForCV)
-     console.log("🚀 ~ post ~ dataReturnCreateCV:", dataReturnCreateCV)
-    //  if(dataReturnCreateCV) return res.status(500).json({ data: [], message: AlertServices("Error", "Internal Server Error"), status: 500 });
-     const getIdCV= await cvGetIdOfNewCV(dataReturnCreateCV)
-     
-     console.log("🚀 ~PASOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
-     
-     
-     const newObjectForCVUser = {
-        UserId: id,
-        CVId: getIdCV,
-        status_cv_user: true,
-        createdAt: currentTime,
-        updatedAt: currentTime,
-    }
-     const dataReturnCreateCVUSer  = await postDaoCVUser(newObjectForCVUser)    
-     console.log("🚀 ~ post ~ dataReturnCreateCVUSer:", dataReturnCreateCVUSer)
-    //  if(dataReturnCreateCVUSer) return res.status(500).json({ data: [], message: AlertServices("Error", "Internal Server Error"), status: 500 });
-    //  const getIdCV= await cvGetIdOfNewCV(dataReturnCreateCV)
+        //TODO  crea CV
+        const dataReturnCreateCV = await postDao(newObjectForCV)
+        //  if(dataReturnCreateCV) return res.status(500).json({ data: [], message: AlertServices("Error", "Internal Server Error"), status: 500 });
+        const getIdCV = await cvGetIdOfNewCV(dataReturnCreateCV)
+
+        const newObjectForCVUser = {
+            UserId: id,
+            CVId: getIdCV,
+            status_cv_user: true,
+            createdAt: currentTime,
+            updatedAt: currentTime,
+        }
+        //TODO Crea CVUSer
+        const dataReturnCreateCVUSer = await postDaoCVUser(newObjectForCVUser)
+
+        //TODO  ------getUserId--------
+        const getUserId = await cvGetIdCVUSerObject(dataReturnCreateCVUSer)
+
+
+        const dataStructureSection = [
+            {
+                SectionTypeId: 1,
+                title: "data Person",
+                content: "",
+                status_section: true,
+                createdAt: currentTime,
+                updatedAt: currentTime
+            },
+            {
+                SectionTypeId: 2,
+                title: "description Person",
+                content: "",
+                status_section: true,
+                createdAt: currentTime,
+                updatedAt: currentTime
+            },
+            {
+                SectionTypeId: 3,
+                "title": "experience work",
+                content: "",
+                status_section: true,
+                createdAt: currentTime,
+                updatedAt: currentTime
+            },
+            {
+                SectionTypeId: 4,
+                "title": "experience freelancer",
+                content: "",
+                status_section: true,
+                createdAt: currentTime,
+                updatedAt: currentTime
+            },
+            {
+                SectionTypeId: 5,
+                "title": "soft skill",
+                content: "",
+                status_section: true,
+                createdAt: currentTime,
+                updatedAt: currentTime
+            },
+            {
+                SectionTypeId: 6,
+                "title": "hard skill",
+                content: "",
+                status_section: true,
+                createdAt: currentTime,
+                updatedAt: currentTime
+            },
+            {
+                SectionTypeId: 7,
+                "title": "education",
+                content: "",
+                status_section: true,
+                createdAt: currentTime,
+                updatedAt: currentTime
+            },
+            {
+                SectionTypeId: 8,
+                "title": "lenguaje",
+                content: "",
+                status_section: true,
+                createdAt: currentTime,
+                updatedAt: currentTime
+            },
+            {
+                SectionTypeId: 9,
+                "title": "disponibility",
+                content: "",
+                status_section: true,
+                createdAt: currentTime,
+                updatedAt: currentTime
+            }
+
+
+        ]
+
+
+        try {
+            const dataReturnS = [];
+
+            for (const obj of dataStructureSection) {
+
+                obj.createdAt = currentTime;
+                obj.updatedAt = currentTime;
+                //TODO crea Section
+                const dataReturn = await postDaoSection(obj);
+                if (!dataReturn) return res.status(500).json(errorResponse);
+                dataReturnS.push(dataReturn);
+            }
+
+
+            let returnExist = await getAllAlways();
+            if (!returnExist) return res.status(500).json(errorResponse);
+
+        } catch (error) {
+            console.log("Error in createTypeTest:", error);
+            return res.status(500).json({ data: [], message: AlertServices("Error", "Internal Server Error"), status: 500 });
+        }
+
+        const getSectionAll = await getDaoSection(data)
+        const dataIdmmax = await cvGetIdMaxArray(getSectionAll)
+        const dataInitialId = (dataIdmmax - 9)
+
+        for (let i = dataInitialId; i < dataIdmmax; i++) {
+            const todos = {
+                CVId: getIdCV,
+                SectionId: i,
+                position: "1",
+                describle_cv_section: currentTime,
+                status_cv_section: true,
+                createdAt: currentTime,
+                updatedAt: currentTime
+            }
+            //TODO crea CVSection
+            postDaoCVSection(todos)
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //  if(dataReturnCreateCVUSer) return res.status(500).json({ data: [], message: AlertServices("Error", "Internal Server Error"), status: 500 });
+        //  const getIdCV= await cvGetIdOfNewCV(dataReturnCreateCV)
 
 
 

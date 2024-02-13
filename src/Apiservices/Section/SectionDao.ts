@@ -54,6 +54,7 @@ export const getIdDao = async (data: any) => {
       });
 }
 export const postDao = async (data: any) => {
+      console.log("🚀 ~ postDao ~ data:", data)
       try {
             return await Section.create(data)
       } catch (error) {
