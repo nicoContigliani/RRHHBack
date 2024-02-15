@@ -7,8 +7,12 @@ import { getDao, getIdDao, postDao, updateDao, deletesDao } from './CVDao';
 
 import { postDao as postDaoCVUser } from '../CVUser/CVUserDao'
 import { getDao as getDaoSection, postDao as postDaoSection } from '../Section/SectionDao'
-
 import { getDao as getDaoCVSection, postDao as postDaoCVSection } from '../CVSection/CVSectionDao'
+import { getDao as getDaoItem, postDao as postDaoItem } from '../Item/ItemDao'
+import { getDao as getDaoItemSection, postDao as postDaoItemSection } from '../itemSection/itemSectionDao'
+
+
+
 
 
 
@@ -22,6 +26,11 @@ import { fullnameTabulatorServices } from '../../services/cvData/fullnameTabulat
 import { cvGetIdOfNewCV } from '../../services/cvData/cvGetIdOfNewCV.services';
 import { cvGetIdCVUSerObject } from '../../services/cvData/cvGetIdCVUSerObjectServices';
 import { cvGetIdMaxArray } from '../../services/cvData/cvGetIdMaxArray.services';
+import { cvGetDataItemFormatServices } from '../../services/cvData/cvGetDataItemFormat.services';
+import { forrmatDataForSendCV } from '../../services/cvData/forrmatDataForSendCV.service';
+import { cvTitleJoinServices } from '../../services/cvData/cvTitleJoin.services';
+import { objerctBeforeFormaterThing } from '../../services/objerctBeforeFormaterThing.services';
+import { indexDataFormaterSendCV } from '../../services/cvData/indexDataFormaterSendCV.service';
 
 const errorResponse = { data: [], message: AlertServices("Error", "Error create"), status: 500 };
 
@@ -55,11 +64,12 @@ export const post = async (req: Request, res: Response, next: NextFunction) => {
     // --- Crear CV  (se ha creado usuario y ahora se crea cv... a su vez se agrega CVUser con ambos id)
     // --- luego segun el perfil(X) se inserta  copias section[{}] y 
     // toma el ultimo id el numero ya uqe luego en cvSection va del primer idSectionCopiado hata el ultimo idSectionCopiado  
-    // ---- luego se agrega en cvSection el cVID y se le pega (el ultimo id creado en section el numero ya uqe luego en cvSection va del primer idSectionCopiado hata el ultimo idSectionCopiado )
+    // ---- luego se agrega en cvSection el cVID y se le pega (el ultimo id creado en section el numero ya uqe luego en cvSection va del primer
+    // idSectionCopiado hata el ultimo idSectionCopiado )
     // luego llega lo mas complejo  
-    // en itemSection -> todol oque viene de los steps iportante (capturar de Section los 9 o mas id  de la seccion que pueden ser los últimos)
+    // en itemSection -> todo lo que viene de los steps iportante (capturar de Section los 9 o mas id  de la seccion que pueden ser los últimos)
 
-    const {
+    let {
         PersonalInformation,
         PersonTitle,
         PersonalDescription,
@@ -71,18 +81,28 @@ export const post = async (req: Request, res: Response, next: NextFunction) => {
         Disponibility
     } = req.body
 
-    const { Score, birthday, CreateAt, email, fullname, id, phone, status_user, updateAt } = PersonalInformation[0]
+    const {
+        Score, birthday, CreateAt, email, fullname, id, phone, status_user, updateAt, linkedin, repository, folderprofile, birthsday
+    } = PersonalInformation[0]
 
+    const dataReturnCVTitle = await cvTitleJoinServices(PersonTitle)
+
+    let dataPersonObject = PersonalInformation[0]
+    dataPersonObject.titleCV = dataReturnCVTitle
+
+
+    //TODO  esto debe estar si o si 
     const fullnameTabulator = await fullnameTabulatorServices(fullname)
 
     try {
         const data = ""
+        const currentTime = await today()
+
         const dataReturn: any[] | undefined = await getDao(data)
         const cvExist: any = await personDataCVExist(dataReturn, fullnameTabulator)
-        if (cvExist) return res.status(500).json({ data: [], message: AlertServices("Error", "Internal Server Error"), status: 500 });
+        // if (cvExist) return res.status(500).json({ data: [], message: AlertServices("Error", "Internal Server Error"), status: 500 });
 
 
-        const currentTime = await today()
         const newObjectForCV = {
             title: fullnameTabulator,
             description_cv: fullname,
@@ -91,7 +111,7 @@ export const post = async (req: Request, res: Response, next: NextFunction) => {
             updatedAt: currentTime,
         }
 
-        
+
         //TODO  crea CV
         const dataReturnCreateCV = await postDao(newObjectForCV)
         //  if(dataReturnCreateCV) return res.status(500).json({ data: [], message: AlertServices("Error", "Internal Server Error"), status: 500 });
@@ -184,8 +204,6 @@ export const post = async (req: Request, res: Response, next: NextFunction) => {
                 createdAt: currentTime,
                 updatedAt: currentTime
             }
-
-
         ]
 
 
@@ -215,7 +233,7 @@ export const post = async (req: Request, res: Response, next: NextFunction) => {
         const dataIdmmax = await cvGetIdMaxArray(getSectionAll)
         const dataInitialId = (dataIdmmax - 9)
 
-        for (let i = dataInitialId; i < dataIdmmax; i++) {
+        for (let i = dataInitialId; i <= dataIdmmax; i++) {
             const todos = {
                 CVId: getIdCV,
                 SectionId: i,
@@ -227,58 +245,46 @@ export const post = async (req: Request, res: Response, next: NextFunction) => {
             }
             //TODO crea CVSection
             postDaoCVSection(todos)
-
         }
 
 
+        const dataAfterPostItem = await getDaoItem(data)
 
 
+       const todo = await indexDataFormaterSendCV( dataAfterPostItem ,req.body)
+
+       
 
 
+        const dataReturnS = [];
+        for (const obj of todo) {
+            obj.createdAt = currentTime;
+            obj.updatedAt = currentTime;
+            
+            if (100 <= obj.ItemId && obj.ItemId < 200) obj.SectionId = dataInitialId + 1
+            if (200 <= obj.ItemId && obj.ItemId < 300) obj.SectionId = dataInitialId + 2
+            if (300 <= obj.ItemId && obj.ItemId < 400) obj.SectionId = dataInitialId + 3
+            if (400 <= obj.ItemId && obj.ItemId < 500) obj.SectionId = dataInitialId + 4
+            if (500 <= obj.ItemId && obj.ItemId < 600) obj.SectionId = dataInitialId + 5
+            if (600 <= obj.ItemId && obj.ItemId < 700) obj.SectionId = dataInitialId + 6
+            if (700 <= obj.ItemId && obj.ItemId < 800) obj.SectionId = dataInitialId + 7
+            if (800 <= obj.ItemId && obj.ItemId < 900) obj.SectionId = dataInitialId + 8
+            if (900 <= obj.ItemId && obj.ItemId < 1000) obj.SectionId = dataInitialId + 9
 
+            //TODO crea Section
+            const dataReturn = await postDaoItemSection(obj);
+            // //  if (!dataReturn) return res.status(500).json(errorResponse);
+             dataReturnS.push(dataReturn);
+        }
+        
 
-
-
-
-
-
-        //  if(dataReturnCreateCVUSer) return res.status(500).json({ data: [], message: AlertServices("Error", "Internal Server Error"), status: 500 });
-        //  const getIdCV= await cvGetIdOfNewCV(dataReturnCreateCV)
-
+        return res.status(200).json({ data: dataReturnS, message: AlertServices("Success", "Create CV"), status: 200 });
 
 
     } catch (error) {
         console.log("🚀 ~ post ~ error:", error)
     }
 
-
-
-
-
-
-
-
-
-
-    // let { error, value } = CVValidationSchema.validate(req.body);
-    // try {
-    //     const currentTime = await today()
-    //     value.createdAt = currentTime
-    //     value.updatedAt = currentTime
-    //     if (error) console.error(error.details)
-    //     if (error) return res.status(500).json(errorResponse);
-
-    //     const dataReturnS = await postDao(value)
-    //     if (!dataReturnS) return res.status(500).json(errorResponse);
-
-    //     let returnExist = await getAllAlways()
-    //     if (!returnExist) return res.status(500).json(errorResponse);
-
-    //     return res.status(200).json({ data: returnExist, message: AlertServices("Success", "Created"), status: 200 });
-    // } catch (error) {
-    //     console.log("Error in createTypeTest:", error);
-    //     return res.status(500).json({ data: [], message: AlertServices("Error", "Internal Server Error"), status: 500 });
-    // }
 }
 
 export const update = async (req: Request, res: Response, next: NextFunction) => {

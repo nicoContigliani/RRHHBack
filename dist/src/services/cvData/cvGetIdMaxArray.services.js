@@ -9,9 +9,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.cvGetIdOfNewCV = void 0;
-const cvGetIdOfNewCV = (data) => __awaiter(void 0, void 0, void 0, function* () {
-    const { dataValues: { id } } = data;
-    return id;
+exports.cvGetIdMaxArray = void 0;
+const cvGetIdMaxArray = (data) => __awaiter(void 0, void 0, void 0, function* () {
+    return yield (data.map((item) => {
+        const { dataValues: { id } } = item;
+        return id;
+    })).slice().sort((a, b) => a - b).reverse()[0];
 });
-exports.cvGetIdOfNewCV = cvGetIdOfNewCV;
+exports.cvGetIdMaxArray = cvGetIdMaxArray;

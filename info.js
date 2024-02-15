@@ -1,10 +1,9 @@
-
 'use strict';
 const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Vacancy extends Model {
+  class itemSection extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -12,34 +11,27 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Vacancy.belongsToMany(models.Interview, { through: models.InterviewVacance });
-      // Vacancy.belongsToMany(models.Company, { through: models.InterviewVacance });
-      Vacancy.belongsTo(models.TypeVacancy, { foreignKey: 'TypeVacancyId' });
-      Vacancy.belongsToMany(models.Company, { through: models.CompanyVacances });
-
-      // Vacancy.belongsToMany(models.RoadMap, { through: models.RoadMapVacance, as: 'RoadMap' });
-      Vacancy.belongsToMany(models.RoadMap, { through: models.RoadMapVacance });
-
-      Vacancy.belongsTo(models.TypeVacancy, {
-        foreignKey: 'id',
-      });
-
+      itemSection.belongsTo(models.Item, {
+        foreignKey: 'ItemId',
+        });
+        itemSection.belongsTo(models.Section, {
+        foreignKey: 'SectionId',
+        });
     }
   }
-  Vacancy.init({
-    title: DataTypes.STRING,
-    description: DataTypes.TEXT,
-    requirements: DataTypes.TEXT,
-    responsibilities: DataTypes.TEXT,
-    status_vacancy: DataTypes.BOOLEAN,
-    status_vacancy_work: DataTypes.STRING,
-    start_vacancy: DataTypes.DATE,
-    finish_vacancy: DataTypes.DATE,
-    TypeVacancyId: DataTypes.BIGINT,
-    extra_data: DataTypes.STRING
+  itemSection.init({
+    ItemId: DataTypes.BIGINT,
+    SectionId: DataTypes.BIGINT,
+    position: DataTypes.BIGINT,
+    title_atribute: DataTypes.STRING,
+    atribute: DataTypes.STRING,
+    detail_atribute: DataTypes.STRING,
+    status_item_section: DataTypes.BOOLEAN,
+    startDate: DataTypes.DATE,
+    endDate: DataTypes.DATE
   }, {
     sequelize,
-    modelName: 'Vacancy',
+    modelName: 'itemSection',
   });
-  return Vacancy;
+  return itemSection;
 };

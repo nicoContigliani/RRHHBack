@@ -12,6 +12,7 @@ const itemSectionValidationSchema = joi_1.default.object({
     title_atribute: joi_1.default.string().required(),
     atribute: joi_1.default.string().required(),
     detail_atribute: joi_1.default.string().allow(null, ""),
+    information: joi_1.default.string().allow(null, ""),
     status_item_section: joi_1.default.boolean().required(),
     startDate: joi_1.default.string().optional(),
     endDate: joi_1.default.string().optional(),

@@ -26,6 +26,7 @@ module.exports = (sequelize, DataTypes) => {
     title_atribute: DataTypes.STRING,
     atribute: DataTypes.STRING,
     detail_atribute: DataTypes.STRING,
+    information: DataTypes.STRING,
     status_item_section: DataTypes.BOOLEAN,
     startDate: DataTypes.DATE,
     endDate: DataTypes.DATE

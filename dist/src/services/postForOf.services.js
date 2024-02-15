@@ -9,9 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.cvGetIdOfNewCV = void 0;
-const cvGetIdOfNewCV = (data) => __awaiter(void 0, void 0, void 0, function* () {
-    const { dataValues: { id } } = data;
-    return id;
+exports.postForOfServices = void 0;
+const postForOfServices = (data) => __awaiter(void 0, void 0, void 0, function* () {
 });
-exports.cvGetIdOfNewCV = cvGetIdOfNewCV;
+exports.postForOfServices = postForOfServices;

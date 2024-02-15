@@ -28,6 +28,9 @@ module.exports = {
       detail_atribute: {
         type: Sequelize.STRING
       },
+      information: {
+        type: Sequelize.STRING
+      },
       status_item_section: {
         type: Sequelize.BOOLEAN
       },
