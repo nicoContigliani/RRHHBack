@@ -31,6 +31,7 @@ import { forrmatDataForSendCV } from '../../services/cvData/forrmatDataForSendCV
 import { cvTitleJoinServices } from '../../services/cvData/cvTitleJoin.services';
 import { objerctBeforeFormaterThing } from '../../services/objerctBeforeFormaterThing.services';
 import { indexDataFormaterSendCV } from '../../services/cvData/indexDataFormaterSendCV.service';
+import { dtoArray } from './CVDto';
 
 const errorResponse = { data: [], message: AlertServices("Error", "Error create"), status: 500 };
 
@@ -39,7 +40,9 @@ export const get = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const data = ""
         const dataReturn: any[] | undefined = await getDao(data)
-        let returnExist = await statusActive(dataReturn)
+        const dataDto: any[] | any = await dtoArray(dataReturn)
+
+        let returnExist = await statusActive(dataDto)
 
         if (returnExist?.length === 0) return res.status(200).json({ data: [], message: AlertServices("Success", "TypeTest dosen't find"), status: 200 });
         return res.status(200).json({ data: returnExist, message: AlertServices("Success", "Find"), status: 200 })
@@ -251,16 +254,16 @@ export const post = async (req: Request, res: Response, next: NextFunction) => {
         const dataAfterPostItem = await getDaoItem(data)
 
 
-       const todo = await indexDataFormaterSendCV( dataAfterPostItem ,req.body)
+        const todo = await indexDataFormaterSendCV(dataAfterPostItem, req.body)
 
-       
+
 
 
         const dataReturnS = [];
         for (const obj of todo) {
             obj.createdAt = currentTime;
             obj.updatedAt = currentTime;
-            
+
             if (100 <= obj.ItemId && obj.ItemId < 200) obj.SectionId = dataInitialId + 1
             if (200 <= obj.ItemId && obj.ItemId < 300) obj.SectionId = dataInitialId + 2
             if (300 <= obj.ItemId && obj.ItemId < 400) obj.SectionId = dataInitialId + 3
@@ -274,9 +277,9 @@ export const post = async (req: Request, res: Response, next: NextFunction) => {
             //TODO crea Section
             const dataReturn = await postDaoItemSection(obj);
             // //  if (!dataReturn) return res.status(500).json(errorResponse);
-             dataReturnS.push(dataReturn);
+            dataReturnS.push(dataReturn);
         }
-        
+
 
         return res.status(200).json({ data: dataReturnS, message: AlertServices("Success", "Create CV"), status: 200 });
 
@@ -339,5 +342,6 @@ export const deletes = async (req: Request, res: Response, next: NextFunction) =
 const getAllAlways = async () => {
     const data = ""
     const dataReturn: any[] | undefined = await getDao(data)
-    return await statusActive(dataReturn)
+    const dataDto: any[] | any = await dtoArray(dataReturn)
+    return await statusActive(dataDto)
 }

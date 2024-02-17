@@ -15,6 +15,11 @@ const cvGetDataItemFormat_services_1 = require("./cvGetDataItemFormat.services")
 const cvTitleJoin_services_1 = require("./cvTitleJoin.services");
 const forrmatDataForSendCV_service_1 = require("./forrmatDataForSendCV.service");
 const indexDataFormaterSendCV = (data, dataGeneral) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+    }
+    catch (error) {
+        console.log("🚀 ~ indexDataFormaterSendCV ~ error:", error);
+    }
     const { PersonalInformation, PersonTitle, PersonalDescription, Education, Experience, HardSkill, SoffSkill, Lenguage, Disponibility } = dataGeneral;
     const getItem = yield (0, cvGetDataItemFormat_services_1.cvGetDataItemFormatServices)(data);
     const dataReturnCVTitle = yield (0, cvTitleJoin_services_1.cvTitleJoinServices)(PersonTitle);

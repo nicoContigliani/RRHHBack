@@ -42,12 +42,14 @@ const cvGetIdCVUSerObjectServices_1 = require("../../services/cvData/cvGetIdCVUS
 const cvGetIdMaxArray_services_1 = require("../../services/cvData/cvGetIdMaxArray.services");
 const cvTitleJoin_services_1 = require("../../services/cvData/cvTitleJoin.services");
 const indexDataFormaterSendCV_service_1 = require("../../services/cvData/indexDataFormaterSendCV.service");
+const CVDto_1 = require("./CVDto");
 const errorResponse = { data: [], message: (0, alert_services_1.AlertServices)("Error", "Error create"), status: 500 };
 const get = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const data = "";
         const dataReturn = yield (0, CVDao_1.getDao)(data);
-        let returnExist = yield (0, statusActive_services_1.statusActive)(dataReturn);
+        const dataDto = yield (0, CVDto_1.dtoArray)(dataReturn);
+        let returnExist = yield (0, statusActive_services_1.statusActive)(dataDto);
         if ((returnExist === null || returnExist === void 0 ? void 0 : returnExist.length) === 0)
             return res.status(200).json({ data: [], message: (0, alert_services_1.AlertServices)("Success", "TypeTest dosen't find"), status: 200 });
         return res.status(200).json({ data: returnExist, message: (0, alert_services_1.AlertServices)("Success", "Find"), status: 200 });
@@ -306,5 +308,6 @@ exports.deletes = deletes;
 const getAllAlways = () => __awaiter(void 0, void 0, void 0, function* () {
     const data = "";
     const dataReturn = yield (0, CVDao_1.getDao)(data);
-    return yield (0, statusActive_services_1.statusActive)(dataReturn);
+    const dataDto = yield (0, CVDto_1.dtoArray)(dataReturn);
+    return yield (0, statusActive_services_1.statusActive)(dataDto);
 });
