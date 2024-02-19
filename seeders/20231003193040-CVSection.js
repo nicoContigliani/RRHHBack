@@ -16,7 +16,7 @@ module.exports = {
     await queryInterface.bulkInsert('CVSections', [
       {
         id: 1,
-        CVId: 2,
+        CVId: 1,
         SectionId: 1,
         position: 1,
         describle_cv_section: '',
@@ -26,7 +26,7 @@ module.exports = {
       },
       {
         id: 2,
-        CVId: 2,
+        CVId: 1,
         SectionId: 2,
         position: 1,
         describle_cv_section: '',
@@ -36,7 +36,7 @@ module.exports = {
       },
       {
         id: 3,
-        CVId: 2,
+        CVId: 1,
         SectionId: 3,
         position: 1,
         describle_cv_section: '',
@@ -46,7 +46,7 @@ module.exports = {
       },
       {
         id: 4,
-        CVId: 2,
+        CVId: 1,
         SectionId: 4,
         position: 1,
         describle_cv_section: '',
@@ -56,7 +56,7 @@ module.exports = {
       },
       {
         id: 5,
-        CVId: 2,
+        CVId: 1,
         SectionId: 5,
         position: 1,
         describle_cv_section: '',
@@ -66,7 +66,7 @@ module.exports = {
       },
       {
         id: 6,
-        CVId: 2,
+        CVId: 1,
         SectionId: 6,
         position: 1,
         describle_cv_section: '',
@@ -76,7 +76,7 @@ module.exports = {
       },
       {
         id: 7,
-        CVId: 2,
+        CVId: 1,
         SectionId: 7,
         position: 1,
         describle_cv_section: '',
@@ -86,7 +86,7 @@ module.exports = {
       },
       {
         id: 8,
-        CVId: 2,
+        CVId: 1,
         SectionId: 8,
         position: 1,
         describle_cv_section: '',
@@ -96,7 +96,7 @@ module.exports = {
       },
       {
         id: 9,
-        CVId: 2,
+        CVId: 1,
         SectionId: 9,
         position: 1,
         describle_cv_section: '',

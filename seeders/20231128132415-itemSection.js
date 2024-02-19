@@ -303,7 +303,37 @@ module.exports = {
           endDate: new Date('2023-10-06 12:05:25.993'),
           createdAt: new Date('2023-10-06 12:05:25.993'),
           updatedAt: new Date('2023-10-06 12:05:25.993')
+        },       {
+          id: 21,
+          ItemId: 401,
+          SectionId: 4,
+          position: 1,
+          title_atribute: 'Work Freelancer',
+          atribute: 'Sistema Blocker Brother Good',
+          detail_atribute: '',
+          information:"",
+          status_item_section: true,
+          startDate: new Date('2023-10-06 12:05:25.993'),
+          endDate: new Date('2023-10-06 12:05:25.993'),
+          createdAt: new Date('2023-10-06 12:05:25.993'),
+          updatedAt: new Date('2023-10-06 12:05:25.993')
         },
+        {
+          id: 22,
+          ItemId: 402,
+          SectionId: 4,
+          position: 1,
+          title_atribute: 'Work Freelancer',
+          atribute: 'Sistema smart house',
+          detail_atribute: '',
+          information:"",
+          status_item_section: true,
+          startDate: new Date('2023-10-06 12:05:25.993'),
+          endDate: new Date('2023-10-06 12:05:25.993'),
+          createdAt: new Date('2023-10-06 12:05:25.993'),
+          updatedAt: new Date('2023-10-06 12:05:25.993')
+        },
+        
       ], {});
     } catch (error) {
       console.error('Error during seed:', error);
