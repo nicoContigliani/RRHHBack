@@ -85,12 +85,14 @@ export const postDao = async (data: any) => {
       }
 }
 
-export const updateDao = async (data: any, id: any) => {
+export const updateDao = async (data: any, ItemId: any) => {
+ 
       try {
-            return await itemSection.update(data, { where: { id: id } })
-      } catch (error) {
-            console.log("🚀 ~ file: userDao.ts:52 ~ updateDao ~ error:", error)
-      }
+            return await itemSection.update(data, { where: { ItemId: ItemId } })
+      } catch (error:any) {
+            console.log(" ~ file: userDao.ts:52 ~ updateDao ~ error:", error?.name);
+            console.log(" ~ file: userDao.ts:52 ~ updateDao ~ error message:", error?.message);
+            console.log(" ~ file: userDao.ts:52 ~ updateDao ~ error stack:", error?.stack);      }
 }
 export const deletesDao = async (data: any, id: any) => {
       try {

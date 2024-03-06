@@ -82,27 +82,98 @@ export const post = async (req: Request, res: Response, next: NextFunction) => {
 
 export const update = async (req: Request, res: Response, next: NextFunction) => {
 
-    try {
-        const { id } = req.params
 
-        const { createdAt, ...updateCreate } = req.body
-        if (!createdAt) return res.status(500).json(errorResponse);
 
-        let { error, value } = TestInterviewValidationSchema.validate(updateCreate);
- if (error) console.error(error.details)
-        if (error) return res.status(500).json(errorResponse);
+    const currentTime = await today();
 
-        const dataReturnS = await updateDao(req.body, id)
-        if (dataReturnS) {
-            const dataReturnGet = await getAllAlways()
+    if (Array.isArray(req.body)) {
+        try {
+            const updatedItems = await Promise.all(req.body.map(async (item) => {
+                for (const key in item) {
+                    if (Object.prototype.hasOwnProperty.call(item, key)) {
+                        item[key].updatedAt = currentTime;
+                        const { error } = TestInterviewValidationSchema.validate(item[key]);
+                        if (error) {
+                            console.error(error.details);
+                            throw new Error("Validation error");
+                        }
+                        await updateDao(item[key], item[key].ItemId);
+                    }
+                }
+                return item;
+            }));
+
+            const dataReturnGet = await getAllAlways();
             return res.status(200).json({ data: dataReturnGet, message: AlertServices("Success", "Update"), status: 200 });
+        } catch (error) {
+            console.log("Error:", error);
+            return res.status(500).json(errorResponse);
         }
-
-    } catch (error) {
-        console.log("🚀 ~ file: TypeTestController.ts:71 ~ update ~ error:", error)
-        if (error) return res.status(500).json(errorResponse);
-
     }
+
+
+
+    // const currentTime = await today();
+
+    // if (Array.isArray(req.body)) {
+    //     let bodyData = [...(req.body)];
+
+
+
+    //     bodyData?.forEach(async (item: any) => {
+    //         for (const key in item) {
+    //             if (Object.prototype.hasOwnProperty.call(item, key)) {
+    //                 item[key].updatedAt = currentTime;
+    //                 try {
+    //                     console.log("🚀 ~ bodyData?.forEach ~ item[key]:", item[key])
+
+    //                     let { error } = TestInterviewValidationSchema.validate(item[key]);
+    //                     if (error) console.error(error.details)
+    //                     if (error) return res.status(500).json(errorResponse);
+
+
+    //                     const dataReturnS = await updateDao(item[key], item[key].ItemId)
+
+    //                     // if (dataReturnS) {
+    //                     //     const dataReturnGet = await getAllAlways()
+    //                     //     return res.status(200).json({ data: dataReturnGet, message: AlertServices("Success", "Update"), status: 200 });
+    //                     // }
+    //                 } catch (error) {
+    //                     console.log("🚀 ~ bodyData?.forEach ~ error:", error)
+    //                 }
+    //                 const dataReturnGet = await getAllAlways()
+    //                 return res.status(200).json({ data: dataReturnGet, message: AlertServices("Success", "Update"), status: 200 });
+
+
+    //             }
+    //         }
+
+    //     })
+
+    // }
+
+
+    // try {
+    //     const { id } = req.params
+
+    //     const { createdAt, ...updateCreate } = req.body
+    //     if (!createdAt) return res.status(500).json(errorResponse);
+
+    //     let { error, value } = TestInterviewValidationSchema.validate(updateCreate);
+    //     if (error) console.error(error.details)
+    //     if (error) return res.status(500).json(errorResponse);
+
+    //     const dataReturnS = await updateDao(req.body, id)
+    //     if (dataReturnS) {
+    //         const dataReturnGet = await getAllAlways()
+    //         return res.status(200).json({ data: dataReturnGet, message: AlertServices("Success", "Update"), status: 200 });
+    //     }
+
+    // } catch (error) {
+    //     console.log("🚀 ~ file: TypeTestController.ts:71 ~ update ~ error:", error)
+    //     if (error) return res.status(500).json(errorResponse);
+
+    // }
 
 }
 

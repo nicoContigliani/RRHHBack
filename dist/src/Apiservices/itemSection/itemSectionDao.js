@@ -58,12 +58,14 @@ const postDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.postDao = postDao;
-const updateDao = (data, id) => __awaiter(void 0, void 0, void 0, function* () {
+const updateDao = (data, ItemId) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        return yield itemSection.update(data, { where: { id: id } });
+        return yield itemSection.update(data, { where: { ItemId: ItemId } });
     }
     catch (error) {
-        console.log("🚀 ~ file: userDao.ts:52 ~ updateDao ~ error:", error);
+        console.log(" ~ file: userDao.ts:52 ~ updateDao ~ error:", error === null || error === void 0 ? void 0 : error.name);
+        console.log(" ~ file: userDao.ts:52 ~ updateDao ~ error message:", error === null || error === void 0 ? void 0 : error.message);
+        console.log(" ~ file: userDao.ts:52 ~ updateDao ~ error stack:", error === null || error === void 0 ? void 0 : error.stack);
     }
 });
 exports.updateDao = updateDao;

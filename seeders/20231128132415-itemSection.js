@@ -66,6 +66,51 @@ module.exports = {
         },
         {
           id: 5,
+          ItemId: 104,
+          SectionId: 1,
+          position: 1,
+          title_atribute: 'linkedin',
+          atribute: '06/03/1988',
+          detail_atribute: '',
+          information:"",
+          status_item_section: true,
+          startDate: new Date('2023-10-06 12:05:25.993'),
+          endDate: new Date('2023-10-06 12:05:25.993'),
+          createdAt: new Date('2023-10-06 12:05:25.993'),
+          updatedAt: new Date('2023-10-06 12:05:25.993')
+        },
+        {
+          id: 6,
+          ItemId: 105,
+          SectionId: 1,
+          position: 1,
+          title_atribute: 'repository',
+          atribute: '',
+          detail_atribute: '',
+          information:"",
+          status_item_section: true,
+          startDate: new Date('2023-10-06 12:05:25.993'),
+          endDate: new Date('2023-10-06 12:05:25.993'),
+          createdAt: new Date('2023-10-06 12:05:25.993'),
+          updatedAt: new Date('2023-10-06 12:05:25.993')
+        },
+        {
+          id: 7,
+          ItemId: 106,
+          SectionId: 1,
+          position: 1,
+          title_atribute: 'folderprofile',
+          atribute: '',
+          detail_atribute: '',
+          information:"",
+          status_item_section: true,
+          startDate: new Date('2023-10-06 12:05:25.993'),
+          endDate: new Date('2023-10-06 12:05:25.993'),
+          createdAt: new Date('2023-10-06 12:05:25.993'),
+          updatedAt: new Date('2023-10-06 12:05:25.993')
+        },
+        {
+          id: 8,
           ItemId: 200,
           SectionId: 2,
           position: 1,
@@ -80,7 +125,7 @@ module.exports = {
           updatedAt: new Date('2023-10-06 12:05:25.993')
         },   
         {
-          id: 6,
+          id: 9,
           ItemId: 300,
           SectionId: 3,
           position: 1,
@@ -95,7 +140,7 @@ module.exports = {
           updatedAt: new Date('2023-10-06 12:05:25.993')
         },
         {
-          id: 7,
+          id: 10,
           ItemId: 301,
           SectionId: 3,
           position: 1,
@@ -110,7 +155,7 @@ module.exports = {
           updatedAt: new Date('2023-10-06 12:05:25.993')
         },
         {
-          id: 8,
+          id: 11,
           ItemId: 302,
           SectionId: 3,
           position: 1,
@@ -125,7 +170,7 @@ module.exports = {
           updatedAt: new Date('2023-10-06 12:05:25.993')
         },
         {
-          id: 9,
+          id: 12,
           ItemId: 400,
           SectionId: 4,
           position: 1,
@@ -140,7 +185,7 @@ module.exports = {
           updatedAt: new Date('2023-10-06 12:05:25.993')
         },
         {
-          id: 10,
+          id: 13,
           ItemId: 500,
           SectionId: 5,
           position: 1,
@@ -155,7 +200,7 @@ module.exports = {
           updatedAt: new Date('2023-10-06 12:05:25.993')
         },
         {
-          id: 11,
+          id: 14,
           ItemId: 501,
           SectionId: 5,
           position: 1,
@@ -170,7 +215,7 @@ module.exports = {
           updatedAt: new Date('2023-10-06 12:05:25.993')
         },
         {
-          id: 12,
+          id: 15,
           ItemId: 600,
           SectionId: 6,
           position: 1,
@@ -185,7 +230,7 @@ module.exports = {
           updatedAt: new Date('2023-10-06 12:05:25.993')
         },
         {
-          id: 13,
+          id: 16,
           ItemId: 601,
           SectionId: 6,
           position: 1,
@@ -200,7 +245,7 @@ module.exports = {
           updatedAt: new Date('2023-10-06 12:05:25.993')
         },
         {
-          id: 14,
+          id: 17,
           ItemId: 602,
           SectionId: 6,
           position: 1,
@@ -215,7 +260,7 @@ module.exports = {
           updatedAt: new Date('2023-10-06 12:05:25.993')
         },
         {
-          id: 15,
+          id: 18,
           ItemId: 603,
           SectionId: 6,
           position: 1,
@@ -230,7 +275,7 @@ module.exports = {
           updatedAt: new Date('2023-10-06 12:05:25.993')
         },
         {
-          id: 16,
+          id: 19,
           ItemId: 604,
           SectionId: 6,
           position: 1,
@@ -245,7 +290,7 @@ module.exports = {
           updatedAt: new Date('2023-10-06 12:05:25.993')
         },
         {
-          id: 17,
+          id: 20,
           ItemId: 700,
           SectionId: 7,
           position: 1,
@@ -260,7 +305,7 @@ module.exports = {
           updatedAt: new Date('2023-10-06 12:05:25.993')
         },
         {
-          id: 18,
+          id: 21,
           ItemId: 701,
           SectionId: 7,
           position: 1,
@@ -275,7 +320,7 @@ module.exports = {
           updatedAt: new Date('2023-10-06 12:05:25.993')
         },
         {
-          id: 19,
+          id: 22,
           ItemId: 800,
           SectionId: 8,
           position: 1,
@@ -290,7 +335,7 @@ module.exports = {
           updatedAt: new Date('2023-10-06 12:05:25.993')
         },
         {
-          id: 20,
+          id: 23,
           ItemId: 900,
           SectionId: 9,
           position: 1,
@@ -304,7 +349,7 @@ module.exports = {
           createdAt: new Date('2023-10-06 12:05:25.993'),
           updatedAt: new Date('2023-10-06 12:05:25.993')
         },       {
-          id: 21,
+          id: 24,
           ItemId: 401,
           SectionId: 4,
           position: 1,
@@ -319,7 +364,7 @@ module.exports = {
           updatedAt: new Date('2023-10-06 12:05:25.993')
         },
         {
-          id: 22,
+          id: 25,
           ItemId: 402,
           SectionId: 4,
           position: 1,
@@ -333,6 +378,53 @@ module.exports = {
           createdAt: new Date('2023-10-06 12:05:25.993'),
           updatedAt: new Date('2023-10-06 12:05:25.993')
         },
+        {
+          id: 26,
+          ItemId: 107,
+          SectionId: 1,
+          position: 1,
+          title_atribute: 'titleCv',
+          atribute: 'developer',
+          detail_atribute: '',
+          information:"",
+          status_item_section: true,
+          startDate: new Date('2023-10-06 12:05:25.993'),
+          endDate: new Date('2023-10-06 12:05:25.993'),
+          createdAt: new Date('2023-10-06 12:05:25.993'),
+          updatedAt: new Date('2023-10-06 12:05:25.993')
+        },
+        {
+          id: 27,
+          ItemId: 108,
+          SectionId: 1,
+          position: 1,
+          title_atribute: 'titleCv',
+          atribute: 'developer',
+          detail_atribute: '',
+          information:"",
+          status_item_section: true,
+          startDate: new Date('2023-10-06 12:05:25.993'),
+          endDate: new Date('2023-10-06 12:05:25.993'),
+          createdAt: new Date('2023-10-06 12:05:25.993'),
+          updatedAt: new Date('2023-10-06 12:05:25.993')
+        },
+        {
+          id: 28,
+          ItemId: 109,
+          SectionId: 1,
+          position: 1,
+          title_atribute: 'titleCv',
+          atribute: 'developer',
+          detail_atribute: '',
+          information:"",
+          status_item_section: true,
+          startDate: new Date('2023-10-06 12:05:25.993'),
+          endDate: new Date('2023-10-06 12:05:25.993'),
+          createdAt: new Date('2023-10-06 12:05:25.993'),
+          updatedAt: new Date('2023-10-06 12:05:25.993')
+        },
+        
+        
         
       ], {});
     } catch (error) {

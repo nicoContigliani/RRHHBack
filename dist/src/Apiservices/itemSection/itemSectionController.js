@@ -8,17 +8,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -100,27 +89,73 @@ const post = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () 
 });
 exports.post = post;
 const update = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const { id } = req.params;
-        const _a = req.body, { createdAt } = _a, updateCreate = __rest(_a, ["createdAt"]);
-        if (!createdAt)
-            return res.status(500).json(errorResponse);
-        let { error, value } = itemSectionValidationSchema_1.default.validate(updateCreate);
-        if (error)
-            console.error(error.details);
-        if (error)
-            return res.status(500).json(errorResponse);
-        const dataReturnS = yield (0, itemSectionDao_1.updateDao)(req.body, id);
-        if (dataReturnS) {
+    const currentTime = yield (0, today_services_1.today)();
+    if (Array.isArray(req.body)) {
+        try {
+            const updatedItems = yield Promise.all(req.body.map((item) => __awaiter(void 0, void 0, void 0, function* () {
+                for (const key in item) {
+                    if (Object.prototype.hasOwnProperty.call(item, key)) {
+                        item[key].updatedAt = currentTime;
+                        const { error } = itemSectionValidationSchema_1.default.validate(item[key]);
+                        if (error) {
+                            console.error(error.details);
+                            throw new Error("Validation error");
+                        }
+                        yield (0, itemSectionDao_1.updateDao)(item[key], item[key].ItemId);
+                    }
+                }
+                return item;
+            })));
             const dataReturnGet = yield getAllAlways();
             return res.status(200).json({ data: dataReturnGet, message: (0, alert_services_1.AlertServices)("Success", "Update"), status: 200 });
         }
-    }
-    catch (error) {
-        console.log("🚀 ~ file: TypeTestController.ts:71 ~ update ~ error:", error);
-        if (error)
+        catch (error) {
+            console.log("Error:", error);
             return res.status(500).json(errorResponse);
+        }
     }
+    // const currentTime = await today();
+    // if (Array.isArray(req.body)) {
+    //     let bodyData = [...(req.body)];
+    //     bodyData?.forEach(async (item: any) => {
+    //         for (const key in item) {
+    //             if (Object.prototype.hasOwnProperty.call(item, key)) {
+    //                 item[key].updatedAt = currentTime;
+    //                 try {
+    //                     console.log("🚀 ~ bodyData?.forEach ~ item[key]:", item[key])
+    //                     let { error } = TestInterviewValidationSchema.validate(item[key]);
+    //                     if (error) console.error(error.details)
+    //                     if (error) return res.status(500).json(errorResponse);
+    //                     const dataReturnS = await updateDao(item[key], item[key].ItemId)
+    //                     // if (dataReturnS) {
+    //                     //     const dataReturnGet = await getAllAlways()
+    //                     //     return res.status(200).json({ data: dataReturnGet, message: AlertServices("Success", "Update"), status: 200 });
+    //                     // }
+    //                 } catch (error) {
+    //                     console.log("🚀 ~ bodyData?.forEach ~ error:", error)
+    //                 }
+    //                 const dataReturnGet = await getAllAlways()
+    //                 return res.status(200).json({ data: dataReturnGet, message: AlertServices("Success", "Update"), status: 200 });
+    //             }
+    //         }
+    //     })
+    // }
+    // try {
+    //     const { id } = req.params
+    //     const { createdAt, ...updateCreate } = req.body
+    //     if (!createdAt) return res.status(500).json(errorResponse);
+    //     let { error, value } = TestInterviewValidationSchema.validate(updateCreate);
+    //     if (error) console.error(error.details)
+    //     if (error) return res.status(500).json(errorResponse);
+    //     const dataReturnS = await updateDao(req.body, id)
+    //     if (dataReturnS) {
+    //         const dataReturnGet = await getAllAlways()
+    //         return res.status(200).json({ data: dataReturnGet, message: AlertServices("Success", "Update"), status: 200 });
+    //     }
+    // } catch (error) {
+    //     console.log("🚀 ~ file: TypeTestController.ts:71 ~ update ~ error:", error)
+    //     if (error) return res.status(500).json(errorResponse);
+    // }
 });
 exports.update = update;
 const deletes = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
