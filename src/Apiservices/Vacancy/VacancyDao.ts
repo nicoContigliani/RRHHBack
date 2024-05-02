@@ -39,29 +39,87 @@ const {
 
 
 
+// export const getDao = async (data: any) => {
+//       return await Vacancy.findAll({
+//             include: [
+//                   {
+//                         model:Interview
+//                   },
+//                   {
+
+//                         model: TypeVacancy
+//                   },
+//                   {
+//                         model:Company
+//                   }
+//             ]
+//       })
 export const getDao = async (data: any) => {
       return await Vacancy.findAll({
-            include: [
+            include:  [
                   {
+                        model: Interview,
+                        include: [
+                              {
+                                    model: TypeInterview
+                              },
+                              {
+                                    model: InterviewResponsible,
+                                    include: {
+                                          model: User // Include the User model in InterviewResponsible
+                                    }
 
+                              },
+                              {
+                                    model: InterviewUser,
+                                    include: {
+                                          model: User,
+                                          where: data.userId ? { id: data.userId } : undefined // Filter by userId if provided
+                                    }
+                              }
+                        ]
+                  },
+                  {
                         model: TypeVacancy
                   },
                   {
-                        model:Company
+                        model: Company
                   }
-            ]
-      })
-}
+            ],
+      });
+};
+
 
 export const getIdDao = async (data: any) => {
       return await Vacancy.findAll({
             include: [
                   {
+                        model: Interview,
+                        include: [
+                              {
+                                    model: TypeInterview
+                              },
+                              {
+                                    model: InterviewResponsible,
+                                    include: {
+                                          model: User // Include the User model in InterviewResponsible
+                                    }
 
+                              },
+                              {
+                                    model: InterviewUser,
+                                    include: {
+                                          model: User,
+                                          where: data.userId ? { id: data.userId } : undefined // Filter by userId if provided
+                                    }
+                              }
+                        ]
+                  },
+                  {
                         model: TypeVacancy
                   },
                   {
-                        model:Company
+                        model: Company
                   }
             ],
             where: {
@@ -69,6 +127,8 @@ export const getIdDao = async (data: any) => {
             }
       });
 }
+
+
 export const postDao = async (data: any) => {
       try {
             return await Vacancy.create(data)

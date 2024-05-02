@@ -37,6 +37,8 @@ import Vacancy from './routes/VacancyRouter'
 import Shift from './routes/ShiftRouter'
 import auth from './routes/auth'
 import RoadMap from './routes/RoadMap'
+import RoadMapVacancies from './routes/RoadMapVacancies'
+
 
 
 
@@ -82,8 +84,7 @@ app.use('/Vacancy',Vacancy)
 app.use('/Shift',Shift)
 
 app.use('/RoadMap',RoadMap)
-
-
+app.use('/RoadMapVacancies',RoadMapVacancies)
 
 
 app.use('/Auth', auth)

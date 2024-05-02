@@ -12,22 +12,78 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.deletesDao = exports.updateDao = exports.postDao = exports.getIdDao = exports.getDao = void 0;
 const { Op } = require('sequelize');
 const { BrachUser, Branch, Company, CompanyVacances, CV, CVSection, CVUser, Interview, InterviewResponsible, InterviewUser, InterviewVacance, Item, itemSection, Permission, PermissionRoll, Result, ResultTest, Role, RollUser, Section, SectionType, TestInterview, Test, TypeInterview, TypeTest, TypeVacancy, User, Vacancy, RoadMap, InterviewRoadMap, RoadMapVacance } = require('../../../models');
+// export const getDao = async (data: any) => {
+//       return await Vacancy.findAll({
+//             include: [
+//                   {
+//                         model:Interview
+//                   },
+//                   {
+//                         model: TypeVacancy
+//                   },
+//                   {
+//                         model:Company
+//                   }
+//             ]
+//       })
 const getDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
     return yield Vacancy.findAll({
         include: [
+            {
+                model: Interview,
+                include: [
+                    {
+                        model: TypeInterview
+                    },
+                    {
+                        model: InterviewResponsible,
+                        include: {
+                            model: User // Include the User model in InterviewResponsible
+                        }
+                    },
+                    {
+                        model: InterviewUser,
+                        include: {
+                            model: User,
+                            where: data.userId ? { id: data.userId } : undefined // Filter by userId if provided
+                        }
+                    }
+                ]
+            },
             {
                 model: TypeVacancy
             },
             {
                 model: Company
             }
-        ]
+        ],
     });
 });
 exports.getDao = getDao;
 const getIdDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
     return yield Vacancy.findAll({
         include: [
+            {
+                model: Interview,
+                include: [
+                    {
+                        model: TypeInterview
+                    },
+                    {
+                        model: InterviewResponsible,
+                        include: {
+                            model: User // Include the User model in InterviewResponsible
+                        }
+                    },
+                    {
+                        model: InterviewUser,
+                        include: {
+                            model: User,
+                            where: data.userId ? { id: data.userId } : undefined // Filter by userId if provided
+                        }
+                    }
+                ]
+            },
             {
                 model: TypeVacancy
             },

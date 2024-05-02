@@ -1,0 +1,80 @@
+Diagramas específicos para cada etapa:
+
+1. Recepción de CV:
+
+Inicio
+|
+| Recepción de CV
+|
+| Extracción de información
+|
+| Creación de registro en la tabla de candidatos
+|
+Fin
+2. Análisis del CV:
+
+Inicio
+|
+| Análisis del CV
+|
+| Comparación de palabras clave
+|
+| Extracción de entidades
+|
+| Análisis de sentimiento
+|
+| Almacenamiento del resultado en la tabla de candidatos
+|
+Fin
+3. Selección de candidatos:
+
+Inicio
+|
+| Consulta de la tabla de candidatos
+|
+| Filtrado por requisitos del puesto
+|
+| Selección de candidatos
+|
+| Marcado como "en revisión" en la tabla de candidatos
+|
+Fin
+4. Entrevista:
+
+Inicio
+|
+| Consulta de la tabla de candidatos
+|
+| Programación de la entrevista
+|
+| Registro de la información en la tabla de entrevistas
+|
+| Realización de la entrevista
+|
+| Evaluación del candidato
+|
+Fin
+5. Evaluación:
+
+Inicio
+|
+| Consulta de la tabla de entrevistas
+|
+| Cálculo de la evaluación
+|
+| Registro de la evaluación en la tabla de evaluaciones
+|
+Fin
+6. Decisión:
+
+Inicio
+|
+| Consulta de la tabla de evaluaciones
+|
+| Toma de decisión final
+|
+| Registro de la decisión en la tabla de decisiones
+|
+| Comunicación de la decisión al candidato
+|
+Fin
