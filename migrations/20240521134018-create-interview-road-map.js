@@ -4,8 +4,7 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('InterviewRoadMaps', {
       id: {
-        // allowNull: false,
-        unique: true,
+        allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
@@ -24,6 +23,18 @@ module.exports = {
       },
       statusProgres: {
         type: Sequelize.STRING
+      },
+      sequence: {
+        type: Sequelize.BIGINT
+      },
+      interviewee: {
+        type: Sequelize.STRING
+      },
+      position: {
+        type: Sequelize.STRING
+      },
+      notes: {
+        type: Sequelize.TEXT
       },
       createdAt: {
         allowNull: false,

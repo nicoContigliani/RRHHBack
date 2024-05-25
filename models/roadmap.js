@@ -13,12 +13,10 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       RoadMap.belongsToMany(models.User, { through: models.InterviewUser, as: 'Interviewees' });
       RoadMap.belongsToMany(models.User, { through: models.InterviewResponsible, as: 'Responsibles' });
-      
       RoadMap.belongsToMany(models.Interview, { through: models.InterviewResponsible });
 
       // RoadMap.belongsToMany(models.Vacancy, { through: models.RoadMapVacance, as: 'Vacances' });
-      RoadMap.belongsToMany(models.Vacancy, { through: models.RoadMapVacance});
-
+      RoadMap.belongsToMany(models.Vacancy, { through: models.RoadMapVacance });
     }
   }
   RoadMap.init({
@@ -26,17 +24,21 @@ module.exports = (sequelize, DataTypes) => {
     VacancyId: DataTypes.BIGINT,
     responsibilityDescription: DataTypes.STRING,
     status_roadmap: DataTypes.BOOLEAN,
-    order: DataTypes.BIGINT,
     required: DataTypes.BOOLEAN,
     description: DataTypes.TEXT,
     duration: DataTypes.BIGINT,
     location: DataTypes.STRING,
     scheduledDateTime: DataTypes.DATE,
+    start_DateTime: DataTypes.DATE,
+    finish_DateTime: DataTypes.DATE,
     completionDateTime: DataTypes.DATE,
     outcome: DataTypes.STRING,
-    nextSteps: DataTypes.TEXT,
+    before_steps: DataTypes.TEXT,
+    after_steps: DataTypes.TEXT,
     nextActionDateTime: DataTypes.DATE,
-    image: DataTypes.STRING
+    image: DataTypes.STRING,
+    all_Steps: DataTypes.BIGINT,
+    order_Steps: DataTypes.BIGINT
   }, {
     sequelize,
     modelName: 'RoadMap',

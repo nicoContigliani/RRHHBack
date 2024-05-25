@@ -50,8 +50,8 @@ sequelize model:create --name Priority --attributes name_Priority:string,priorit
 
 
 
-sequelize model:create --name RoadMap --attributes InterviewId:bigint,VacancyId:bigint,responsibilityDescription:string,status_roadmap:boolean,order:bigint,required:boolean,description:text,duration:bigint,location:string,scheduledDateTime:date,completionDateTime:date,outcome:string,nextSteps:text,nextActionDateTime:date,image:string
+sequelize model:create --name RoadMap --attributes InterviewId:bigint,VacancyId:bigint,responsibilityDescription:string,status_roadmap:boolean,required:boolean,description:text,duration:bigint,location:string,scheduledDateTime:date,start_DateTime:date,finish_DateTime:date,completionDateTime:date,outcome:string,before_steps:text,after_steps:text,nextActionDateTime:date,image:string,all_Steps:bigint,order_Steps:bigint     
 
-sequelize model:create --name InterviewRoadMap --attributes InterviewId:bigint,RoadMapId:bigint,status_InterviewRoadMap:boolean,comments:text,statusProgres:string
+sequelize model:create --name InterviewRoadMap --attributes InterviewId:bigint,RoadMapId:bigint,status_InterviewRoadMap:boolean,comments:text,statusProgres:string,sequence:bigint,interviewee:string,position:string,notes:text
 
 sequelize model:create --name RoadMapVacance --attributes VacancyId:bigint,RoadMapId:bigint,status_RoadMapVacance:boolean,comments:text,statusProgres:string

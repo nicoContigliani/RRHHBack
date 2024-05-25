@@ -39,6 +39,8 @@ const VacancyRouter_1 = __importDefault(require("./routes/VacancyRouter"));
 const ShiftRouter_1 = __importDefault(require("./routes/ShiftRouter"));
 const auth_1 = __importDefault(require("./routes/auth"));
 const RoadMap_1 = __importDefault(require("./routes/RoadMap"));
+const RoadMapVacancies_1 = __importDefault(require("./routes/RoadMapVacancies"));
+const Roots_1 = __importDefault(require("./routes/Roots"));
 const app = (0, express_1.default)();
 app.use(body_parser_1.default.json());
 app.use(cors()); /* NEW */
@@ -75,5 +77,7 @@ app.use('/User', UserRouter_1.default);
 app.use('/Vacancy', VacancyRouter_1.default);
 app.use('/Shift', ShiftRouter_1.default);
 app.use('/RoadMap', RoadMap_1.default);
+app.use('/RoadMapVacancies', RoadMapVacancies_1.default);
 app.use('/Auth', auth_1.default);
+app.use('/Roots', Roots_1.default);
 exports.default = app;

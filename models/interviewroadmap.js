@@ -18,7 +18,11 @@ module.exports = (sequelize, DataTypes) => {
     RoadMapId: DataTypes.BIGINT,
     status_InterviewRoadMap: DataTypes.BOOLEAN,
     comments: DataTypes.TEXT,
-    statusProgres: DataTypes.STRING
+    statusProgres: DataTypes.STRING,
+    sequence: DataTypes.BIGINT,
+    interviewee: DataTypes.STRING,
+    position: DataTypes.STRING,
+    notes: DataTypes.TEXT
   }, {
     sequelize,
     modelName: 'InterviewRoadMap',

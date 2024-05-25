@@ -4,8 +4,7 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('RoadMaps', {
       id: {
-        // allowNull: false,
-        unique: true,
+        allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
@@ -22,9 +21,6 @@ module.exports = {
       status_roadmap: {
         type: Sequelize.BOOLEAN
       },
-      order: {
-        type: Sequelize.BIGINT
-      },
       required: {
         type: Sequelize.BOOLEAN
       },
@@ -40,13 +36,22 @@ module.exports = {
       scheduledDateTime: {
         type: Sequelize.DATE
       },
+      start_DateTime: {
+        type: Sequelize.DATE
+      },
+      finish_DateTime: {
+        type: Sequelize.DATE
+      },
       completionDateTime: {
         type: Sequelize.DATE
       },
       outcome: {
         type: Sequelize.STRING
       },
-      nextSteps: {
+      before_steps: {
+        type: Sequelize.TEXT
+      },
+      after_steps: {
         type: Sequelize.TEXT
       },
       nextActionDateTime: {
@@ -54,6 +59,12 @@ module.exports = {
       },
       image: {
         type: Sequelize.STRING
+      },
+      all_Steps: {
+        type: Sequelize.BIGINT
+      },
+      order_Steps: {
+        type: Sequelize.BIGINT
       },
       createdAt: {
         allowNull: false,
