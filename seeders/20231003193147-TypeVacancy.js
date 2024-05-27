@@ -990,7 +990,7 @@ module.exports = {
           updatedAt: '2025-03-11 00:00:00.000'
         },
         {
-          id: 126,
+          id: 129,
           name_vacancy_type: 'Flooring Installer',
           description_vacancy_type: 'Installs and maintains various types of flooring, such as hardwood, tile, and carpet, in residential and commercial properties.',
           status_vacancy_type: true,
@@ -998,7 +998,7 @@ module.exports = {
           updatedAt: '2025-03-11 00:00:00.000'
         },
         {
-          id: 127,
+          id: 130,
           name_vacancy_type: 'Scaffolding Erector',
           description_vacancy_type: 'Assembles and disassembles scaffolding structures, providing safe access for workers at construction sites.',
           status_vacancy_type: true,
@@ -1006,7 +1006,7 @@ module.exports = {
           updatedAt: '2025-03-11 00:00:00.000'
         },
         {
-          id: 128,
+          id: 131,
           name_vacancy_type: 'Concrete Pump Operator',
           description_vacancy_type: 'Operates concrete pumps to transport and pour concrete in construction projects, ensuring accuracy and efficiency.',
           status_vacancy_type: true,

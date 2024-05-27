@@ -1,12 +1,13 @@
 
 import { NextFunction, Request, Response } from 'express';
 
-import {getDao, getIdDao, postDao, updateDao,deletesDao } from './RoadMapDao';
+import { getDao, getIdDao, postDao, updateDao, deletesDao } from './RoadMapDao';
 import { statusActive } from '../../services/statusActive.services';
 import { AlertServices } from '../../services/alert.services';
 import { today } from '../../services/today.services';
 import { changeActive } from '../../services/chanegeOfActives.services';
 import RoadMapValidationSchema from '../../ValidationSchema/RoleValidationSchema';
+// import { dataFormaterRoadMap } from './RoadMapDto';
 
 const errorResponse = { data: [], message: AlertServices("Error", "Error create"), status: 500 };
 
@@ -15,10 +16,13 @@ export const get = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const data = ""
         const dataReturn: any[] | undefined = await getDao(data)
+        // const todoR = await dataFormaterRoadMap(dataReturn)
         let returnExist = await statusActive(dataReturn)
 
         if (returnExist?.length === 0) return res.status(200).json({ data: [], message: AlertServices("Success", "TypeTest dosen't find"), status: 200 });
         return res.status(200).json({ data: returnExist, message: AlertServices("Success", "Find"), status: 200 })
+        // return res.status(200).json({ data: todoR, message: AlertServices("Success", "Find"), status: 200 })
+
     } catch (error) {
         console.log("🚀 ~ file: UserController.ts:14 ~ get ~ error:", error)
 

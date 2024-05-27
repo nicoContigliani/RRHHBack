@@ -30,15 +30,18 @@ const alert_services_1 = require("../../services/alert.services");
 const today_services_1 = require("../../services/today.services");
 const chanegeOfActives_services_1 = require("../../services/chanegeOfActives.services");
 const RoleValidationSchema_1 = __importDefault(require("../../ValidationSchema/RoleValidationSchema"));
+// import { dataFormaterRoadMap } from './RoadMapDto';
 const errorResponse = { data: [], message: (0, alert_services_1.AlertServices)("Error", "Error create"), status: 500 };
 const get = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const data = "";
         const dataReturn = yield (0, RoadMapDao_1.getDao)(data);
+        // const todoR = await dataFormaterRoadMap(dataReturn)
         let returnExist = yield (0, statusActive_services_1.statusActive)(dataReturn);
         if ((returnExist === null || returnExist === void 0 ? void 0 : returnExist.length) === 0)
             return res.status(200).json({ data: [], message: (0, alert_services_1.AlertServices)("Success", "TypeTest dosen't find"), status: 200 });
         return res.status(200).json({ data: returnExist, message: (0, alert_services_1.AlertServices)("Success", "Find"), status: 200 });
+        // return res.status(200).json({ data: todoR, message: AlertServices("Success", "Find"), status: 200 })
     }
     catch (error) {
         console.log("🚀 ~ file: UserController.ts:14 ~ get ~ error:", error);

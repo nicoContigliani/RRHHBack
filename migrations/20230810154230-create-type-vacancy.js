@@ -5,7 +5,7 @@ module.exports = {
     await queryInterface.createTable('TypeVacancies', {
       id: {
         // allowNull: false,
-        unique: true,
+        // unique: true,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
