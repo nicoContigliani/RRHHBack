@@ -38,21 +38,22 @@ export const getId = async (req: Request, res: Response, next: NextFunction) => 
 }
 
 export const post = async (req: Request, res: Response, next: NextFunction) => {
+    console.log("🚀 ~ post ~ req.body:", req.body)
     let { error, value } = RoadMapValidationSchema.validate(req.body);
     try {
-        const currentTime = await today()
-        value.createdAt = currentTime
-        value.updatedAt = currentTime
+        // const currentTime = await today()
+        // value.createdAt = currentTime
+        // value.updatedAt = currentTime
 
-        if (error) console.error(error.details)
-        if (error) return res.status(500).json(errorResponse);
-        const dataReturnS = await postDao(value)
-        if (!dataReturnS) return res.status(500).json(errorResponse);
+        // if (error) console.error(error.details)
+        // if (error) return res.status(500).json(errorResponse);
+        // const dataReturnS = await postDao(value)
+        // if (!dataReturnS) return res.status(500).json(errorResponse);
 
-        let returnExist = await getAllAlways()
-        if (!returnExist) return res.status(500).json(errorResponse);
+        // let returnExist = await getAllAlways()
+        // if (!returnExist) return res.status(500).json(errorResponse);
 
-        return res.status(200).json({ data: returnExist, message: AlertServices("Success", "Created"), status: 200 });
+        // return res.status(200).json({ data: returnExist, message: AlertServices("Success", "Created"), status: 200 });
     } catch (error) {
         console.log("Error in createTypeTest:", error);
         return res.status(500).json({ data: [], message: AlertServices("Error", "Internal Server Error"), status: 500 });
