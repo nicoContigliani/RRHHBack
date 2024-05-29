@@ -27,8 +27,9 @@ exports.deletes = exports.update = exports.post = exports.getId = exports.get = 
 const RoadMapDao_1 = require("./RoadMapDao");
 const statusActive_services_1 = require("../../services/statusActive.services");
 const alert_services_1 = require("../../services/alert.services");
+const today_services_1 = require("../../services/today.services");
 const chanegeOfActives_services_1 = require("../../services/chanegeOfActives.services");
-const RoleValidationSchema_1 = __importDefault(require("../../ValidationSchema/RoleValidationSchema"));
+const RoadMapValidationSchema_1 = __importDefault(require("../../ValidationSchema/RoadMapValidationSchema"));
 // import { dataFormaterRoadMap } from './RoadMapDto';
 const errorResponse = { data: [], message: (0, alert_services_1.AlertServices)("Error", "Error create"), status: 500 };
 const get = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
@@ -57,19 +58,22 @@ const getId = (req, res, next) => __awaiter(void 0, void 0, void 0, function* ()
 });
 exports.getId = getId;
 const post = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    let { error, value } = RoleValidationSchema_1.default.validate(req.body);
-    console.log("🚀 ~ post ~ error, value:", error, value);
+    let { error, value } = RoadMapValidationSchema_1.default.validate(req.body);
     try {
-        // const currentTime = await today()
-        // value.createdAt = currentTime
-        // value.updatedAt = currentTime
+        const currentTime = yield (0, today_services_1.today)();
+        value.createdAt = currentTime;
+        value.updatedAt = currentTime;
         // if (error) console.error(error.details)
         // if (error) return res.status(500).json(errorResponse);
-        // const dataReturnS = await postDao(value)
-        // if (!dataReturnS) return res.status(500).json(errorResponse);
-        // let returnExist = await getAllAlways()
-        // if (!returnExist) return res.status(500).json(errorResponse);
-        // return res.status(200).json({ data: returnExist, message: AlertServices("Success", "Created"), status: 200 });
+        // console.log("🚀 ~ post ~ value:", value)
+        const dataReturnS = yield (0, RoadMapDao_1.postDao)(value);
+        console.log("🚀 ~ post ~ dataReturnS:", dataReturnS);
+        if (!dataReturnS)
+            return res.status(500).json(errorResponse);
+        let returnExist = yield getAllAlways();
+        if (!returnExist)
+            return res.status(500).json(errorResponse);
+        return res.status(200).json({ data: returnExist, message: (0, alert_services_1.AlertServices)("Success", "Created"), status: 200 });
     }
     catch (error) {
         console.log("Error in createTypeTest:", error);
@@ -83,7 +87,7 @@ const update = (req, res, next) => __awaiter(void 0, void 0, void 0, function* (
         const _a = req.body, { createdAt } = _a, updateCreate = __rest(_a, ["createdAt"]);
         if (!createdAt)
             return res.status(500).json(errorResponse);
-        let { error, value } = RoleValidationSchema_1.default.validate(updateCreate);
+        let { error, value } = RoadMapValidationSchema_1.default.validate(updateCreate);
         if (error)
             console.error(error.details);
         if (error)

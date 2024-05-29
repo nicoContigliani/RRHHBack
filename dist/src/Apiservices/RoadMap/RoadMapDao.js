@@ -83,7 +83,88 @@ const getIdDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
 exports.getIdDao = getIdDao;
 const postDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        return yield RoadMap.create(data);
+        //debe crear los datos en la tabla intermedia
+        let { InterviewId, VacancyId, after_steps, all_Steps, before_steps, description, duration, image, location, nextActionDateTime, order_Steps, outcome, required, responsibilityDescription, scheduledDateTime, start_DateTime, finish_DateTime, completionDateTime, status_roadmap, undefined, createdAt, updatedAt } = data;
+        // InterviewRoadMap --------
+        //id                     
+        //InterviewId            
+        //RoadMapId              
+        //status_InterviewRoadMap
+        //comments               
+        //statusProgres          
+        //sequence               
+        //interviewee            
+        //position               
+        //notes                  
+        //createdAt              
+        //updatedAt            
+        // const dataRoadMapVacance = {
+        //     VacancyId,
+        //     RoadMapId,
+        //     status_RoadMapVacance,
+        //     comments,
+        //     statusProg,
+        //     createdAt,
+        //     updatedAt,
+        // }
+        // const returnRoadMap = await RoadMapVacance.create(data)
+        //interviewId
+        //VacancyId
+        const ultimoId = yield RoadMap.max('id');
+        console.log("Roadmap***********************");
+        const todoRoadmap = yield RoadMap.create(data);
+        console.log("Roadmap***********************");
+        const { dataValues: { id } } = todoRoadmap;
+        const RoadMapId = id;
+        try {
+            const dataRoadMapVacance = {
+                VacancyId,
+                RoadMapId,
+                status_RoadMapVacance: true,
+                comments: "",
+                statusProg: "",
+                createdAt,
+                updatedAt,
+            };
+            console.log("RoadMapVacance***********************");
+            const returnRoadMap = yield RoadMapVacance.create(dataRoadMapVacance);
+            console.log("RoadMapVacance***********************");
+        }
+        catch (error) {
+            console.log("🚀 ~ postDao ~ error:", error);
+        }
+        try {
+            const dataInterviewRoadMap = {
+                InterviewId,
+                RoadMapId,
+                status_InterviewRoadMap: true,
+                comments: "",
+                statusProgres: "",
+                sequence: null,
+                interviewee: "",
+                position: "",
+                notes: "",
+                createdAt,
+                updatedAt
+            };
+            console.log("InterviewRoadMap***********************");
+            const returnRoadMap = yield InterviewRoadMap.create(dataInterviewRoadMap);
+            console.log("InterviewRoadMap***********************");
+        }
+        catch (error) {
+            console.error("🚀 ~ postDao ~ error:", error.message);
+            console.error("🚀 ~ postDao ~ error stack:", error.stack); // If you have other properties on the error object, log them as well
+            if (error.errors) {
+                error.errors.forEach((err) => {
+                    console.error("🚀 ~ Validation error:", err.message);
+                    console.error("🚀 ~ Validation error type:", err.type);
+                    console.error("🚀 ~ Validation error path:", err.path);
+                    console.error("🚀 ~ Validation error value:", err.value);
+                });
+            }
+        }
+        return yield todoRoadmap;
+        // return await RoadMap.create(data)
     }
     catch (error) {
         console.log("🚀 ~ file: SectionDao.ts:57 ~ postDao ~ error:", error);
