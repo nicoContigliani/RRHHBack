@@ -66,6 +66,9 @@ module.exports = {
       order_Steps: {
         type: Sequelize.BIGINT
       },
+      description_steps: {
+        type: Sequelize.TEXT
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

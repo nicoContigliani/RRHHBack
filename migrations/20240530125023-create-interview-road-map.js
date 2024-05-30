@@ -18,9 +18,6 @@ module.exports = {
       status_InterviewRoadMap: {
         type: Sequelize.BOOLEAN
       },
-      comments: {
-        type: Sequelize.TEXT
-      },
       statusProgres: {
         type: Sequelize.STRING
       },
@@ -34,6 +31,12 @@ module.exports = {
         type: Sequelize.STRING
       },
       notes: {
+        type: Sequelize.TEXT
+      },
+      comments: {
+        type: Sequelize.TEXT
+      },
+      descriptions: {
         type: Sequelize.TEXT
       },
       createdAt: {

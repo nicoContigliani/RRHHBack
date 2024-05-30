@@ -10,6 +10,7 @@ const InterviewRoadMapValidationSchema = Joi.object({
     interviewee: Joi.string().optional(),
     position: Joi.string().optional(),
     notes: Joi.string().optional(),
+    descriptions: Joi.string().optional(),
     createdAt: Joi.date().optional(),
     updatedAt: Joi.date().optional(),
 });

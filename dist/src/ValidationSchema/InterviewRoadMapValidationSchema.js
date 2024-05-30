@@ -14,6 +14,7 @@ const InterviewRoadMapValidationSchema = joi_1.default.object({
     interviewee: joi_1.default.string().optional(),
     position: joi_1.default.string().optional(),
     notes: joi_1.default.string().optional(),
+    descriptions: joi_1.default.string().optional(),
     createdAt: joi_1.default.date().optional(),
     updatedAt: joi_1.default.date().optional(),
 });

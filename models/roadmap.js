@@ -14,8 +14,6 @@ module.exports = (sequelize, DataTypes) => {
       RoadMap.belongsToMany(models.User, { through: models.InterviewUser, as: 'Interviewees' });
       RoadMap.belongsToMany(models.User, { through: models.InterviewResponsible, as: 'Responsibles' });
       RoadMap.belongsToMany(models.Interview, { through: models.InterviewResponsible });
-
-      // RoadMap.belongsToMany(models.Vacancy, { through: models.RoadMapVacance, as: 'Vacances' });
       RoadMap.belongsToMany(models.Vacancy, { through: models.RoadMapVacance });
     }
   }
@@ -38,7 +36,8 @@ module.exports = (sequelize, DataTypes) => {
     nextActionDateTime: DataTypes.DATE,
     image: DataTypes.STRING,
     all_Steps: DataTypes.BIGINT,
-    order_Steps: DataTypes.BIGINT
+    order_Steps: DataTypes.BIGINT,
+    description_steps: DataTypes.TEXT
   }, {
     sequelize,
     modelName: 'RoadMap',

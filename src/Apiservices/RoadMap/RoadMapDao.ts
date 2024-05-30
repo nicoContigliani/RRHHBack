@@ -102,11 +102,16 @@ export const getIdDao = async (data: any) => {
                             // Si tienes una tabla intermedia, como 'IntervieweesInterviews',
                             // puedes especificar condiciones adicionales aquí.
                         },
+                        order: [['id', 'ASC']], // Ordena por la columna 'id' del modelo User (entrevistados)
+
                     },
                     {
-                        model: Vacancy, // Corregido 'modul' a 'model'
+                        model: Vacancy,
+
                     },
                 ],
+                group: ['Interviewees.id'], // Agrupa por el ID del entrevistado
+
             },
         ],
     });

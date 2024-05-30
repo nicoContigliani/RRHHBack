@@ -17,12 +17,13 @@ module.exports = (sequelize, DataTypes) => {
     InterviewId: DataTypes.BIGINT,
     RoadMapId: DataTypes.BIGINT,
     status_InterviewRoadMap: DataTypes.BOOLEAN,
-    comments: DataTypes.TEXT,
     statusProgres: DataTypes.STRING,
     sequence: DataTypes.BIGINT,
     interviewee: DataTypes.STRING,
     position: DataTypes.STRING,
-    notes: DataTypes.TEXT
+    notes: DataTypes.TEXT,
+    comments: DataTypes.TEXT,
+    descriptions: DataTypes.TEXT
   }, {
     sequelize,
     modelName: 'InterviewRoadMap',
