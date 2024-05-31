@@ -3,7 +3,7 @@ import { NextFunction, Request, Response } from 'express';
 import Joi from 'joi';
 
 
-import { getDao, getIdDao, postDao, updateDao, deletesDao } from './BrachUserDao';
+import { getDao, getIdDao, postDao, updateDao, deletesDao, postBulkDao } from './BrachUserDao';
 import { statusActive } from '../../services/statusActive.services';
 import { AlertServices } from '../../services/alert.services';
 import BrachUserValidationSchema from '../../ValidationSchema/BrachUserValidationSchema';
@@ -36,24 +36,55 @@ export const getId = async (req: Request, res: Response, next: NextFunction) => 
 }
 
 export const post = async (req: Request, res: Response, next: NextFunction) => {
-    let { error, value } = BrachUserValidationSchema.validate(req.body);
-    try {
-        const currentTime = await today()
-        value.createdAt = currentTime
-        value.updatedAt = currentTime
-        if (error) console.error(error.details)
-        if (error) return res.status(500).json(errorResponse);
+    if (Array.isArray(req.body)) {
+        try {
+            for (let item of req.body) {
+                const { error } = BrachUserValidationSchema.validate(item);
+                if (error) {
+                    console.error(error.details);postDao
+                    return res.status(400).json({ message: "Validation Error", details: error.details });
+                }
+            }
 
-        const dataReturnS = await postDao(value)
-        if (!dataReturnS) return res.status(500).json(errorResponse);
+            const currentTime = await today();
+            const values = req.body.map(item => ({
+                ...item,
+                createdAt: currentTime,
+                updatedAt: currentTime,
+            }));
+            const dataReturnS = await postBulkDao(values)
+            if (!dataReturnS) return res.status(500).json({ message: "Error while saving data" });
 
-        let returnExist = await getAllAlways()
-        if (!returnExist) return res.status(500).json(errorResponse);
+            let returnExist = await getAllAlways();
+            if (!returnExist) return res.status(500).json({ message: "Error fetching data" });
 
-        return res.status(200).json({ data: returnExist, message: AlertServices("Success", "Created"), status: 200 });
-    } catch (error) {
-        console.log("Error in createTypeTest:", error);
-        return res.status(500).json({ data: [], message: AlertServices("Error", "Internal Server Error"), status: 500 });
+            return res.status(200).json({ data: returnExist, message: AlertServices("Success", "Created"), status: 200 });
+
+        } catch (error) {
+            return res.status(500).json({ data: [], message: AlertServices("Error", "Internal Server Error"), status: 500 });
+
+        }
+
+
+    }
+
+    if (!Array.isArray(req.body)) {
+        let { error, value } = BrachUserValidationSchema.validate(req.body);
+        try {
+            const currentTime = await today()
+            value.createdAt = currentTime
+            value.updatedAt = currentTime
+            if (error) console.error(error.details)
+            if (error) return res.status(500).json(errorResponse)
+            const dataReturnS = await postDao(value)
+            if (!dataReturnS) return res.status(500).json(errorResponse)
+            let returnExist = await getAllAlways()
+            if (!returnExist) return res.status(500).json(errorResponse)
+            return res.status(200).json({ data: returnExist, message: AlertServices("Success", "Created"), status: 200 });
+        } catch (error) {
+            console.log("Error in createTypeTest:", error);
+            return res.status(500).json({ data: [], message: AlertServices("Error", "Internal Server Error"), status: 500 });
+        }
     }
 }
 

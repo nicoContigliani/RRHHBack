@@ -55,7 +55,14 @@ export const postDao = async (data: any) => {
 
       }
 }
+export const postBulkDao = async (data: any) => {
+      try {
+            return await InterviewResponsible.bulkCreate(data);
+      } catch (error) {
+            console.log("🚀 ~ file: InterviewResponsibleDao.ts:57 ~ postDao ~ error:", error)
 
+      }
+}
 export const updateDao = async (data: any, id: any) => {
       try {
             return await InterviewVacance.update(data, { where: { id: id } })

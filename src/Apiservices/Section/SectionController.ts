@@ -3,7 +3,7 @@ import { NextFunction, Request, Response } from 'express';
 import Joi from 'joi';
 
 
-import { getDao, getIdDao, postDao, updateDao, deletesDao } from './SectionDao';
+import { getDao, getIdDao, postDao, updateDao, deletesDao, postBulkDao } from './SectionDao';
 import { statusActive } from '../../services/statusActive.services';
 import { AlertServices } from '../../services/alert.services';
 import TestInterviewValidationSchema from '../../ValidationSchema/SectionValidationSchema';
@@ -36,46 +36,59 @@ export const getId = async (req: Request, res: Response, next: NextFunction) => 
 }
 
 export const post = async (req: Request, res: Response, next: NextFunction) => {
-    const isArray = Array.isArray(req.body);
 
-    try {
-        const currentTime = await today();
-        const dataReturnS = [];
-
-        if (isArray) {
-            for (const obj of req.body) {
-                const { error, value } = TestInterviewValidationSchema.validate(obj);
+    if (Array.isArray(req.body)) {
+        try {
+            for (let item of req.body) {
+                const { error } = TestInterviewValidationSchema.validate(item);
                 if (error) {
                     console.error(error.details);
-                    return res.status(500).json(errorResponse);
+                    return res.status(400).json({ message: "Validation Error", details: error.details });
                 }
-                obj.createdAt = currentTime;
-                obj.updatedAt = currentTime;
-                const dataReturn = await postDao(obj);
-                if (!dataReturn) return res.status(500).json(errorResponse);
-                dataReturnS.push(dataReturn);
             }
-        } else {
-            const { error, value } = TestInterviewValidationSchema.validate(req.body);
-            if (error) {
-                console.error(error.details);
-                return res.status(500).json(errorResponse);
-            }
-            value.createdAt = currentTime;
-            value.updatedAt = currentTime;
-            const dataReturn = await postDao(value);
-            if (!dataReturn) return res.status(500).json(errorResponse);
-            dataReturnS.push(dataReturn);
+
+            const currentTime = await today();
+            const values = req.body.map(item => ({
+                ...item,
+                createdAt: currentTime,
+                updatedAt: currentTime,
+            }));
+            const dataReturnS = await postBulkDao(values)
+            if (!dataReturnS) return res.status(500).json({ message: "Error while saving data" });
+
+            let returnExist = await getAllAlways();
+            if (!returnExist) return res.status(500).json({ message: "Error fetching data" });
+
+            return res.status(200).json({ data: returnExist, message: AlertServices("Success", "Created"), status: 200 });
+
+        } catch (error) {
+            return res.status(500).json({ data: [], message: AlertServices("Error", "Internal Server Error"), status: 500 });
+
         }
 
-        let returnExist = await getAllAlways();
-        if (!returnExist) return res.status(500).json(errorResponse);
 
-        return res.status(200).json({ data: dataReturnS, message: AlertServices("Success", "Created"), status: 200 });
-    } catch (error) {
-        console.log("Error in createTypeTest:", error);
-        return res.status(500).json({ data: [], message: AlertServices("Error", "Internal Server Error"), status: 500 });
     }
+
+    if (!Array.isArray(req.body)) {
+        let { error, value } = TestInterviewValidationSchema.validate(req.body);
+        try {
+            const currentTime = await today()
+            value.createdAt = currentTime
+            value.updatedAt = currentTime
+            if (error) console.error(error.details)
+            if (error) return res.status(500).json(errorResponse)
+            const dataReturnS = await postDao(value)
+            if (!dataReturnS) return res.status(500).json(errorResponse)
+            let returnExist = await getAllAlways()
+            if (!returnExist) return res.status(500).json(errorResponse)
+            return res.status(200).json({ data: returnExist, message: AlertServices("Success", "Created"), status: 200 });
+        } catch (error) {
+            console.log("Error in createTypeTest:", error);
+            return res.status(500).json({ data: [], message: AlertServices("Error", "Internal Server Error"), status: 500 });
+        }
+    }
+
+
 }
 
 export const update = async (req: Request, res: Response, next: NextFunction) => {

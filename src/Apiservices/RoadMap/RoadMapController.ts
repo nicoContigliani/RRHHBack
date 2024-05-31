@@ -1,7 +1,7 @@
 
 import { NextFunction, Request, Response } from 'express';
 
-import { getDao, getIdDao, postDao, updateDao, deletesDao } from './RoadMapDao';
+import { getDao, getIdDao, postDao, updateDao, deletesDao, postBulkDao } from './RoadMapDao';
 import { statusActive } from '../../services/statusActive.services';
 import { AlertServices } from '../../services/alert.services';
 import { today } from '../../services/today.services';
@@ -38,28 +38,57 @@ export const getId = async (req: Request, res: Response, next: NextFunction) => 
 }
 
 export const post = async (req: Request, res: Response, next: NextFunction) => {
-    let { error, value } = RoadMapValidationSchema.validate(req.body);
-    
-    try {
-        const currentTime = await today()
-        value.createdAt = currentTime
-        value.updatedAt = currentTime      
 
-        // if (error) console.error(error.details)
-        // if (error) return res.status(500).json(errorResponse);
-        // console.log("🚀 ~ post ~ value:", value)
 
-         const dataReturnS = await postDao(value)
-         console.log("🚀 ~ post ~ dataReturnS:", dataReturnS)
-        if (!dataReturnS) return res.status(500).json(errorResponse);
+    if (Array.isArray(req.body)) {
+        try {
+            for (let item of req.body) {
+                const { error } = RoadMapValidationSchema.validate(item);
+                if (error) {
+                    console.error(error.details);
+                    return res.status(400).json({ message: "Validation Error", details: error.details });
+                }
+            }
 
-        let returnExist = await getAllAlways()
-        if (!returnExist) return res.status(500).json(errorResponse);
+            const currentTime = await today();
+            const values = req.body.map(item => ({
+                ...item,
+                createdAt: currentTime,
+                updatedAt: currentTime,
+            }));
+            const dataReturnS = await postBulkDao(values)
+            if (!dataReturnS) return res.status(500).json({ message: "Error while saving data" });
 
-        return res.status(200).json({ data: returnExist, message: AlertServices("Success", "Created"), status: 200 });
-    } catch (error) {
-        console.log("Error in createTypeTest:", error);
-        return res.status(500).json({ data: [], message: AlertServices("Error", "Internal Server Error"), status: 500 });
+            let returnExist = await getAllAlways();
+            if (!returnExist) return res.status(500).json({ message: "Error fetching data" });
+
+            return res.status(200).json({ data: returnExist, message: AlertServices("Success", "Created"), status: 200 });
+
+        } catch (error) {
+            return res.status(500).json({ data: [], message: AlertServices("Error", "Internal Server Error"), status: 500 });
+
+        }
+
+
+    }
+
+    if (!Array.isArray(req.body)) {
+        let { error, value } = RoadMapValidationSchema.validate(req.body);
+        try {
+            const currentTime = await today()
+            value.createdAt = currentTime
+            value.updatedAt = currentTime
+            if (error) console.error(error.details)
+            if (error) return res.status(500).json(errorResponse)
+            const dataReturnS = await postDao(value)
+            if (!dataReturnS) return res.status(500).json(errorResponse)
+            let returnExist = await getAllAlways()
+            if (!returnExist) return res.status(500).json(errorResponse)
+            return res.status(200).json({ data: returnExist, message: AlertServices("Success", "Created"), status: 200 });
+        } catch (error) {
+            console.log("Error in createTypeTest:", error);
+            return res.status(500).json({ data: [], message: AlertServices("Error", "Internal Server Error"), status: 500 });
+        }
     }
 }
 
