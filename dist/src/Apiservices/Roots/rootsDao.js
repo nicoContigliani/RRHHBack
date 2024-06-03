@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAllColumns = exports.postDao = exports.getDaoFilter = exports.getDao = void 0;
+exports.getAllColumns = exports.postBulkDao = exports.postDao = exports.getDaoFilter = exports.getDao = void 0;
 const { Op } = require('sequelize');
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
@@ -78,6 +78,15 @@ const postDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.postDao = postDao;
+const postBulkDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        return yield InterviewResponsible.bulkCreate(data);
+    }
+    catch (error) {
+        console.log("🚀 ~ file: InterviewResponsibleDao.ts:57 ~ postDao ~ error:", error);
+    }
+});
+exports.postBulkDao = postBulkDao;
 const getAllColumns = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         // Define tu consulta SQL

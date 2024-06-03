@@ -55,27 +55,68 @@ const getId = (req, res, next) => __awaiter(void 0, void 0, void 0, function* ()
 });
 exports.getId = getId;
 const post = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    let { error, value } = PermissionValidationSchema_1.default.validate(req.body);
-    try {
-        const currentTime = yield (0, today_services_1.today)();
-        value.createdAt = currentTime;
-        value.updatedAt = currentTime;
-        if (error)
-            console.error(error.details);
-        if (error)
-            return res.status(500).json(errorResponse);
-        const dataReturnS = yield (0, PermissionDao_1.postDao)(value);
-        if (!dataReturnS)
-            return res.status(500).json(errorResponse);
-        let returnExist = yield getAllAlways();
-        if (!returnExist)
-            return res.status(500).json(errorResponse);
-        return res.status(200).json({ data: returnExist, message: (0, alert_services_1.AlertServices)("Success", "Created"), status: 200 });
+    if (Array.isArray(req.body)) {
+        try {
+            for (let item of req.body) {
+                const { error } = PermissionValidationSchema_1.default.validate(item);
+                if (error) {
+                    console.error(error.details);
+                    return res.status(400).json({ message: "Validation Error", details: error.details });
+                }
+            }
+            const currentTime = yield (0, today_services_1.today)();
+            const values = req.body.map(item => (Object.assign(Object.assign({}, item), { createdAt: currentTime, updatedAt: currentTime })));
+            const dataReturnS = yield (0, PermissionDao_1.postBulkDao)(values);
+            if (!dataReturnS)
+                return res.status(500).json({ message: "Error while saving data" });
+            let returnExist = yield getAllAlways();
+            if (!returnExist)
+                return res.status(500).json({ message: "Error fetching data" });
+            return res.status(200).json({ data: returnExist, message: (0, alert_services_1.AlertServices)("Success", "Created"), status: 200 });
+        }
+        catch (error) {
+            return res.status(500).json({ data: [], message: (0, alert_services_1.AlertServices)("Error", "Internal Server Error"), status: 500 });
+        }
     }
-    catch (error) {
-        console.log("Error in createTypeTest:", error);
-        return res.status(500).json({ data: [], message: (0, alert_services_1.AlertServices)("Error", "Internal Server Error"), status: 500 });
+    if (!Array.isArray(req.body)) {
+        let { error, value } = PermissionValidationSchema_1.default.validate(req.body);
+        try {
+            const currentTime = yield (0, today_services_1.today)();
+            value.createdAt = currentTime;
+            value.updatedAt = currentTime;
+            if (error)
+                console.error(error.details);
+            if (error)
+                return res.status(500).json(errorResponse);
+            const dataReturnS = yield (0, PermissionDao_1.postDao)(value);
+            if (!dataReturnS)
+                return res.status(500).json(errorResponse);
+            let returnExist = yield getAllAlways();
+            if (!returnExist)
+                return res.status(500).json(errorResponse);
+            return res.status(200).json({ data: returnExist, message: (0, alert_services_1.AlertServices)("Success", "Created"), status: 200 });
+        }
+        catch (error) {
+            console.log("Error in createTypeTest:", error);
+            return res.status(500).json({ data: [], message: (0, alert_services_1.AlertServices)("Error", "Internal Server Error"), status: 500 });
+        }
     }
+    // let { error, value } = PermissionValidationSchema.validate(req.body);
+    // try {
+    //     const currentTime = await today()
+    //     value.createdAt = currentTime
+    //     value.updatedAt = currentTime
+    //     if (error) console.error(error.details)
+    //     if (error) return res.status(500).json(errorResponse);
+    //     const dataReturnS = await postDao(value)
+    //     if (!dataReturnS) return res.status(500).json(errorResponse);
+    //     let returnExist = await getAllAlways()
+    //     if (!returnExist) return res.status(500).json(errorResponse);
+    //     return res.status(200).json({ data: returnExist, message: AlertServices("Success", "Created"), status: 200 });
+    // } catch (error) {
+    //     console.log("Error in createTypeTest:", error);
+    //     return res.status(500).json({ data: [], message: AlertServices("Error", "Internal Server Error"), status: 500 });
+    // }
 });
 exports.post = post;
 const update = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {

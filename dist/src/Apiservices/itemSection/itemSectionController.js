@@ -45,47 +45,88 @@ const getId = (req, res, next) => __awaiter(void 0, void 0, void 0, function* ()
 });
 exports.getId = getId;
 const post = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    const isArray = Array.isArray(req.body);
-    try {
-        const currentTime = yield (0, today_services_1.today)();
-        const dataReturnS = [];
-        if (isArray) {
-            for (const obj of req.body) {
-                const { error, value } = itemSectionValidationSchema_1.default.validate(obj);
+    if (Array.isArray(req.body)) {
+        try {
+            for (let item of req.body) {
+                const { error } = itemSectionValidationSchema_1.default.validate(item);
                 if (error) {
                     console.error(error.details);
-                    return res.status(500).json(errorResponse);
+                    return res.status(400).json({ message: "Validation Error", details: error.details });
                 }
-                obj.createdAt = currentTime;
-                obj.updatedAt = currentTime;
-                const dataReturn = yield (0, itemSectionDao_1.postDao)(obj);
-                if (!dataReturn)
-                    return res.status(500).json(errorResponse);
-                dataReturnS.push(dataReturn);
             }
+            const currentTime = yield (0, today_services_1.today)();
+            const values = req.body.map(item => (Object.assign(Object.assign({}, item), { createdAt: currentTime, updatedAt: currentTime })));
+            const dataReturnS = yield (0, itemSectionDao_1.postBulkDao)(values);
+            if (!dataReturnS)
+                return res.status(500).json({ message: "Error while saving data" });
+            let returnExist = yield getAllAlways();
+            if (!returnExist)
+                return res.status(500).json({ message: "Error fetching data" });
+            return res.status(200).json({ data: returnExist, message: (0, alert_services_1.AlertServices)("Success", "Created"), status: 200 });
         }
-        else {
-            const { error, value } = itemSectionValidationSchema_1.default.validate(req.body);
-            if (error) {
-                console.error(error.details);
-                return res.status(500).json(errorResponse);
-            }
+        catch (error) {
+            return res.status(500).json({ data: [], message: (0, alert_services_1.AlertServices)("Error", "Internal Server Error"), status: 500 });
+        }
+    }
+    if (!Array.isArray(req.body)) {
+        let { error, value } = itemSectionValidationSchema_1.default.validate(req.body);
+        try {
+            const currentTime = yield (0, today_services_1.today)();
             value.createdAt = currentTime;
             value.updatedAt = currentTime;
-            const dataReturn = yield (0, itemSectionDao_1.postDao)(value);
-            if (!dataReturn)
+            if (error)
+                console.error(error.details);
+            if (error)
                 return res.status(500).json(errorResponse);
-            dataReturnS.push(dataReturn);
+            const dataReturnS = yield (0, itemSectionDao_1.postDao)(value);
+            if (!dataReturnS)
+                return res.status(500).json(errorResponse);
+            let returnExist = yield getAllAlways();
+            if (!returnExist)
+                return res.status(500).json(errorResponse);
+            return res.status(200).json({ data: returnExist, message: (0, alert_services_1.AlertServices)("Success", "Created"), status: 200 });
         }
-        let returnExist = yield getAllAlways();
-        if (!returnExist)
-            return res.status(500).json(errorResponse);
-        return res.status(200).json({ data: dataReturnS, message: (0, alert_services_1.AlertServices)("Success", "Created"), status: 200 });
+        catch (error) {
+            console.log("Error in createTypeTest:", error);
+            return res.status(500).json({ data: [], message: (0, alert_services_1.AlertServices)("Error", "Internal Server Error"), status: 500 });
+        }
     }
-    catch (error) {
-        console.log("Error in createTypeTest:", error);
-        return res.status(500).json({ data: [], message: (0, alert_services_1.AlertServices)("Error", "Internal Server Error"), status: 500 });
-    }
+    // const isArray = Array.isArray(req.body);
+    // try {
+    //     const currentTime = await today();
+    //     const dataReturnS = [];
+    //     if (isArray) {
+    //         for (const obj of req.body) {
+    //             const { error, value } = TestInterviewValidationSchema.validate(obj);
+    //             if (error) {
+    //                 console.error(error.details);
+    //                 return res.status(500).json(errorResponse);
+    //             }
+    //             obj.createdAt = currentTime;
+    //             obj.updatedAt = currentTime;
+    //             const dataReturn = await postDao(obj);
+    //             if (!dataReturn) return res.status(500).json(errorResponse);
+    //             dataReturnS.push(dataReturn);
+    //         }
+    //     } else {
+    //         const { error, value } = TestInterviewValidationSchema.validate(req.body);
+    //         if (error) {
+    //             console.error(error.details);
+    //             return res.status(500).json(errorResponse);
+    //         }
+    //         value.createdAt = currentTime;
+    //         value.updatedAt = currentTime;
+    //         const dataReturn = await postDao(value);
+    //         if (!dataReturn) return res.status(500).json(errorResponse);
+    //         dataReturnS.push(dataReturn);
+    //     }
+    //     let returnExist = await getAllAlways();
+    //     if (!returnExist) return res.status(500).json(errorResponse);
+    //     return res.status(200).json({ data: dataReturnS, message: AlertServices("Success", "Created"), status: 200 });
+    // } catch (error) {
+    //     console.log("Error in createTypeTest:", error);
+    //     return res.status(500).json({ data: [], message: AlertServices("Error", "Internal Server Error"), status: 500 });
+    // }
 });
 exports.post = post;
 const update = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
