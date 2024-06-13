@@ -83,3 +83,10 @@ export const getAllColumns = async () => {
     console.log("🚀 ~ getAllColumns ~ error:", error);
   }
 };
+
+
+
+       RoadMap.belongsToMany(models.User, { through: models.InterviewUser, as: 'Interviewees' });
+      RoadMap.belongsToMany(models.User, { through: models.InterviewResponsible, as: 'Responsibles' });
+      RoadMap.belongsToMany(models.Interview, { through: models.InterviewResponsible });
+      RoadMap.belongsToMany(models.Vacancy, { through: models.RoadMapVacance });

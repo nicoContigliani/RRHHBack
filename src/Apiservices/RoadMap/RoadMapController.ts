@@ -62,7 +62,7 @@ export const post = async (req: Request, res: Response, next: NextFunction) => {
             let returnExist = await getAllAlways();
             if (!returnExist) return res.status(500).json({ message: "Error fetching data" });
 
-            return res.status(200).json({ data: returnExist, message: AlertServices("Success", "Created"), status: 200 });
+            return res.status(200).json({ data: dataReturnS, message: AlertServices("Success", "Created"), status: 200 });
 
         } catch (error) {
             return res.status(500).json({ data: [], message: AlertServices("Error", "Internal Server Error"), status: 500 });
@@ -84,7 +84,7 @@ export const post = async (req: Request, res: Response, next: NextFunction) => {
             if (!dataReturnS) return res.status(500).json(errorResponse)
             let returnExist = await getAllAlways()
             if (!returnExist) return res.status(500).json(errorResponse)
-            return res.status(200).json({ data: returnExist, message: AlertServices("Success", "Created"), status: 200 });
+            return res.status(200).json({ data: dataReturnS, message: AlertServices("Success", "Created"), status: 200 });
         } catch (error) {
             console.log("Error in createTypeTest:", error);
             return res.status(500).json({ data: [], message: AlertServices("Error", "Internal Server Error"), status: 500 });

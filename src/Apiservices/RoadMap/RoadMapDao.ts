@@ -122,7 +122,8 @@ export const postDao = async (data: any) => {
 
         //debe crear los datos en la tabla intermedia
 
-        let { InterviewId,
+        let { 
+            // InterviewId,
             VacancyId,
             after_steps,
             all_Steps,
@@ -147,66 +148,67 @@ export const postDao = async (data: any) => {
 
         // const ultimoId = await RoadMap.max('id');
         const todoRoadmap = await RoadMap.create(data)
+        console.log("🚀 ~ postDao ~ todoRoadmap:", todoRoadmap)
 
-        const { dataValues: { id } } = todoRoadmap
+        // const { dataValues: { id } } = todoRoadmap
 
-        const RoadMapId = id
+        // const RoadMapId = id
 
-        try {
-            const dataRoadMapVacance = {
-                VacancyId,
-                RoadMapId,
-                status_RoadMapVacance: true,
-                comments: "",
-                statusProg: "",
-                createdAt,
-                updatedAt,
-            }
-            const returnRoadMap = await RoadMapVacance.create(dataRoadMapVacance)
+        // try {
+        //     const dataRoadMapVacance = {
+        //         VacancyId,
+        //         RoadMapId,
+        //         status_RoadMapVacance: true,
+        //         comments: "",
+        //         statusProg: "",
+        //         createdAt,
+        //         updatedAt,
+        //     }
+        //     const returnRoadMap = await RoadMapVacance.create(dataRoadMapVacance)
 
-        } catch (error: any) {
-            console.error("🚀 ~ postDao ~ error:", error.message);
-            console.error("🚀 ~ postDao ~ error stack:", error.stack);            // If you have other properties on the error object, log them as well
-            if (error.errors) {
-                error.errors.forEach((err: any) => {
-                    console.error("🚀 ~ Validation error:", err.message);
-                    console.error("🚀 ~ Validation error type:", err.type);
-                    console.error("🚀 ~ Validation error path:", err.path);
-                    console.error("🚀 ~ Validation error value:", err.value);
-                });
-            }
+        // } catch (error: any) {
+        //     console.error("🚀 ~ postDao ~ error:", error.message);
+        //     console.error("🚀 ~ postDao ~ error stack:", error.stack);            // If you have other properties on the error object, log them as well
+        //     if (error.errors) {
+        //         error.errors.forEach((err: any) => {
+        //             console.error("🚀 ~ Validation error:", err.message);
+        //             console.error("🚀 ~ Validation error type:", err.type);
+        //             console.error("🚀 ~ Validation error path:", err.path);
+        //             console.error("🚀 ~ Validation error value:", err.value);
+        //         });
+        //     }
 
-        }
+        // }
 
-        try {
-            const dataInterviewRoadMap = {
-                InterviewId,
-                RoadMapId,
-                status_InterviewRoadMap: true,
-                comments: "",
-                statusProgres: "",
-                sequence: null,
-                interviewee: "",
-                position: "",
-                notes: "",
-                createdAt,
-                updatedAt
-            }
-            const returnRoadMap = await InterviewRoadMap.create(dataInterviewRoadMap)
+        // try {
+        //     const dataInterviewRoadMap = {
+        //         // InterviewId,
+        //         RoadMapId,
+        //         status_InterviewRoadMap: true,
+        //         comments: "",
+        //         statusProgres: "",
+        //         sequence: null,
+        //         interviewee: "",
+        //         position: "",
+        //         notes: "",
+        //         createdAt,
+        //         updatedAt
+        //     }
+        //     const returnRoadMap = await InterviewRoadMap.create(dataInterviewRoadMap)
 
-        } catch (error: any) {
-            console.error("🚀 ~ postDao ~ error:", error.message);
-            console.error("🚀 ~ postDao ~ error stack:", error.stack);            // If you have other properties on the error object, log them as well
-            if (error.errors) {
-                error.errors.forEach((err: any) => {
-                    console.error("🚀 ~ Validation error:", err.message);
-                    console.error("🚀 ~ Validation error type:", err.type);
-                    console.error("🚀 ~ Validation error path:", err.path);
-                    console.error("🚀 ~ Validation error value:", err.value);
-                });
-            }
+        // } catch (error: any) {
+        //     console.error("🚀 ~ postDao ~ error:", error.message);
+        //     console.error("🚀 ~ postDao ~ error stack:", error.stack);            // If you have other properties on the error object, log them as well
+        //     if (error.errors) {
+        //         error.errors.forEach((err: any) => {
+        //             console.error("🚀 ~ Validation error:", err.message);
+        //             console.error("🚀 ~ Validation error type:", err.type);
+        //             console.error("🚀 ~ Validation error path:", err.path);
+        //             console.error("🚀 ~ Validation error value:", err.value);
+        //         });
+        //     }
 
-        }
+        // }
 
         return await todoRoadmap
 
@@ -229,9 +231,12 @@ export const postDao = async (data: any) => {
 
 export const postBulkDao = async (data: any) => {
     try {
-          return await InterviewResponsible.bulkCreate(data);
+        const dataReturn = await InterviewResponsible.bulkCreate(data)
+        console.log("🚀 ~ postBulkDao ~ dataReturn:", dataReturn)
+        // return await InterviewResponsible.bulkCreate(data);
+        return await dataReturn
     } catch (error) {
-          console.log("🚀 ~ file: InterviewResponsibleDao.ts:57 ~ postDao ~ error:", error)
+        console.log("🚀 ~ file: InterviewResponsibleDao.ts:57 ~ postDao ~ error:", error)
 
     }
 }

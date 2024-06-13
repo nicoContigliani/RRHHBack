@@ -16,7 +16,7 @@ module.exports = {
     await queryInterface.bulkInsert('RoadMaps', [
       {
         id: 1,
-        InterviewId: 1,
+        // InterviewId: 1,
         VacancyId: 1,
         responsibilityDescription: 'Learn the basics of HTML, CSS, and JavaScript.',
         status_roadmap: true,
@@ -41,7 +41,7 @@ module.exports = {
       },
       {
         id: 2,
-        InterviewId: 1,
+        // InterviewId: 1,
         VacancyId: 1,
         responsibilityDescription: 'Build a simple web application using HTML, CSS, and JavaScript.',
         status_roadmap: false,
@@ -66,7 +66,7 @@ module.exports = {
       },
       {
         id: 3,
-        InterviewId: 1,
+        // InterviewId: 1,
         VacancyId: 2,
         responsibilityDescription: 'Learn the basics of Python and Django.',
         status_roadmap: true,
@@ -91,7 +91,7 @@ module.exports = {
       },
       {
         id: 4,
-        InterviewId: 1,
+        // InterviewId: 1,
         VacancyId: 2,
         responsibilityDescription: 'Build a simple backend web application using Python and Django.',
         status_roadmap: false,

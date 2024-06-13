@@ -72,7 +72,7 @@ const post = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () 
             let returnExist = yield getAllAlways();
             if (!returnExist)
                 return res.status(500).json({ message: "Error fetching data" });
-            return res.status(200).json({ data: returnExist, message: (0, alert_services_1.AlertServices)("Success", "Created"), status: 200 });
+            return res.status(200).json({ data: dataReturnS, message: (0, alert_services_1.AlertServices)("Success", "Created"), status: 200 });
         }
         catch (error) {
             return res.status(500).json({ data: [], message: (0, alert_services_1.AlertServices)("Error", "Internal Server Error"), status: 500 });

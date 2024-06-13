@@ -1,7 +1,7 @@
 import Joi from 'joi';
 
 const RoadMapValidationSchema = Joi.object({
-    InterviewId: Joi.number().integer().required(),
+    // InterviewId: Joi.number().integer().required(),
     VacancyId: Joi.number().integer().required(),
     responsibilityDescription: Joi.string().required(),
     status_roadmap: Joi.boolean().required(),
@@ -22,6 +22,8 @@ const RoadMapValidationSchema = Joi.object({
     order_Steps: Joi.string().optional(),
     createdAt: Joi.date().optional(),
     updatedAt: Joi.date().optional(),
+    array_interview_responsible_and_user: Joi.array().optional().allow(null)
+
 });
 
 export default RoadMapValidationSchema;

@@ -35,7 +35,7 @@ const postDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
 exports.postDao = postDao;
 const postBulkDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        return yield InterviewResponsible.bulkCreate(data);
+        return yield InterviewUser.bulkCreate(data);
     }
     catch (error) {
         console.log("🚀 ~ file: InterviewResponsibleDao.ts:57 ~ postDao ~ error:", error);

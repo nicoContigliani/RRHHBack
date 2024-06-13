@@ -19,7 +19,9 @@ sequelize model:create --name Result --attributes  result:string,description_res
 sequelize model:create --name ResultTest --attributes TestId:bigint,ResultId:bigint,status_result_test:boolean
 sequelize model:create --name TestInterview --attributes CandidateId:bigint,TestId:bigint,interviewDateTime:date,results:string,comments:string,InterviewId:bigint,status_test_interview:boolean
 sequelize model:create --name TypeInterview --attributes name_type_test:string,description_type_test:string,status_Type_interview:boolean
+
 sequelize model:create --name Interview --attributes interviewDateTime:date,interviewTypeId:bigint,interviewers:string,interviewMethod:string,duration:bigint,rating:float,comments:string,inerview_result:string,requiredActions:string,nextActionDateTime:date,status_interview:boolean,TypeInterviewId:bigint
+
 sequelize model:create --name TypeVacancy --attributes name_vacancy_type:string,description_vacancy_type:string,status_vacancy_type:boolean
 
 sequelize model:create --name Vacancy --attributes title:string,description:text,requirements:text,responsibilities:text,status_vacancy:boolean,status_vacancy_work:string,start_vacancy:date,finish_vacancy:date,TypeVacancyId:bigint,extra_data:string,location:string
@@ -50,8 +52,30 @@ sequelize model:create --name Priority --attributes name_Priority:string,priorit
 
 
 
-sequelize model:create --name RoadMap --attributes InterviewId:bigint,VacancyId:bigint,responsibilityDescription:string,status_roadmap:boolean,required:boolean,description:text,duration:bigint,location:string,scheduledDateTime:date,start_DateTime:date,finish_DateTime:date,completionDateTime:date,outcome:string,before_steps:text,after_steps:text,nextActionDateTime:date,image:string,all_Steps:bigint,order_Steps:bigint,description_steps:text     
+sequelize model:create --name RoadMap --attributes VacancyId:bigint,responsibilityDescription:string,status_roadmap:boolean,required:boolean,description:text,duration:bigint,location:string,scheduledDateTime:date,start_DateTime:date,finish_DateTime:date,completionDateTime:date,outcome:string,before_steps:text,after_steps:text,nextActionDateTime:date,image:string,all_Steps:bigint,order_Steps:bigint,description_steps:text     
 
 sequelize model:create --name InterviewRoadMap --attributes InterviewId:bigint,RoadMapId:bigint,status_InterviewRoadMap:boolean,statusProgres:string,sequence:bigint,interviewee:string,position:string,notes:text,comments:text,descriptions:text
 
 sequelize model:create --name RoadMapVacance --attributes VacancyId:bigint,RoadMapId:bigint,status_RoadMapVacance:boolean,comments:text,statusProgres:string
+
+
+
+
+#  Interview.belongsToMany(models.Test, { through: models.TestInterview });
+#       Interview.belongsToMany(models.Vacancy, { through: models.InterviewVacance });
+
+#       // Interview.belongsToMany(models.User, { through: models.InterviewUser });
+#       // Interview.belongsToMany(models.User, { through: models.InterviewResponsible });
+
+#       Interview.belongsToMany(models.User, { through: models.InterviewUser, as: 'Interviewees' });
+#       Interview.belongsToMany(models.User, { through: models.InterviewResponsible, as: 'Responsibles' });
+
+#       Interview.hasMany(models.InterviewResponsible, { foreignKey: 'InterviewId' });
+#       Interview.hasMany(models.InterviewUser, { foreignKey: 'InterviewId' });
+
+
+
+#       Interview.hasMany(models.TypeInterview, {
+#         foreignKey: 'id'
+#       });
+#       Interview.belongsToMany(models.RoadMap, { through: models.InterviewResponsible });

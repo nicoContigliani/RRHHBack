@@ -18,7 +18,6 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   RoadMap.init({
-    InterviewId: DataTypes.BIGINT,
     VacancyId: DataTypes.BIGINT,
     responsibilityDescription: DataTypes.STRING,
     status_roadmap: DataTypes.BOOLEAN,

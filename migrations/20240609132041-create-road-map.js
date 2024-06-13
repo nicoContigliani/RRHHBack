@@ -9,9 +9,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      InterviewId: {
-        type: Sequelize.BIGINT
-      },
       VacancyId: {
         type: Sequelize.BIGINT
       },
