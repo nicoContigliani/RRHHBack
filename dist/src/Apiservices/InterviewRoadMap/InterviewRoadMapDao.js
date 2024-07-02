@@ -11,13 +11,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deletesDao = exports.updateDao = exports.postBulkDao = exports.postDao = exports.getIdDao = exports.getDao = void 0;
 const { Op } = require('sequelize');
-const { BrachUser, Branch, Company, CompanyVacances, CV, CVSection, CVUser, Interview, InterviewResponsible, InterviewUser, InterviewVacance, Item, itemSection, Permission, PermissionRoll, Result, ResultTest, Role, RollUser, Section, SectionType, TestInterview, Test, TypeInterview, TypeTest, TypeVacancy, User, Vacancy } = require('../../../models');
+const { BrachUser, Branch, Company, CompanyVacances, CV, CVSection, CVUser, Interview, InterviewResponsible, InterviewRoadMap, InterviewUser, InterviewVacance, Item, itemSection, Permission, PermissionRoll, Result, ResultTest, Role, RollUser, Section, SectionType, TestInterview, Test, TypeInterview, TypeTest, TypeVacancy, User, Vacancy } = require('../../../models');
 const getDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
-    return yield InterviewResponsible.findAll({});
+    return yield InterviewRoadMap.findAll({});
 });
 exports.getDao = getDao;
 const getIdDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
-    return yield InterviewResponsible.findAll({
+    return yield InterviewRoadMap.findAll({
         where: {
             RoadMapId: data // Filtrar por id
         }
@@ -26,25 +26,25 @@ const getIdDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
 exports.getIdDao = getIdDao;
 const postDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        return yield InterviewResponsible.create(data);
+        return yield InterviewRoadMap.create(data);
     }
     catch (error) {
-        console.log("🚀 ~ file: InterviewResponsibleDao.ts:57 ~ postDao ~ error:", error);
+        console.log("🚀 ~ file: InterviewRoadMapDao.ts:57 ~ postDao ~ error:", error);
     }
 });
 exports.postDao = postDao;
 const postBulkDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        return yield InterviewResponsible.bulkCreate(data);
+        return yield InterviewRoadMap.bulkCreate(data);
     }
     catch (error) {
-        console.log("🚀 ~ file: InterviewResponsibleDao.ts:57 ~ postDao ~ error:", error);
+        console.log("🚀 ~ file: InterviewRoadMapDao.ts:57 ~ postDao ~ error:", error);
     }
 });
 exports.postBulkDao = postBulkDao;
 const updateDao = (data, id) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        return yield InterviewResponsible.update(data, { where: { id: id } });
+        return yield InterviewRoadMap.update(data, { where: { id: id } });
     }
     catch (error) {
         console.log("🚀 ~ file: userDao.ts:52 ~ updateDao ~ error:", error);
@@ -53,7 +53,7 @@ const updateDao = (data, id) => __awaiter(void 0, void 0, void 0, function* () {
 exports.updateDao = updateDao;
 const deletesDao = (data, id) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        return yield InterviewResponsible.update(data, { where: { id: id } });
+        return yield InterviewRoadMap.update(data, { where: { id: id } });
     }
     catch (error) {
         console.log("🚀 ~ file: userDao.ts:52 ~ updateDao ~ error:", error);

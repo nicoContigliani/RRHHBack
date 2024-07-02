@@ -20,7 +20,7 @@ sequelize model:create --name ResultTest --attributes TestId:bigint,ResultId:big
 sequelize model:create --name TestInterview --attributes CandidateId:bigint,TestId:bigint,interviewDateTime:date,results:string,comments:string,InterviewId:bigint,status_test_interview:boolean
 sequelize model:create --name TypeInterview --attributes name_type_test:string,description_type_test:string,status_Type_interview:boolean
 
-sequelize model:create --name Interview --attributes interviewDateTime:date,interviewTypeId:bigint,interviewers:string,interviewMethod:string,duration:bigint,rating:float,comments:string,inerview_result:string,requiredActions:string,nextActionDateTime:date,status_interview:boolean,TypeInterviewId:bigint
+sequelize model:create --name Interview --attributes summary:string,interviewDateTime:date,interviewers:string,interviewMethod:string,order:bigint,duration:bigint,rating:float,comments:string,inerview_result:string,requiredActions:string,nextActionDateTime:date,status_interview:boolean,TypeInterviewId:bigint
 
 sequelize model:create --name TypeVacancy --attributes name_vacancy_type:string,description_vacancy_type:string,status_vacancy_type:boolean
 

@@ -74,14 +74,43 @@ export const getIdDao = async (data: any) => {
             ]
       });
 }
+// export const postDao = async (data: any) => {
+//       try {
+//             const dataForSent: any = { ...data };
+//             dataForSent['interviewDateTime'] = new Date(data?.interviewDateTime);
+//             return await Interview.create(dataForSent)
+//       } catch (error) {
+//             console.log("🚀 ~ file: InterviewDao.ts:57 ~ postDao ~ error:", error)
+
+//       }
+// }
+
+
 export const postDao = async (data: any) => {
       try {
-            return await Interview.create(data)
-      } catch (error) {
-            console.log("🚀 ~ file: InterviewDao.ts:57 ~ postDao ~ error:", error)
+            // Create a copy of the data object
+            const dataForSent = { ...data };
 
+            // Convert interviewDateTime to a Date object
+            dataForSent.interviewDateTime = new Date(data.interviewDateTime);
+
+            // Check if nextActionDateTime is valid (optional, replace with actual validation)
+            if (dataForSent.nextActionDateTime && !isNaN(new Date(dataForSent.nextActionDateTime).getTime())) {
+                  // Valid date/time, proceed
+            } else {
+                  // Invalid date/time, handle it (e.g., set to null)
+                  dataForSent.nextActionDateTime = null;
+            }
+
+            // Create the interview record
+            const newInterview = await Interview.create(dataForSent);
+            return newInterview; // Return the created interview object for potential use
+      } catch (error) {
+            console.error(" ~ file: InterviewDao.ts:line-number ~ postDao ~ error:", error);
       }
-}
+};
+
+
 
 export const updateDao = async (data: any, id: any) => {
       try {

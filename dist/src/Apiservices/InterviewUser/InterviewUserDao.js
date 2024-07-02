@@ -19,7 +19,7 @@ exports.getDao = getDao;
 const getIdDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
     return yield InterviewUser.findAll({
         where: {
-            id: data // Filtrar por id
+            RoadMapId: data // Filtrar por id
         }
     });
 });

@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+
       Interview.belongsToMany(models.Test, { through: models.TestInterview });
       Interview.belongsToMany(models.Vacancy, { through: models.InterviewVacance });
 
@@ -24,7 +25,6 @@ module.exports = (sequelize, DataTypes) => {
       Interview.hasMany(models.InterviewUser, { foreignKey: 'InterviewId' });
 
 
-
       Interview.hasMany(models.TypeInterview, {
         foreignKey: 'id'
       });
@@ -32,10 +32,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Interview.init({
+    summary: DataTypes.STRING,
     interviewDateTime: DataTypes.DATE,
-    interviewTypeId: DataTypes.BIGINT,
     interviewers: DataTypes.STRING,
     interviewMethod: DataTypes.STRING,
+    order: DataTypes.BIGINT,
     duration: DataTypes.BIGINT,
     rating: DataTypes.FLOAT,
     comments: DataTypes.STRING,

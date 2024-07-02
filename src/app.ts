@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors = require("cors");
-import morgan  from 'morgan';
+import morgan from 'morgan';
 
 
 
@@ -39,6 +39,9 @@ import auth from './routes/auth'
 import RoadMap from './routes/RoadMap'
 import RoadMapVacancies from './routes/RoadMapVacancies'
 import Roots from './routes/Roots'
+import InterviewRoadMaps from './routes/InterviewRroadMapRouter'
+
+import assistantGet from './routes/AssistantGetRouter'
 
 
 
@@ -51,45 +54,48 @@ app.use(morgan('dev')); // Usar 'dev' para un formato de registro predefinido
 
 
 
-app.use('/BrachUser',BrachUser)
-app.use('/Branch',Branch)
-app.use('/Company',Company)
-app.use('/CompanyVacances',CompanyVacances)
-app.use('/CV',CV)
-app.use('/CVNext',CVNext)
+app.use('/BrachUser', BrachUser)
+app.use('/Branch', Branch)
+app.use('/Company', Company)
+app.use('/CompanyVacances', CompanyVacances)
+app.use('/CV', CV)
+app.use('/CVNext', CVNext)
 
-app.use('/CVSection',CVSection)
-app.use('/CVUser',CVUser)
-app.use('/Interview',Interview)
-app.use('/InterviewResponsible',InterviewResponsible)
-app.use('/InterviewUser',InterviewUser)
-app.use('/InterviewVacance',InterviewVacance)
-app.use('/Item',Item)
-app.use('/itemSection',itemSection)
-app.use('/Permission',Permission)
-app.use('/PermissionRoll',PermissionRoll)
-app.use('/Result',Result)
-app.use('/ResultTest',ResultTest)
-app.use('/Role',Role)
-app.use('/RollUser',RollUser)
-app.use('/Section',Section)
-app.use('/SectionType',SectionType)
-app.use('/TestInterview',TestInterview)
-app.use('/Test',Test)
-app.use('/TypeInterview',TypeInterview)
-app.use('/TypeTest',TypeTest)
-app.use('/TypeVacancy',TypeVacancy)
-app.use('/User',User)
-app.use('/Vacancy',Vacancy)
-app.use('/Shift',Shift)
+app.use('/CVSection', CVSection)
+app.use('/CVUser', CVUser)
+app.use('/Interview', Interview)
+app.use('/InterviewResponsible', InterviewResponsible)
+app.use('/InterviewUser', InterviewUser)
+app.use('/InterviewVacance', InterviewVacance)
+app.use('/Item', Item)
+app.use('/itemSection', itemSection)
+app.use('/Permission', Permission)
+app.use('/PermissionRoll', PermissionRoll)
+app.use('/Result', Result)
+app.use('/ResultTest', ResultTest)
+app.use('/Role', Role)
+app.use('/RollUser', RollUser)
+app.use('/Section', Section)
+app.use('/SectionType', SectionType)
+app.use('/TestInterview', TestInterview)
+app.use('/Test', Test)
+app.use('/TypeInterview', TypeInterview)
+app.use('/TypeTest', TypeTest)
+app.use('/TypeVacancy', TypeVacancy)
+app.use('/User', User)
+app.use('/Vacancy', Vacancy)
+app.use('/Shift', Shift)
+app.use('/InterviewRoadMaps', InterviewRoadMaps)
 
-app.use('/RoadMap',RoadMap)
-app.use('/RoadMapVacancies',RoadMapVacancies)
+app.use('/RoadMap', RoadMap)
+app.use('/RoadMapVacancies', RoadMapVacancies)
 
 
 app.use('/Auth', auth)
 
 app.use('/Roots', Roots)
+app.use('/AssistantGet', assistantGet)
+
 
 
 

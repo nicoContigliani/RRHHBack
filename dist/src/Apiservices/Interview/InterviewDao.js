@@ -51,12 +51,35 @@ const getIdDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
     });
 });
 exports.getIdDao = getIdDao;
+// export const postDao = async (data: any) => {
+//       try {
+//             const dataForSent: any = { ...data };
+//             dataForSent['interviewDateTime'] = new Date(data?.interviewDateTime);
+//             return await Interview.create(dataForSent)
+//       } catch (error) {
+//             console.log("🚀 ~ file: InterviewDao.ts:57 ~ postDao ~ error:", error)
+//       }
+// }
 const postDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        return yield Interview.create(data);
+        // Create a copy of the data object
+        const dataForSent = Object.assign({}, data);
+        // Convert interviewDateTime to a Date object
+        dataForSent.interviewDateTime = new Date(data.interviewDateTime);
+        // Check if nextActionDateTime is valid (optional, replace with actual validation)
+        if (dataForSent.nextActionDateTime && !isNaN(new Date(dataForSent.nextActionDateTime).getTime())) {
+            // Valid date/time, proceed
+        }
+        else {
+            // Invalid date/time, handle it (e.g., set to null)
+            dataForSent.nextActionDateTime = null;
+        }
+        // Create the interview record
+        const newInterview = yield Interview.create(dataForSent);
+        return newInterview; // Return the created interview object for potential use
     }
     catch (error) {
-        console.log("🚀 ~ file: InterviewDao.ts:57 ~ postDao ~ error:", error);
+        console.error(" ~ file: InterviewDao.ts:line-number ~ postDao ~ error:", error);
     }
 });
 exports.postDao = postDao;

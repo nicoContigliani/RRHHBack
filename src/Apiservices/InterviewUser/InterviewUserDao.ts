@@ -43,7 +43,7 @@ export const getDao = async (data: any) => {
 export const getIdDao = async (data: any) => {
       return await InterviewUser.findAll({
             where: {
-                  id: data       // Filtrar por id
+                  RoadMapId: data       // Filtrar por id
             }
       });
 }

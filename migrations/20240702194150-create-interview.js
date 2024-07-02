@@ -9,17 +9,20 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      summary: {
+        type: Sequelize.STRING
+      },
       interviewDateTime: {
         type: Sequelize.DATE
-      },
-      interviewTypeId: {
-        type: Sequelize.BIGINT
       },
       interviewers: {
         type: Sequelize.STRING
       },
       interviewMethod: {
         type: Sequelize.STRING
+      },
+      order: {
+        type: Sequelize.BIGINT
       },
       duration: {
         type: Sequelize.BIGINT
